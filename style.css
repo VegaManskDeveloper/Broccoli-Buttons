@@ -151,6 +151,7 @@ nav ul li a:hover {
     box-shadow: inset 0 0 100px 50px #0b3d0b; /* Aanpassen voor een vloeiendere overgang */
     /* background-size: cover; /* Zorgt ervoor dat de afbeelding het scherm vult */
     animation: moveBackground 60s linear infinite; /* Voegt animatie toe */
+    opacity: 0.4; /* Pas de waarde aan tussen 0 (volledig transparant) en 1 (volledig ondoorzichtig) */
 }
 
 
