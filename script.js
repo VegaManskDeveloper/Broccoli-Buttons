@@ -1,5 +1,13 @@
 // script.js
 
+// Functie om naar een specifieke sectie te scrollen
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
 // Tekstinhoud in alle talen
 const translations = {
   en: {
