@@ -132,3 +132,33 @@ footer {
     margin: 20px auto;
     border-radius: 10px;
 }
+.language-switcher {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.language-switcher button {
+    background-color: #2e8b57;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(46, 139, 87, 0.4);
+    transition: all 0.3s ease;
+}
+
+.language-switcher button:hover {
+    background-color: #4e9b77;
+    box-shadow: 0 6px 20px rgba(46, 139, 87, 0.7);
+    transform: scale(1.05);
+}
+
+.language-switcher button:focus {
+    outline: none;
+    box-shadow: 0 0 15px #4e9b77, 0 0 15px #4e9b77, 0 0 20px #4e9b77;
+}
+
