@@ -31,7 +31,7 @@ const translations = {
     contactButton: "Kontakt oss",
   },
   nl: {
-    title: "Broccoli Knoppen",
+    title: "Broccoli Buttons",
     introText: "Ben je klaar om op de knop te drukken en het mysterie te onthullen?",
     ctaButton: "Ontdek Broccoli",
     projectsTitle: "Onze Projecten",
@@ -39,9 +39,9 @@ const translations = {
     project2: "Verborgen Schatten",
     project3: "De Onbekende Reis",
     aboutTitle: "Over Ons",
-    aboutText: "Wij zijn Broccoli Knoppen, een team van dromers, denkers en ontdekkers, op zoek naar het onbekende.",
+    aboutText: "Wij zijn Broccoli Buttons, een team van dromers, denkers en ontdekkers, op zoek naar het onbekende.",
     contactTitle: "Contact",
-    contactText: "Wil je meer weten over Broccoli Knoppen? Neem contact op... als je durft.",
+    contactText: "Wil je meer weten over Broccoli Buttons? Neem contact op... als je durft.",
     contactButton: "Contacteer ons",
   },
 };
