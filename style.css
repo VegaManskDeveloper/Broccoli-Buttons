@@ -50,50 +50,53 @@ nav ul li a:hover {
     color: #8ccf88; /* Hover effect: lichter groen */
 }
 
-/* Stijlen voor Taalkeuze met Vlaggetjes */
-.language-selector select {
-    background-color: transparent;
-    border: none;
-    color: #f0f0f0;
-    font-size: 1.1em;
+/* Aangepaste Taalkeuze Menu */
+.custom-select {
+    position: relative;
+    display: inline-block;
     cursor: pointer;
+}
+
+.selected-option {
     padding: 5px 10px;
-    appearance: none; /* Verwijder standaard browserstijl van select */
+    border: 1px solid #4caf50;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    color: #f0f0f0;
 }
 
-.language-selector select option {
-    padding: 5px 20px;
-    background-repeat: no-repeat;
-    background-position: left center;
-    text-align: left;
+.selected-option img.flag-icon {
+    width: 20px;
+    height: 14px;
+    margin-right: 5px;
 }
 
-.language-selector select option[value="en"] {
-    background-image: url('https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_Kingdom.svg'); /* UK Flag */
+.options-container {
+    display: none;
+    position: absolute;
+    background-color: #0b3d0b;
+    border: 1px solid #4caf50;
+    border-radius: 5px;
+    z-index: 1000;
+    width: 100px;
 }
 
-.language-selector select option[value="es"] {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg'); /* Spain Flag */
+.option {
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
-.language-selector select option[value="zh"] {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_the_People%27s_Republic_of_China.svg'); /* China Flag */
+.option img.flag-icon {
+    width: 20px;
+    height: 14px;
+    margin-right: 5px;
 }
 
-.language-selector select option[value="no"] {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg'); /* Norway Flag */
-}
-
-.language-selector select option[value="nl"] {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg'); /* Netherlands Flag */
-}
-
-.language-selector select option[value="de"] {
-    background-image: url('https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg'); /* Germany Flag */
-}
-
-.language-selector select option[value="fr"] {
-    background-image: url('https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg'); /* France Flag */
+.option:hover {
+    background-color: #1f6b1f;
 }
 
 /* Cirkelvormige Introductie sectie */
