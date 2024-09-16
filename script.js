@@ -56,13 +56,12 @@ const translations = {
 
 // Functie om de taal te wisselen
 function switchLanguage(lang) {
-  document.getElementById("title").innerText = translations[lang].title;
   document.getElementById("intro-text").innerText = translations[lang].introText;
   document.getElementById("cta-button").innerText = translations[lang].ctaButton;
   document.getElementById("projects-title").innerText = translations[lang].projectsTitle;
-  document.getElementById("project1").innerText = translations[lang].project1;
-  document.getElementById("project2").innerText = translations[lang].project2;
-  document.getElementById("project3").innerText = translations[lang].project3;
+  document.getElementById("project1").getElementsByTagName("h3")[0].innerText = translations[lang].project1; // H3 in de kaart bijwerken
+  document.getElementById("project2").getElementsByTagName("h3")[0].innerText = translations[lang].project2; // H3 in de kaart bijwerken
+  document.getElementById("project3").getElementsByTagName("h3")[0].innerText = translations[lang].project3; // H3 in de kaart bijwerken
   document.getElementById("about-title").innerText = translations[lang].aboutTitle;
   document.getElementById("about-text").innerText = translations[lang].aboutText;
   document.getElementById("contact-title").innerText = translations[lang].contactTitle;
