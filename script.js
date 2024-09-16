@@ -26,6 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         optionsContainer.classList.remove('show');
     });
 
+    document.addEventListener('mousemove', (event) => {
+        const { clientX, clientY } = event;
+        const background = document.querySelector('.moving-background');
+    
+        // Verplaats de achtergrond subtiel op basis van muisbeweging
+        background.style.backgroundPositionX = `${clientX / 20}px`;
+        background.style.backgroundPositionY = `${clientY / 20}px`;
+    });
+
+
     // Standaard taal instellen
     const savedLang = localStorage.getItem('selectedLang');
     if (savedLang) {
