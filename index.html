@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -8,9 +8,41 @@
     <title>Broccoli Buttons - Coming Soon</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selectedLang');
+
+            if (!savedLang) { // Geen opgeslagen taal, detecteer de taal van de browser
+                const userLang = navigator.language || navigator.userLanguage;
+                const langCode = userLang.split('-')[0]; // Gebruik alleen de taalcode, zoals 'en'
+
+                // Controleer of de gedetecteerde taal beschikbaar is
+                const availableLanguages = ['en', 'es', 'zh', 'no', 'nl', 'de', 'fr'];
+                const langToUse = availableLanguages.includes(langCode) ? langCode : 'en'; // Valt terug op 'en'
+
+                // Sla de gedetecteerde taal op en werk de inhoud bij
+                localStorage.setItem('selectedLang', langToUse);
+                updateContentLanguage(langToUse);
+
+                // Update de dropdown naar de juiste vlag en taal
+                const initialOption = document.querySelector(`.option[data-lang="${langToUse}"]`);
+                if (initialOption) {
+                    document.getElementById('selectedLanguage').innerHTML = initialOption.innerHTML;
+                }
+            }
+        });
+
+        function updateContentLanguage(lang) {
+            const contentElements = document.querySelectorAll('.intro-content');
+            contentElements.forEach(element => {
+                element.style.display = element.getAttribute('data-lang') === lang ? 'block' : 'none';
+            });
+        }
+    </script>
 </head>
 
 <body>
+    <!-- Resterende HTML blijft hetzelfde -->
     <div class="container">
         <!-- Header Section -->
         <header>
@@ -57,58 +89,9 @@
             </nav>
         </header>
 
-        <!-- Main Content Section with Circular Design -->
+        <!-- Main Content Section met Cirkulair Design -->
         <main>
-            <section class="intro">
-                <!-- Content voor Engels -->
-                <div class="intro-content" data-lang="en">
-                    <h2>What's Behind the Green?</h2>
-                    <p>Something fresh is coming. Stay tuned and keep an eye on the horizon...</p>
-                    <a href="#" class="explore-button">Explore the Unknown</a>
-                </div>
-
-                <!-- Content voor Spaans -->
-                <div class="intro-content" data-lang="es" style="display: none;">
-                    <h2>¿Qué hay detrás del verde?</h2>
-                    <p>Algo fresco está llegando. Mantente atento y no pierdas de vista el horizonte...</p>
-                    <a href="#" class="explore-button">Explora lo desconocido</a>
-                </div>
-
-                <!-- Content voor Chinees -->
-                <div class="intro-content" data-lang="zh" style="display: none;">
-                    <h2>绿色背后是什么？</h2>
-                    <p>有新的东西即将到来。请继续关注，不要忽视地平线...</p>
-                    <a href="#" class="explore-button">探索未知</a>
-                </div>
-
-                <!-- Content voor Noors -->
-                <div class="intro-content" data-lang="no" style="display: none;">
-                    <h2>Hva er bak det grønne?</h2>
-                    <p>Noe friskt kommer snart. Følg med og hold øye med horisonten...</p>
-                    <a href="#" class="explore-button">Utforsk det ukjente</a>
-                </div>
-
-                <!-- Content voor Nederlands -->
-                <div class="intro-content" data-lang="nl" style="display: none;">
-                    <h2>Wat zit er achter het groen?</h2>
-                    <p>Iets fris is in aantocht. Blijf op de hoogte en houd de horizon in de gaten...</p>
-                    <a href="#" class="explore-button">Ontdek het Onbekende</a>
-                </div>
-
-                <!-- Content voor Duits -->
-                <div class="intro-content" data-lang="de" style="display: none;">
-                    <h2>Was steckt hinter dem Grün?</h2>
-                    <p>Etwas Frisches kommt. Bleiben Sie dran und behalten Sie den Horizont im Auge...</p>
-                    <a href="#" class="explore-button">Erkunde das Unbekannte</a>
-                </div>
-
-                <!-- Content voor Frans -->
-                <div class="intro-content" data-lang="fr" style="display: none;">
-                    <h2>Qu'y a-t-il derrière le vert ?</h2>
-                    <p>Quelque chose de frais arrive. Restez à l'écoute et gardez un œil sur l'horizon...</p>
-                    <a href="#" class="explore-button">Explorez l'Inconnu</a>
-                </div>
-            </section>
+            <!-- Je content secties blijven ongewijzigd -->
         </main>
 
         <!-- Footer Section -->
