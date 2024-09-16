@@ -161,6 +161,11 @@ nav ul li a:hover {
 }
 
 
+.footer-text {
+    border: none; /* Verwijdert elke rand rond de tekst */
+    box-shadow: none; /* Verwijdert elke schaduw rond de tekst */
+}
+
 /* Footer stijlen */
 footer {
     text-align: center;
@@ -168,3 +173,4 @@ footer {
     margin-top: 50px;
     border-top: 1px solid #333;
 }
+
