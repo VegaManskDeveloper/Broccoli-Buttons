@@ -173,7 +173,7 @@ nav ul li a:hover {
 
 
 @keyframes moveBackground {
-    0% { background-position: -1600px -1600px; }
+    0% { background-position: -3200px -3200px; }
     100% { background-position: 1000px 1000px; } /* Verplaats de achtergrond over tijd */
 }
 
