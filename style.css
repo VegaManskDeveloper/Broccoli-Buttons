@@ -29,7 +29,10 @@ header {
 nav ul {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li a {
@@ -41,6 +44,29 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #8ccf88; /* Hover effect: lichter groen */
+}
+
+/* Stijlen voor Taalkeuze met Vlaggetjes */
+.language-selector select {
+    background-color: transparent;
+    border: none;
+    color: #f0f0f0;
+    font-size: 1.1em;
+    cursor: pointer;
+    appearance: none; /* Verwijder standaard browserstijl van select */
+    padding: 5px 10px;
+    background-image: none; /* Verwijder standaard dropdown-pijl */
+}
+
+.language-selector select option {
+    background-color: #0b3d0b; /* Zelfde achtergrond als de body */
+    color: #f0f0f0;
+}
+
+.language-selector::before {
+    content: attr(data-flag); /* Voeg vlaggetje toe als pseudo-element */
+    margin-right: 5px;
+    font-size: 1.2em; /* Vlaggetjesgrootte aanpassen */
 }
 
 /* Cirkelvormige Introductie sectie */
@@ -68,16 +94,6 @@ nav ul li a:hover {
     color: #f0f0f0;
 }
 
-.intro h2 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-}
-
-.intro p {
-    font-size: 1.1em;
-    margin-bottom: 20px;
-}
-
 /* Verken-knop stijl */
 .explore-button {
     display: inline-block;
@@ -102,19 +118,3 @@ footer {
     margin-top: 50px;
     border-top: 1px solid #333;
 }
-.language-selector {
-    margin: 20px 0;
-    text-align: right;
-}
-
-.language-selector select {
-    padding: 5px;
-    font-size: 1em;
-    border-radius: 5px;
-    border: none;
-    background-color: #4caf50;
-    color: #fff;
-    cursor: pointer;
-}
-
-
