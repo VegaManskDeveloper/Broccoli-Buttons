@@ -145,7 +145,7 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
-    background: #0b3d0b url('images/mist.png') no-repeat; /* Voeg je mistafbeelding toe met een achtergrondkleur */
+    background: #0b3d0b url('images/mist.jpg') no-repeat; /* Voeg je mistafbeelding toe met een achtergrondkleur */
     background-size: cover; /* Zorgt ervoor dat de afbeelding het scherm vult */
     animation: moveBackground 60s linear infinite; /* Voegt animatie toe */
     opacity: 0.8; /* Zorgt voor een subtieler effect */
