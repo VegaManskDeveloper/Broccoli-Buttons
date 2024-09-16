@@ -5,6 +5,7 @@ body {
     background-color: #0b3d0b; /* Donker groen */
     color: #f0f0f0; /* Lichte tekst */
     font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Geen horizontale scroll */
 }
 
 .container {
@@ -42,39 +43,50 @@ nav ul li a:hover {
     color: #8ccf88; /* Hover effect: lichter groen */
 }
 
-/* Introductie sectie */
+/* Cirkelvormige Introductie sectie */
 .intro {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: #1f6b1f; /* Donkerdere groen tint */
+    margin: 100px auto;
+    border-radius: 50%; /* Maakt de sectie een perfecte cirkel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin-top: 100px;
-    padding: 50px 20px;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparant achtergrond */
-    border-radius: 10px;
-    transition: background 0.5s;
+    transition: transform 0.5s, box-shadow 0.5s;
 }
 
 .intro:hover {
-    background: rgba(0, 0, 0, 0.7); /* Hover effect */
+    transform: scale(1.05);
+    box-shadow: 0 0 30px #2e8b57; /* Schaduw en schaal bij hover */
+}
+
+.intro-content {
+    padding: 20px;
+    color: #f0f0f0;
 }
 
 .intro h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-size: 1.8em;
+    margin-bottom: 15px;
 }
 
 .intro p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
+    font-size: 1.1em;
+    margin-bottom: 20px;
 }
 
 /* Verken-knop stijl */
 .explore-button {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 10px 25px;
     background-color: #4caf50; /* Knal groen */
     color: #fff;
     text-decoration: none;
-    font-size: 1.2em;
-    border-radius: 5px;
+    font-size: 1em;
+    border-radius: 30px; /* Cirkelvormige knoppen */
     transition: background-color 0.3s, transform 0.3s;
 }
 
