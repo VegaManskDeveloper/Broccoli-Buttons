@@ -1,68 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
+/* Algemene stijlen */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0b3d0b; /* Donker groen */
+    color: #f0f0f0; /* Lichte tekst */
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Geen horizontale scroll */
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broccoli Buttons - Coming Soon</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script> <!-- Voeg JavaScript toe -->
-</head>
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
 
-<body>
-    <div class="container">
-        <!-- Header Section -->
-        <header>
-            <div class="logo">
-                <h1>Broccoli Buttons</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Mystery</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <!-- Taalkeuze Menu met Vlaggetjes -->
-                    <li class="language-selector">
-                        <select id="language">
-                            <option value="en">🇬🇧 EN</option>
-                            <option value="es">🇪🇸 ES</option>
-                            <option value="zh">🇨🇳 ZH</option>
-                            <option value="no">🇳🇴 NO</option>
-                            <option value="nl">🇳🇱 NL</option>
-                            <option value="de">🇩🇪 DE</option>
-                            <option value="fr">🇫🇷 FR</option>
-                        </select>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+/* Header stijlen */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
 
-        <!-- Main Content Section with Circular Design -->
-        <main>
-            <section class="intro">
-                <!-- Content voor meerdere talen -->
-                <div class="intro-content" data-lang="en">
-                    <h2>What's Behind the Green?</h2>
-                    <p>Something fresh is coming. Stay tuned and keep an eye on the horizon...</p>
-                    <a href="#" class="explore-button">Explore the Unknown</a>
-                </div>
+.logo h1 {
+    font-size: 2.5em;
+    color: #e0ffe0; /* Lichter groen voor het logo */
+}
 
-                <div class="intro-content" data-lang="es" style="display: none;">
-                    <h2>¿Qué hay detrás del verde?</h2>
-                    <p>Algo fresco está llegando. Mantente atento y no pierdas de vista el horizonte...</p>
-                    <a href="#" class="explore-button">Explora lo desconocido</a>
-                </div>
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
 
-                <!-- Andere talen hier... -->
-            </section>
-        </main>
+nav ul li a {
+    text-decoration: none;
+    color: #f0f0f0;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
 
-        <!-- Footer Section -->
-        <footer>
-            <p>&copy; 2024 Broccoli Buttons. All rights reserved.</p>
-        </footer>
-    </div>
-</body>
+nav ul li a:hover {
+    color: #8ccf88; /* Hover effect: lichter groen */
+}
 
-</html>
+/* Stijlen voor Taalkeuze met Vlaggetjes */
+.language-selector {
+    position: relative;
+}
+
+.language-selector select {
+    background-color: transparent;
+    border: none;
+    color: #f0f0f0;
+    font-size: 1.1em;
+    cursor: pointer;
+    appearance: none; /* Verwijder standaard browserstijl van select */
+    padding: 5px 10px;
+}
+
+.language-selector select option {
+    background-color: #0b3d0b; /* Zelfde achtergrond als de body */
+    color: #f0f0f0;
+    font-size: 1.1em;
+}
+
+/* Cirkelvormige Introductie sectie */
+.intro {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: #1f6b1f; /* Donkerdere groen tint */
+    margin: 100px auto;
+    border-radius: 50%; /* Maakt de sectie een perfecte cirkel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.intro:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px #2e8b57; /* Schaduw en schaal bij hover */
+}
+
+.intro-content {
+    padding: 20px;
+    color: #f0f0f0;
+}
+
+/* Verken-knop stijl */
+.explore-button {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #4caf50; /* Knal groen */
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 30px; /* Cirkelvormige knoppen */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.explore-button:hover {
+    background-color: #66bb6a; /* Lichter groen bij hover */
+    transform: scale(1.05); /* Lichte vergroting bij hover */
+}
+
+/* Footer stijlen */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+    border-top: 1px solid #333;
+}
