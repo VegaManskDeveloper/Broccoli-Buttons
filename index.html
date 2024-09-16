@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Broccoli Buttons - Mystical Project Page</title>
-    <link rel="stylesheet" href="style.css"> <!-- Verwijzing naar CSS-bestand -->
-    <script defer src="script.js"></script> <!-- Verwijzing naar JavaScript-bestand -->
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
@@ -17,29 +17,41 @@
         <button onclick="switchLanguage('nl')">Nederlands</button>
     </div>
 
-    <!-- Hero Sectie -->
+    <!-- Hero Sectie met Afbeelding -->
     <header class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Broccoli Buttons</h1> <!-- Houdt naam consistent in alle talen -->
+            <h1 class="hero-title">Broccoli Buttons</h1>
             <p id="intro-text" class="hero-subtitle">Are you ready to push the button and unveil the mystery?</p>
-            <button class="cta-button" id="cta-button">Explore Broccoli</button>
+            <!-- Interactieve knop die naar de Projecten Sectie scrollt -->
+            <button class="cta-button" id="cta-button" onclick="scrollToSection('projects')">Explore Broccoli</button>
         </div>
+        <img src="images/broccoli-hero.jpg" alt="Mystical Broccoli Image" class="hero-image"> <!-- Hero Afbeelding -->
     </header>
 
-    <!-- Projecten Sectie -->
-    <section class="projects">
+    <!-- Projecten Sectie met Afbeeldingen -->
+    <section id="projects" class="projects">
         <h2 id="projects-title" class="section-title">Our Projects</h2>
         <div class="project-grid">
-            <div class="project-card" id="project1">Project X</div>
-            <div class="project-card" id="project2">Hidden Treasures</div>
-            <div class="project-card" id="project3">The Unknown Journey</div>
+            <div class="project-card" id="project1">
+                <img src="images/broccoli-project1.jpg" alt="Project X" class="project-image">
+                <h3>Project X</h3>
+            </div>
+            <div class="project-card" id="project2">
+                <img src="images/broccoli-project2.jpg" alt="Hidden Treasures" class="project-image">
+                <h3>Hidden Treasures</h3>
+            </div>
+            <div class="project-card" id="project3">
+                <img src="images/broccoli-project3.jpg" alt="The Unknown Journey" class="project-image">
+                <h3>The Unknown Journey</h3>
+            </div>
         </div>
     </section>
 
-    <!-- Over Ons Sectie -->
+    <!-- Over Ons Sectie met Afbeelding -->
     <section class="about">
         <h2 id="about-title" class="section-title">About Us</h2>
         <p id="about-text" class="section-text">We are Broccoli Buttons, a team of dreamers, thinkers, and explorers, seeking the unknown.</p>
+        <img src="images/broccoli-about-us.jpg" alt="About Us Image" class="about-image"> <!-- Over Ons Afbeelding -->
     </section>
 
     <!-- Contact Sectie -->
