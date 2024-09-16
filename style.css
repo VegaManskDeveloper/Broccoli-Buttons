@@ -145,16 +145,30 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
-    background: url('images/mist.jpg') repeat; /* Voeg je mistafbeelding toe */
+    background: url('images/mist.jpg') no-repeat; /* Voorkom herhaling van de mist */
+    background-size: cover; /* Zorgt ervoor dat de afbeelding het scherm vult */
     animation: moveBackground 60s linear infinite; /* Voegt animatie toe */
     opacity: 0.5; /* Zorgt voor een subtieler effect */
-    background-size: cover; /* Zorgt ervoor dat de achtergrond zich aanpast aan de schermgrootte */
+}
+
+/* Optionele overlay om de randen van de mist te vervagen */
+.moving-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(11, 61, 11, 0.3), rgba(11, 61, 11, 0.7)); /* Vervaag-effect naar donkergroen */
+    z-index: -1; /* Plaats de overlay achter de inhoud */
+    pointer-events: none; /* Zorgt ervoor dat de overlay geen interactie heeft */
 }
 
 @keyframes moveBackground {
     0% { background-position: 0 0; }
     100% { background-position: 1000px 1000px; } /* Verplaats de achtergrond over tijd */
 }
+
 
 /* Footer stijlen */
 footer {
