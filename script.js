@@ -59,15 +59,43 @@ function switchLanguage(lang) {
   document.getElementById("intro-text").innerText = translations[lang].introText;
   document.getElementById("cta-button").innerText = translations[lang].ctaButton;
   document.getElementById("projects-title").innerText = translations[lang].projectsTitle;
-  document.getElementById("project1").getElementsByTagName("h3")[0].innerText = translations[lang].project1; // H3 in de kaart bijwerken
-  document.getElementById("project2").getElementsByTagName("h3")[0].innerText = translations[lang].project2; // H3 in de kaart bijwerken
-  document.getElementById("project3").getElementsByTagName("h3")[0].innerText = translations[lang].project3; // H3 in de kaart bijwerken
+  document.getElementById("project1").getElementsByTagName("h3")[0].innerText = translations[lang].project1;
+  document.getElementById("project2").getElementsByTagName("h3")[0].innerText = translations[lang].project2;
+  document.getElementById("project3").getElementsByTagName("h3")[0].innerText = translations[lang].project3;
   document.getElementById("about-title").innerText = translations[lang].aboutTitle;
   document.getElementById("about-text").innerText = translations[lang].aboutText;
   document.getElementById("contact-title").innerText = translations[lang].contactTitle;
   document.getElementById("contact-text").innerText = translations[lang].contactText;
   document.getElementById("contact-button").innerText = translations[lang].contactButton;
 }
+
+// Functie voor navigatie naar een nieuwe pagina
+function navigateToPage(pageUrl) {
+    window.location.href = pageUrl; // Eenvoudige pagina-navigatie
+}
+
+// Knop functionaliteiten instellen bij het laden van de pagina
+document.addEventListener('DOMContentLoaded', function () {
+    // Knop voor "Ontdek Broccoli" navigatie
+    const discoverBroccoliButton = document.getElementById('cta-button');
+    if (discoverBroccoliButton) {
+        discoverBroccoliButton.addEventListener('click', function () {
+            navigateToPage('broccoli.html'); // Zorg ervoor dat 'broccoli.html' bestaat of maak deze aan
+        });
+    }
+
+    // Taalwisselknoppen functionaliteit
+    const languageButtons = document.querySelectorAll('.language-button');
+    languageButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const selectedLanguage = button.getAttribute('data-lang');
+            switchLanguage(selectedLanguage);
+        });
+    });
+
+    // Voer de taaldetectie uit bij het laden van de pagina
+    detectLanguage();
+});
 
 // Functie om de standaardtaal van de gebruiker te detecteren
 function detectLanguage() {
@@ -80,6 +108,3 @@ function detectLanguage() {
     switchLanguage("en"); // Standaard naar Engels
   }
 }
-
-// Voer de taaldetectie uit bij het laden van de pagina
-window.onload = detectLanguage;
