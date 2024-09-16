@@ -157,8 +157,8 @@ nav ul li a:hover {
 /* Bewegende achtergrond */
 .moving-background {
     position: fixed; /* Achtergrond blijft vast terwijl je scrolt */
-    top: -100px;
-    left: -100px;
+    top: -200px;
+    left: -200px;
     width: 350%;
     height: 350%;
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
@@ -167,14 +167,14 @@ nav ul li a:hover {
     background-size: cover; /* De afbeelding vult het scherm *
     /*box-shadow: inset 0 0 100px 50px #0b3d0b; /* Aanpassen voor een vloeiendere overgang */
     /* background-size: cover; /* Zorgt ervoor dat de afbeelding het scherm vult */
-    animation: moveBackground 120s linear infinite; /* Voegt animatie toe */
+    animation: moveBackground 60s linear infinite; /* Voegt animatie toe */
     opacity: 0.2; /* Pas de waarde aan tussen 0 (volledig transparant) en 1 (volledig ondoorzichtig) */
 }
 
 
 @keyframes moveBackground {
-    10% { background-position: 0 0; }
-    90% { background-position: 2000px 20000px; } /* Verplaats de achtergrond over tijd */
+    0% { background-position: 0 0; }
+    100% { background-position: 2000px 20000px; } /* Verplaats de achtergrond over tijd */
 }
 
 
