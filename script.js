@@ -1,7 +1,21 @@
 // script.js
 
-// Tekstinhoud in beide talen
+// Tekstinhoud in alle talen
 const translations = {
+  en: {
+    title: "Broccoli Buttons",
+    introText: "Are you ready to push the button and unveil the mystery?",
+    ctaButton: "Explore Broccoli",
+    projectsTitle: "Our Projects",
+    project1: "Project X",
+    project2: "Hidden Treasures",
+    project3: "The Unknown Journey",
+    aboutTitle: "About Us",
+    aboutText: "We are Broccoli Buttons, a team of dreamers, thinkers, and explorers, seeking the unknown.",
+    contactTitle: "Contact",
+    contactText: "Want to know more about Broccoli Buttons? Get in touch... if you dare.",
+    contactButton: "Contact Us",
+  },
   no: {
     title: "Broccoli Buttons",
     introText: "Er du klar til å trykke på knappen og avdekke mysteriet?",
@@ -47,3 +61,18 @@ function switchLanguage(lang) {
   document.getElementById("contact-text").innerText = translations[lang].contactText;
   document.getElementById("contact-button").innerText = translations[lang].contactButton;
 }
+
+// Functie om de standaardtaal van de gebruiker te detecteren
+function detectLanguage() {
+  const userLang = navigator.language || navigator.userLanguage; // Detecteer browsertaal
+  if (userLang.startsWith("no")) {
+    switchLanguage("no");
+  } else if (userLang.startsWith("nl")) {
+    switchLanguage("nl");
+  } else {
+    switchLanguage("en"); // Standaard naar Engels
+  }
+}
+
+// Voer de taaldetectie uit bij het laden van de pagina
+window.onload = detectLanguage;
