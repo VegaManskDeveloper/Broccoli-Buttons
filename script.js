@@ -1,37 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Haal de opgeslagen taal op uit localStorage, of gebruik de browsertaal als standaard
-    const savedLang = localStorage.getItem('selectedLang');
-    const userLang = savedLang || (navigator.language || navigator.userLanguage).split('-')[0];
-    
-    // Selecteer het dropdown-menu en stel de waarde in op de gedetecteerde of opgeslagen taal
-    const languageSelector = document.getElementById('language');
-    languageSelector.value = userLang;
-    updateContentLanguage(userLang);
-    
-    // Verander de inhoud wanneer de gebruiker een nieuwe taal selecteert
-    languageSelector.addEventListener('change', (event) => {
-        const selectedLang = event.target.value;
-        localStorage.setItem('selectedLang', selectedLang); // Sla de geselecteerde taal op
-        updateContentLanguage(selectedLang);
+    const selectedOption = document.getElementById('selectedLanguage');
+    const optionsContainer = document.querySelector('.options-container');
+    const optionsList = document.querySelectorAll('.option');
+
+    selectedOption.addEventListener('click', () => {
+        optionsContainer.classList.toggle('show');
     });
+
+    optionsList.forEach(option => {
+        option.addEventListener('click', () => {
+            const lang = option.getAttribute('data-lang');
+            updateContentLanguage(lang);
+            selectedOption.innerHTML = option.innerHTML; // Update de geselecteerde optie met de vlag en taal
+            optionsContainer.classList.remove('show'); // Sluit de dropdown
+            localStorage.setItem('selectedLang', lang); // Sla de geselecteerde taal op
+        });
+    });
+
+    // Standaard taal instellen
+    const savedLang = localStorage.getItem('selectedLang') || 'en';
+    updateContentLanguage(savedLang);
+    const initialOption = document.querySelector(`.option[data-lang="${savedLang}"]`);
+    if (initialOption) {
+        selectedOption.innerHTML = initialOption.innerHTML;
+    }
 });
 
 function updateContentLanguage(lang) {
-    // Zoek naar de juiste content en toon deze
     const contentElements = document.querySelectorAll('.intro-content');
-    let found = false;
-
     contentElements.forEach(element => {
-        if (element.getAttribute('data-lang') === lang) {
-            element.style.display = 'block';
-            found = true;
-        } else {
-            element.style.display = 'none';
-        }
+        element.style.display = element.getAttribute('data-lang') === lang ? 'block' : 'none';
     });
-
-    // Als de taal niet wordt gevonden, standaard naar Engels
-    if (!found) {
-        document.querySelector('[data-lang="en"]').style.display = 'block';
-    }
 }
