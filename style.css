@@ -102,3 +102,19 @@ footer {
     margin-top: 50px;
     border-top: 1px solid #333;
 }
+.language-selector {
+    margin: 20px 0;
+    text-align: right;
+}
+
+.language-selector select {
+    padding: 5px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+}
+
+
