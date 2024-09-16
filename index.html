@@ -1,70 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broccoli Buttons - Mystical Project Page</title>
+    <title>Project Whisperer</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
 </head>
-
 <body>
-    <!-- Taalkeuze -->
-    <div class="language-switcher">
-        <button onclick="switchLanguage('en')">English</button>
-        <button onclick="switchLanguage('no')">Norsk</button>
-        <button onclick="switchLanguage('nl')">Nederlands</button>
-    </div>
 
-    <!-- Hero Sectie met Afbeelding -->
-<header class="hero">
-    <div class="hero-content">
-        <h1 class="hero-title">Broccoli Buttons</h1>
-        <p id="intro-text" class="hero-subtitle">Are you ready to push the button and unveil the mystery?</p>
-        <button class="cta-button" id="cta-button" onclick="scrollToSection('projects')">Explore Broccoli</button>
-    </div>
-    <!-- Hero Afbeelding Toegevoegd -->
-    <img src="images/broccoli_button1.jpg" alt="Mystical Broccoli Image" class="hero-image"> 
-</header>
-
-
-    <!-- Projecten Sectie met Afbeeldingen -->
-    <section id="projects" class="projects">
-        <h2 id="projects-title" class="section-title">Our Projects</h2>
-        <div class="project-grid">
-            <div class="project-card" id="project1">
-                <img src="images/Eventwhisperen.jpg" alt="Project Whisperer" class="project-image">
-                <h3>Project X</h3>
-            </div>
-            <div class="project-card" id="project2">
-                <img src="images/Hidden Treasures.jpg" alt="Hidden Treasures" class="project-image">
-                <h3>Hidden Treasures</h3>
-            </div>
-            <div class="project-card" id="project3">
-                <img src="images/unkownJourney.jpg" alt="The Unknown Journey" class="project-image">
-                <h3>The Unknown Journey</h3>
-            </div>
+    <!-- Hero Sectie -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welkom bij Project Whisperer</h1>
+            <p class="hero-subtitle">Ontdek de kracht van stille communicatie en innovatief ontwerp.</p>
+            <button class="cta-button" id="discover-broccoli">Ontdek Broccoli</button>
         </div>
     </section>
 
-    <!-- Over Ons Sectie met Afbeelding -->
-    <section class="about">
-        <h2 id="about-title" class="section-title">About Us</h2>
-        <p id="about-text" class="section-text">We are Broccoli Buttons, a team of dreamers, thinkers, and explorers, seeking the unknown.</p>
-        <img src="images/broccoli-about-us.jpg" alt="About Us Image" class="about-image"> <!-- Over Ons Afbeelding -->
+    <!-- Taalwisselaar -->
+    <div class="language-switcher">
+        <button class="language-button" data-lang="nl">Nederlands</button>
+        <button class="language-button" data-lang="en">Engels</button>
+        <button class="language-button" data-lang="no">Noors</button>
+    </div>
+
+    <!-- Project Grid Sectie -->
+    <section class="project-grid">
+        <div class="project-card">
+            <img src="project1.jpg" alt="Project 1" class="project-image">
+            <h3 class="project-title">Project A</h3>
+            <p class="project-description">Innovatief project om stilte om te zetten in kracht.</p>
+        </div>
+        <div class="project-card">
+            <img src="project2.jpg" alt="Project 2" class="project-image">
+            <h3 class="project-title">Project B</h3>
+            <p class="project-description">Een ander stil, maar krachtig ontwerp.</p>
+        </div>
+        <!-- Voeg meer project kaarten toe zoals nodig -->
     </section>
 
-    <!-- Contact Sectie -->
-    <section class="contact">
-        <h2 id="contact-title" class="section-title">Contact</h2>
-        <p id="contact-text" class="section-text">Want to know more about Broccoli Buttons? Get in touch... if you dare.</p>
-        <button class="contact-button" id="contact-button">Contact Us</button>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Broccoli Buttons. All rights reserved.</p>
+        <p>&copy; 2024 Project Whisperer. Alle rechten voorbehouden.</p>
     </footer>
-</body>
 
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
 </html>
