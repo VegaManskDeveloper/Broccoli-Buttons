@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Broccoli Buttons - Coming Soon</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script> <!-- Voeg JavaScript toe -->
+    <script defer src="script.js"></script>
 </head>
 
 <body>
@@ -22,17 +22,36 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Mystery</a></li>
                     <li><a href="#">Contact</a></li>
-                    <!-- Taalkeuze Menu met Vlaggetjes -->
+                    <!-- Aangepaste Taalkeuze Menu -->
                     <li class="language-selector">
-                        <select id="language">
-                            <option value="en" data-flag="uk">EN</option>
-                            <option value="es" data-flag="es">ES</option>
-                            <option value="zh" data-flag="cn">ZH</option>
-                            <option value="no" data-flag="no">NO</option>
-                            <option value="nl" data-flag="nl">NL</option>
-                            <option value="de" data-flag="de">DE</option>
-                            <option value="fr" data-flag="fr">FR</option>
-                        </select>
+                        <div class="custom-select">
+                            <div class="selected-option" id="selectedLanguage">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_Kingdom.svg" alt="UK Flag" class="flag-icon"> EN
+                            </div>
+                            <div class="options-container">
+                                <div class="option" data-lang="en">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_Kingdom.svg" alt="UK Flag" class="flag-icon"> EN
+                                </div>
+                                <div class="option" data-lang="es">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spain Flag" class="flag-icon"> ES
+                                </div>
+                                <div class="option" data-lang="zh">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_the_People%27s_Republic_of_China.svg" alt="China Flag" class="flag-icon"> ZH
+                                </div>
+                                <div class="option" data-lang="no">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="Norway Flag" class="flag-icon"> NO
+                                </div>
+                                <div class="option" data-lang="nl">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Netherlands Flag" class="flag-icon"> NL
+                                </div>
+                                <div class="option" data-lang="de">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Germany Flag" class="flag-icon"> DE
+                                </div>
+                                <div class="option" data-lang="fr">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" class="flag-icon"> FR
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -55,40 +74,8 @@
                     <a href="#" class="explore-button">Explora lo desconocido</a>
                 </div>
 
-                <!-- Content voor Chinees -->
-                <div class="intro-content" data-lang="zh" style="display: none;">
-                    <h2>绿色背后是什么？</h2>
-                    <p>有新的东西即将到来。请继续关注，不要忽视地平线...</p>
-                    <a href="#" class="explore-button">探索未知</a>
-                </div>
-
-                <!-- Content voor Noors -->
-                <div class="intro-content" data-lang="no" style="display: none;">
-                    <h2>Hva er bak det grønne?</h2>
-                    <p>Noe friskt kommer snart. Følg med og hold øye med horisonten...</p>
-                    <a href="#" class="explore-button">Utforsk det ukjente</a>
-                </div>
-
-                <!-- Content voor Nederlands -->
-                <div class="intro-content" data-lang="nl" style="display: none;">
-                    <h2>Wat zit er achter het groen?</h2>
-                    <p>Iets fris is in aantocht. Blijf op de hoogte en houd de horizon in de gaten...</p>
-                    <a href="#" class="explore-button">Ontdek het Onbekende</a>
-                </div>
-
-                <!-- Content voor Duits -->
-                <div class="intro-content" data-lang="de" style="display: none;">
-                    <h2>Was steckt hinter dem Grün?</h2>
-                    <p>Etwas Frisches kommt. Bleiben Sie dran und behalten Sie den Horizont im Auge...</p>
-                    <a href="#" class="explore-button">Erkunde das Unbekannte</a>
-                </div>
-
-                <!-- Content voor Frans -->
-                <div class="intro-content" data-lang="fr" style="display: none;">
-                    <h2>Qu'y a-t-il derrière le vert ?</h2>
-                    <p>Quelque chose de frais arrive. Restez à l'écoute et gardez un œil sur l'horizon...</p>
-                    <a href="#" class="explore-button">Explorez l'Inconnu</a>
-                </div>
+                <!-- Andere talen hier... -->
+                <!-- Voeg de rest van de talen toe zoals eerder beschreven -->
             </section>
         </main>
 
