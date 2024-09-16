@@ -160,20 +160,12 @@ nav ul li a:hover {
     100% { background-position: 1000px 1000px; } /* Verplaats de achtergrond over tijd */
 }
 
-* {
-    border: none; /* Verwijdert alle borders voor alle elementen */
-}
-
-.footer-text {
-    border: none; /* Verwijdert elke rand rond de tekst */
-    box-shadow: none; /* Verwijdert elke schaduw rond de tekst */
-}
 
 /* Footer stijlen */
 footer {
     text-align: center;
     padding: 20px 0;
     margin-top: 50px;
-    border-top: 1px solid #333;
+    border-top: none;
 }
 
