@@ -58,13 +58,8 @@ nav ul li a:hover {
     user-select: none; /* Voorkom onbedoeld selecteren van tekst */
 }
 
-.selected-option img.flag-icon {
-    width: 20px;
-    height: 14px;
-    margin-right: 5px;
-}
-
-.selected-option img.flag-icon {
+.selected-option img.flag-icon,
+.option img.flag-icon {
     width: 20px;
     height: 14px;
     margin-right: 5px;
@@ -93,12 +88,6 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     cursor: pointer;
-}
-
-.option img.flag-icon {
-    width: 20px;
-    height: 14px;
-    margin-right: 5px;
 }
 
 .option:hover {
@@ -148,12 +137,7 @@ nav ul li a:hover {
     transform: scale(1.05); /* Lichte vergroting bij hover */
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Voorkom horizontaal scrollen */
-}
-
+/* Bewegende achtergrond */
 .moving-background {
     position: fixed; /* Achtergrond blijft vast terwijl je scrolt */
     top: 0;
@@ -162,15 +146,15 @@ body {
     height: 100%;
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
     background: url('images/mist.png') repeat; /* Voeg je mistafbeelding toe */
-    animation: moveBackground 30s linear infinite; /* Voegt animatie toe */
-    opacity: 0.7; /* Zorgt voor een subtieler effect */
+    animation: moveBackground 60s linear infinite; /* Voegt animatie toe */
+    opacity: 0.5; /* Zorgt voor een subtieler effect */
+    background-size: cover; /* Zorgt ervoor dat de achtergrond zich aanpast aan de schermgrootte */
 }
 
 @keyframes moveBackground {
     0% { background-position: 0 0; }
     100% { background-position: 1000px 1000px; } /* Verplaats de achtergrond over tijd */
 }
-
 
 /* Footer stijlen */
 footer {
