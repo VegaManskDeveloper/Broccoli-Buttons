@@ -55,15 +55,13 @@ nav ul li a:hover {
     position: relative;
     display: inline-block;
     cursor: pointer;
+    user-select: none; /* Voorkom onbedoeld selecteren van tekst */
 }
 
-.selected-option {
-    padding: 5px 10px;
-    border: 1px solid #4caf50;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    color: #f0f0f0;
+.selected-option img.flag-icon {
+    width: 20px;
+    height: 14px;
+    margin-right: 5px;
 }
 
 .selected-option img.flag-icon {
@@ -73,13 +71,21 @@ nav ul li a:hover {
 }
 
 .options-container {
-    display: none;
+    display: none; /* Standaard verbergen */
     position: absolute;
     background-color: #0b3d0b;
     border: 1px solid #4caf50;
     border-radius: 5px;
     z-index: 1000;
     width: 100px;
+    margin-top: 5px;
+    cursor: pointer;
+    max-height: 200px; /* Beperk hoogte voor overflow */
+    overflow-y: auto; /* Voeg scrollen toe voor lange lijsten */
+}
+
+.options-container.show {
+    display: block; /* Toon de opties wanneer de container wordt geopend */
 }
 
 .option {
