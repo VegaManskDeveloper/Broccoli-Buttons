@@ -27,11 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Standaard taal instellen
-    const savedLang = localStorage.getItem('selectedLang') || 'en';
-    updateContentLanguage(savedLang);
-    const initialOption = document.querySelector(`.option[data-lang="${savedLang}"]`);
-    if (initialOption) {
-        selectedOption.innerHTML = initialOption.innerHTML;
+    const savedLang = localStorage.getItem('selectedLang');
+    if (savedLang) {
+        updateContentLanguage(savedLang);
+        const initialOption = document.querySelector(`.option[data-lang="${savedLang}"]`);
+        if (initialOption) {
+            selectedOption.innerHTML = initialOption.innerHTML;
+        }
+    } else {
+        // Detecteer de browsertaal als er geen opgeslagen taal is
+        const userLang = navigator.language || navigator.userLanguage; // Haal de taal van de browser op
+        const langCode = userLang.split('-')[0]; // Gebruik alleen de eerste twee letters (bv. 'en', 'es')
+
+        // Controleer of de gedetecteerde taal beschikbaar is in de opties
+        const initialOption = document.querySelector(`.option[data-lang="${langCode}"]`) || document.querySelector(`.option[data-lang="en"]`); // Valt terug op Engels als de taal niet wordt gevonden
+        const langToUse = initialOption ? initialOption.getAttribute('data-lang') : 'en';
+
+        updateContentLanguage(langToUse);
+        selectedOption.innerHTML = initialOption.innerHTML; // Update de geselecteerde optie met de vlag en taal
     }
 });
 
