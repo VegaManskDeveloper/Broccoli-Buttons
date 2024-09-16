@@ -159,12 +159,12 @@ nav ul li a:hover {
     position: fixed; /* Achtergrond blijft vast terwijl je scrolt */
     top: 0;
     left: 0;
-    width: 150%;
-    height: 150%;
+    width: 350%;
+    height: 350%;
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
     background: url('images/rook4.jpg') repeat center center; /* Voeg je mistafbeelding toe */
     /*background-size: 150% 150%; /* Verhoogt de grootte van de afbeelding */
-    background-blend-mode: soft-light; /* Of probeer 'overlay', 'darken', of 'soft-light' */
+    background-size: cover; /* De afbeelding vult het scherm *
     /*box-shadow: inset 0 0 100px 50px #0b3d0b; /* Aanpassen voor een vloeiendere overgang */
     /* background-size: cover; /* Zorgt ervoor dat de afbeelding het scherm vult */
     animation: moveBackground 120s linear infinite; /* Voegt animatie toe */
