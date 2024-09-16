@@ -163,19 +163,19 @@ nav ul li a:hover {
     height: 150%;
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
     background: url('images/mist3.jpg') repeat center center; /* Voeg je mistafbeelding toe */
-    /*background-size: 150% 150%; /* Verhoogt de grootte van de afbeelding */
+    background-size: 200% 200%; /* Verhoogt de grootte van de afbeelding */
     background-blend-mode: overlay; /* Of probeer 'overlay', 'darken', of 'soft-light' */
     box-shadow: inset 0 0 100px 50px #0b3d0b; /* Aanpassen voor een vloeiendere overgang */
-    /* background-size: cover; /* Zorgt ervoor dat de afbeelding het scherm vult */
     animation: moveBackground 60s linear infinite; /* Voegt animatie toe */
     opacity: 0.2; /* Pas de waarde aan tussen 0 (volledig transparant) en 1 (volledig ondoorzichtig) */
 }
 
-
+/* Animatie van de achtergrond */
 @keyframes moveBackground {
     0% { background-position: 0 0; }
-    100% { background-position: 1000px 1000px; } /* Verplaats de achtergrond over tijd */
+    100% { background-position: 2000px 2000px; } /* Verplaats de achtergrond over tijd */
 }
+
 
 
 /* Footer stijlen */
