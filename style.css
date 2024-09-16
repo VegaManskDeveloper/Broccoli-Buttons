@@ -157,8 +157,8 @@ nav ul li a:hover {
 /* Bewegende achtergrond */
 .moving-background {
     position: fixed; /* Achtergrond blijft vast terwijl je scrolt */
-    top: -20px;
-    left: -20px;
+    top: -100px;
+    left: -100px;
     width: 350%;
     height: 350%;
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
