@@ -1,0 +1,42 @@
+/* Algemene stijlen voor de hele pagina */
+body {
+    font-family: Arial, sans-serif;  /* Basis lettertype */
+    background-color: #f4f4f4;      /* Lichtgrijze achtergrondkleur */
+    color: #333;                    /* Donkere tekstkleur */
+    margin: 0;                      /* Verwijder standaard marges */
+    padding: 0;                     /* Verwijder standaard padding */
+}
+
+/* Stijl voor de koptekst */
+h1 {
+    color: #4CAF50;                 /* Groene tekstkleur voor de kop */
+    text-align: center;             /* Centreer de tekst */
+    margin-top: 20px;               /* Voeg wat ruimte boven de kop toe */
+}
+
+/* Stijl voor paragraaftekst */
+p {
+    text-align: center;             /* Centreer de paragraaftekst */
+    font-size: 18px;                /* Iets groter lettertype */
+    margin: 20px;                   /* Voeg wat ruimte rond de paragraaf toe */
+}
+
+/* Stijl voor knoppen */
+button {
+    background-color: #4CAF50;      /* Groene achtergrondkleur */
+    color: white;                   /* Witte tekstkleur */
+    border: none;                   /* Geen rand */
+    padding: 10px 20px;             /* Ruimte rond de tekst in de knop */
+    text-align: center;             /* Centreer de tekst */
+    text-decoration: none;          /* Geen onderstreping */
+    display: inline-block;          /* Inline-blok voor uitlijning */
+    font-size: 16px;                /* Knoptekstgrootte */
+    margin: 10px 2px;               /* Ruimte rond de knop */
+    cursor: pointer;                /* Cursor verandert in hand bij hover */
+    border-radius: 5px;             /* Rond de hoeken van de knop af */
+}
+
+/* Stijl voor knop bij hover */
+button:hover {
+    background-color: #45a049;      /* Donkergroene kleur bij hover */
+}
