@@ -162,19 +162,19 @@ nav ul li a:hover {
     width: 150%;
     height: 150%;
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
-    background: url('images/rook3.jpg') repeat center center; /* Voeg je mistafbeelding toe */
+    background: url('images/rook4.jpg') repeat center center; /* Voeg je mistafbeelding toe */
     /*background-size: 150% 150%; /* Verhoogt de grootte van de afbeelding */
-    background-blend-mode: darken; /* Of probeer 'overlay', 'darken', of 'soft-light' */
-    box-shadow: inset 0 0 100px 50px #0b3d0b; /* Aanpassen voor een vloeiendere overgang */
+    background-blend-mode: soft-light; /* Of probeer 'overlay', 'darken', of 'soft-light' */
+    /*box-shadow: inset 0 0 100px 50px #0b3d0b; /* Aanpassen voor een vloeiendere overgang */
     /* background-size: cover; /* Zorgt ervoor dat de afbeelding het scherm vult */
-    animation: moveBackground 60s linear infinite; /* Voegt animatie toe */
+    animation: moveBackground 120s linear infinite; /* Voegt animatie toe */
     opacity: 0.2; /* Pas de waarde aan tussen 0 (volledig transparant) en 1 (volledig ondoorzichtig) */
 }
 
 
 @keyframes moveBackground {
     0% { background-position: 0 0; }
-    100% { background-position: 1000px 1000px; } /* Verplaats de achtergrond over tijd */
+    100% { background-position: 3000px 3000px; } /* Verplaats de achtergrond over tijd */
 }
 
 
