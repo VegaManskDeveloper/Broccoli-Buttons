@@ -145,7 +145,7 @@ nav ul li a:hover {
     width: 150%;
     height: 150%;
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
-    background: url('images/mist2.jpg') repeat center center; /* Voeg je mistafbeelding toe */
+    background: url('images/mist3.jpg') repeat center center; /* Voeg je mistafbeelding toe */
     /*background-size: 150% 150%; /* Verhoogt de grootte van de afbeelding */
     background-blend-mode: overlay; /* Of probeer 'overlay', 'darken', of 'soft-light' */
     box-shadow: inset 0 0 100px 50px #0b3d0b; /* Aanpassen voor een vloeiendere overgang */
