@@ -5,39 +5,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broccoli Buttons - Simple Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0b3d0b;
-            color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            text-align: center;
-        }
-
-        h1 {
-            color: #e0ffe0;
-        }
-
-        p {
-            font-size: 1.2em;
-        }
-    </style>
+    <title>Broccoli Buttons - Expanded Test Version</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>Welcome to Broccoli Buttons</h1>
-        <p>This is a simple version of the homepage for testing purposes.</p>
-    </div>
+    <!-- Bewegende achtergrond blijft hier persistent -->
+    <div class="moving-background"></div>
+
+    <!-- Navigatiebalk -->
+    <header>
+        <div class="logo">
+            <h1>Broccoli Buttons</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('mystery')">Mystery</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                <li class="language-selector">
+                    <div class="custom-select">
+                        <div class="selected-option" id="selectedLanguage">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" class="flag-icon"> EN
+                        </div>
+                        <div class="options-container">
+                            <div class="option" data-lang="en">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="UK Flag" class="flag-icon"> EN
+                            </div>
+                            <!-- Andere taalopties kunnen hier worden toegevoegd -->
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Sectie -->
+    <main id="home" class="content-section">
+        <section class="intro">
+            <h2>What's Behind the Green?</h2>
+            <p>Something fresh is coming. Stay tuned and keep an eye on the horizon...</p>
+            <a href="#" class="explore-button">Explore the Unknown</a>
+        </section>
+    </main>
+
+    <!-- Mystery Sectie (voor toekomstige uitbreiding) -->
+    <main id="mystery" class="content-section" style="display: none;">
+        <h2>Mystery Section</h2>
+        <p>This section is under construction. Stay tuned for more updates!</p>
+    </main>
+
+    <!-- Contact Sectie -->
+    <main id="contact" class="content-section" style="display: none;">
+        <h2>Contact Us</h2>
+        <p>We are working behind the scenes to create something very special... Contacting us will be possible, but when? That remains a mystery. Stay tuned and maybe you will be the first to discover it!</p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Broccoli Buttons. All rights reserved.</p>
+        <a href="#" onclick="showSection('privacy')" class="privacy-link">Privacy Statement</a>
+    </footer>
+
+    <!-- JavaScript om secties te wisselen -->
+    <script>
+        // Functie om secties weer te geven/verbergen
+        function showSection(sectionId) {
+            // Verberg alle secties
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.style.display = 'none');
+
+            // Toon de gekozen sectie
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Standaard de home-sectie tonen
+        showSection('home');
+    </script>
 </body>
 
 </html>
