@@ -23,7 +23,7 @@ main {
 }
 
 /* Header stijlen */
-hheader {
+header {
     width: 80%; /* Houd dezelfde breedte voor de container */
     max-width: 1200px; /* Stel een maximum breedte in voor grotere schermen */
     margin: 0 auto; /* Centreer de container horizontaal */
