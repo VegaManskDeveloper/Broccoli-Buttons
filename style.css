@@ -172,12 +172,12 @@ nav ul li a:hover {
 /* Verken-knop stijl */
 .explore-button {
     display: inline-block;
-    padding: 10px 25px;
+    padding: 8px 20px; /* Verkleind van 10px 25px naar 8px 20px */
     background-color: #4caf50; /* Knal groen */
     color: #fff;
     text-decoration: none;
-    font-size: 1em;
-    border-radius: 30px; /* Cirkelvormige knoppen */
+    font-size: 0.9em; /* Verkleind van 1em naar 0.9em */
+    border-radius: 20px; /* Verkleind van 30px naar 20px */
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -185,6 +185,7 @@ nav ul li a:hover {
     background-color: #66bb6a; /* Lichter groen bij hover */
     transform: scale(1.05); /* Lichte vergroting bij hover */
 }
+
 
 /* Bewegende achtergrond */
 .moving-background {
