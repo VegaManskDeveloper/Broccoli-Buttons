@@ -200,6 +200,7 @@ nav ul li a:hover {
 
 
 /* Bewegende achtergrond */
+/* Bewegende achtergrond */
 .moving-background {
     position: fixed; /* Achtergrond blijft vast terwijl je scrolt */
     top: -200px;
@@ -209,13 +210,32 @@ nav ul li a:hover {
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
     background: url('images/rook4.jpg') repeat center center; /* Voeg je mistafbeelding toe */
     background-size: cover; /* De afbeelding vult het scherm */
-    animation: moveBackground 100s linear infinite; /* Voegt animatie toe die oneindig doorloopt */
+    animation: moveBackground 100s linear infinite; /* Verlengde duur voor trage beweging */
     opacity: 0.2; /* Pas de waarde aan tussen 0 (volledig transparant) en 1 (volledig ondoorzichtig) */
 }
 
+/* Aangepaste keyframes voor langzame, complexe beweging */
 @keyframes moveBackground {
-    0% { background-position: -3200px -3200px; }
-    100% { background-position: -3200px -3200px; } /* Stel de eindpositie gelijk aan de beginpositie */
+    0% {
+        background-position: -3200px -3200px;
+        transform: rotate(0deg);
+    }
+    25% {
+        background-position: -2000px -1000px;
+        transform: rotate(5deg);
+    }
+    50% {
+        background-position: -1000px -2000px;
+        transform: rotate(-5deg);
+    }
+    75% {
+        background-position: 0px -1000px;
+        transform: rotate(3deg);
+    }
+    100% {
+        background-position: -3200px -3200px;
+        transform: rotate(0deg);
+    }
 }
 
 
