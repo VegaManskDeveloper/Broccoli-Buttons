@@ -184,7 +184,7 @@ footer {
     padding: 20px 0; /* Houd de padding consistent */
     background-color: transparent; /* Zorgt ervoor dat de bewegende achtergrond zichtbaar blijft */
     color: white; /* Zorg ervoor dat de tekst in de footer wit is */
-    margin-top: 20px; /* Kleine marge boven de footer */
+    margin-top: auto; /* Zorg ervoor dat de footer naar de onderkant van de pagina duwt */
 }
 
 /* Stijl voor de Privacy Statement link in de footer */
