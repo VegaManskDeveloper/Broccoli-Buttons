@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedOption = document.getElementById('selectedLanguage');
     const optionsContainer = document.querySelector('.options-container');
     const optionsList = document.querySelectorAll('.option');
-    const background = document.querySelector('.moving-background'); // Selecteer de achtergrond voor later gebruik
 
     // Klik op de geselecteerde optie opent/sluit de optiescontainer
     selectedOption.addEventListener('click', (event) => {
@@ -25,33 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Klik ergens anders op de pagina sluit de dropdown
     document.addEventListener('click', () => {
         optionsContainer.classList.remove('show');
-    });
-
-    // Achtergrondpositie bijhouden voor persistente beweging
-    if (!sessionStorage.getItem('backgroundPositionX')) {
-        // Sla de beginpositie op als er geen is opgeslagen
-        sessionStorage.setItem('backgroundPositionX', '0');
-        sessionStorage.setItem('backgroundPositionY', '0');
-    }
-
-    // Stel de achtergrondpositie in op basis van de opgeslagen waarde
-    background.style.backgroundPositionX = sessionStorage.getItem('backgroundPositionX');
-    background.style.backgroundPositionY = sessionStorage.getItem('backgroundPositionY');
-
-    // Update de achtergrondpositie bij muisbeweging
-    document.addEventListener('mousemove', (event) => {
-        const { clientX, clientY } = event;
-
-        // Verplaats de achtergrond subtiel op basis van muisbeweging
-        const posX = `${clientX / 20}px`;
-        const posY = `${clientY / 20}px`;
-
-        background.style.backgroundPositionX = posX;
-        background.style.backgroundPositionY = posY;
-
-        // Werk de sessie-opslag bij met de huidige positie van de achtergrond
-        sessionStorage.setItem('backgroundPositionX', posX);
-        sessionStorage.setItem('backgroundPositionY', posY);
     });
 
     // Standaard taal instellen
