@@ -178,11 +178,27 @@ nav ul li a:hover {
 }
 
 
-/* Footer stijlen */
+/* Aanvullende stijlen voor de footer */
 footer {
     text-align: center;
     padding: 20px 0;
-    margin-top: 50px;
-    border-top: none;
+    margin-top: 50px; /* Zorgt voor de afstand tot de inhoud erboven */
+    background-color: #333; /* Verander de achtergrondkleur van de footer, als dit consistent is met de stijl */
+    color: white; /* Zorg ervoor dat de tekst in de footer wit is */
+}
+
+footer .privacy-link {
+    color: white; /* Maakt de tekst 'Privacy Statement' wit */
+    margin-top: 5px; /* Optionele marge om wat ruimte te geven tussen de regels */
+}
+
+footer a {
+    color: white; /* Links in de footer zijn wit */
+    text-decoration: none; /* Verwijder onderstreping voor links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Onderstreep links bij hover */
+}
 }
 
