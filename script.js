@@ -48,8 +48,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Functie om secties weer te geven/verbergen
+function showSection(sectionId) {
+    // Verberg alle secties
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => section.style.display = 'none');
+
+    // Toon de gekozen sectie
+    document.getElementById(sectionId).style.display = 'block';
+
+    // Update de inhoudstaal bij het wisselen van secties
+    const currentLang = localStorage.getItem('selectedLang') || 'en';
+    updateContentLanguage(currentLang);
+}
+
 function updateContentLanguage(lang) {
-    const contentElements = document.querySelectorAll('.intro-content');
+    const contentElements = document.querySelectorAll('.intro-content, .privacy-content');
     contentElements.forEach(element => {
         element.style.display = element.getAttribute('data-lang') === lang ? 'block' : 'none';
     });
