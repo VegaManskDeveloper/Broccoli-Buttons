@@ -130,14 +130,16 @@ nav ul li a:hover {
     background: radial-gradient(circle at 30% 30%, rgba(31, 107, 31, 0.9), #0b3d0b); /* Gebruik van een gelaagde achtergrond met een lichte overgang */
     margin: 100px auto;
     border-radius: 50%; /* Maakt de sectie een perfecte cirkel */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; /* Gebruik flexbox om items te centreren */
+    align-items: center; /* Centreer items verticaal */
+    justify-content: center; /* Centreer items horizontaal */
+    flex-direction: column; /* Zet kinderen in een kolom (van boven naar beneden) */
     text-align: center;
     transition: transform 0.5s, box-shadow 0.5s;
     box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.3), 0 0 40px 20px rgba(0, 255, 0, 0.2); /* Meerdere lagen schaduw voor een gloed-effect */
     animation: pulse 5s infinite; /* Lichte puls-animatie */
 }
+
 
 /* Animatie voor de puls */
 @keyframes pulse {
