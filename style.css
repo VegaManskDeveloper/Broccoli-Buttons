@@ -18,7 +18,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px 0; /* Houd de padding consistent voor verticale ruimte binnen de header */
+    margin-bottom: 50px; /* Zorg voor consistente afstand onder de header */
 }
 
 .logo h1 {
