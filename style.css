@@ -104,7 +104,13 @@ nav ul li a:hover {
     margin-top: 5px;
     cursor: pointer;
     max-height: 200px; /* Beperk hoogte voor overflow */
-    overflow-y: auto; /* Voeg scrollen toe voor lange lijsten */
+    overflow-y: hidden; /* Verberg de verticale scrollbar */
+    -ms-overflow-style: none;  /* Verberg scrollbar in Internet Explorer en Edge */
+    scrollbar-width: none;  /* Verberg scrollbar in Firefox */
+}
+
+.options-container::-webkit-scrollbar {
+    display: none;  /* Verberg scrollbar in Chrome, Safari, Opera */
 }
 
 .options-container.show {
