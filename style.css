@@ -149,7 +149,7 @@ nav ul li a:hover {
     box-sizing: border-box; /* Zorg ervoor dat padding binnen de opgegeven breedte/hoogte blijft */
     transition: transform 0.5s, box-shadow 0.5s;
     box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.3), 0 0 40px 20px rgba(0, 255, 0, 0.2); /* Meerdere lagen schaduw voor een gloed-effect */
-    animation: pulse 5s infinite; /* Lichte puls-animatie */
+    animation: pulse 7s infinite; /* Langzamere puls-animatie voor een subtieler effect */
 }
 
 
@@ -162,8 +162,8 @@ nav ul li a:hover {
         box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.3), 0 0 40px 20px rgba(0, 255, 0, 0.2);
     }
     50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 30px 15px rgba(0, 255, 0, 0.5), 0 0 60px 30px rgba(0, 255, 0, 0.3); /* Meer intense gloed en schaduw */
+        transform: scale(1.03); /* Kleine schaalvergroting voor een subtiele beweging */
+        box-shadow: 0 0 25px 12px rgba(0, 255, 0, 0.4), 0 0 50px 25px rgba(0, 255, 0, 0.3); /* Zachtere gloed en schaduw */
     }
 }
 
