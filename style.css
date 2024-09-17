@@ -181,15 +181,17 @@ nav ul li a:hover {
 
 /* Verken-knop stijl */
 .explore-button {
-    display: inline-block;
-    padding: 8px 20px; /* Verkleind van 10px 25px naar 8px 20px */
-    background-color: #4caf50; /* Knal groen */
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9em; /* Verkleind van 1em naar 0.9em */
-    border-radius: 20px; /* Verkleind van 30px naar 20px */
-    transition: background-color 0.3s, transform 0.3s;
+    display: none; /* Verberg de knop volledig */
+    padding: 10px 25px;
+    background-color: transparent; /* Maak de achtergrond transparant */
+    color: transparent; /* Maak de tekst ook transparant */
+    border: none; /* Verwijder eventuele rand */
+    text-decoration: none; /* Verwijder onderstreping */
+    font-size: 1em; 
+    border-radius: 30px; 
+    transition: none; /* Verwijder animatie/transitie */
 }
+
 
 .explore-button:hover {
     background-color: #66bb6a; /* Lichter groen bij hover */
