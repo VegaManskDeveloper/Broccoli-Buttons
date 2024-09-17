@@ -8,6 +8,13 @@ body {
     overflow-x: hidden; /* Geen horizontale scroll */
 }
 
+/* Stijl voor de main content of container */
+main, .container {
+    margin-top: 0; /* Verwijder extra ruimte bovenaan */
+    margin-bottom: 50px; /* Consistente afstand onder de main content of container */
+    padding: 0 20px; /* Voeg wat padding toe voor binnenruimte */
+}
+
 .container {
     width: 80%;
     margin: 0 auto;
