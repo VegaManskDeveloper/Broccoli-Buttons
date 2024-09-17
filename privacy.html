@@ -12,6 +12,12 @@
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('selectedLang') || 'en';
             updateContentLanguage(savedLang);
+
+            // Zorg ervoor dat de dropdown van de juiste taal is bijgewerkt
+            const initialOption = document.querySelector(`.option[data-lang="${savedLang}"]`);
+            if (initialOption) {
+                document.getElementById('selectedLanguage').innerHTML = initialOption.innerHTML;
+            }
         });
 
         function updateContentLanguage(lang) {
@@ -24,15 +30,52 @@
 </head>
 
 <body>
+    <!-- Header Section -->
     <header>
+        <div class="logo">
+            <h1>Broccoli Buttons</h1>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="privacy.html">Privacyverklaring</a></li>
+                <li><a href="#">Mystery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <!-- Aangepaste Taalkeuze Menu -->
+                <li class="language-selector">
+                    <div class="custom-select">
+                        <div class="selected-option" id="selectedLanguage">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" class="flag-icon"> EN
+                        </div>
+                        <div class="options-container">
+                            <div class="option" data-lang="en">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="UK Flag" class="flag-icon"> EN
+                            </div>
+                            <div class="option" data-lang="es">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spain Flag" class="flag-icon"> ES
+                            </div>
+                            <div class="option" data-lang="zh">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" alt="China Flag" class="flag-icon"> ZH
+                            </div>
+                            <div class="option" data-lang="no">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="Norway Flag" class="flag-icon"> NO
+                            </div>
+                            <div class="option" data-lang="nl">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Netherlands Flag" class="flag-icon"> NL
+                            </div>
+                            <div class="option" data-lang="de">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Germany Flag" class="flag-icon"> DE
+                            </div>
+                            <div class="option" data-lang="fr">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" class="flag-icon"> FR
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
 
+    <!-- Main Content Section -->
     <main>
         <section class="privacy">
             <!-- Privacyverklaring voor Engels -->
@@ -71,8 +114,9 @@
         </section>
     </main>
 
+    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 Broccoli Buttons. All rights reserved.</p>
+        <p>&copy; 2024 Broccoli Buttons. All rights reserved. <a href="privacy.html" class="privacy-link">Privacyverklaring</a></p>
     </footer>
 </body>
 
