@@ -131,8 +131,9 @@ nav ul li a:hover {
     margin: 100px auto;
     border-radius: 50%; /* Maakt de sectie een perfecte cirkel */
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; /* Zorgt ervoor dat de elementen boven elkaar staan */
+    align-items: center; /* Centreer de elementen horizontaal */
+    justify-content: center; /* Centreer de elementen verticaal */
     text-align: center;
     padding: 30px; /* Verhoogde padding voor meer ruimte tussen tekst en rand */
     box-sizing: border-box; /* Zorg ervoor dat padding binnen de opgegeven breedte/hoogte blijft */
@@ -140,6 +141,7 @@ nav ul li a:hover {
     box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.3), 0 0 40px 20px rgba(0, 255, 0, 0.2); /* Meerdere lagen schaduw voor een gloed-effect */
     animation: pulse 5s infinite; /* Lichte puls-animatie */
 }
+
 
 
 
