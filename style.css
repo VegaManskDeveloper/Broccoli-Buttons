@@ -183,7 +183,7 @@ footer {
     text-align: center;
     padding: 20px 0;
     margin-top: 50px; /* Zorgt voor de afstand tot de inhoud erboven */
-    background-color: #333; /* Verander de achtergrondkleur van de footer, als dit consistent is met de stijl */
+    background-color: #0b3d0b; /* Donker groen */
     color: white; /* Zorg ervoor dat de tekst in de footer wit is */
 }
 
