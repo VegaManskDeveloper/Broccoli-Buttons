@@ -1,4 +1,10 @@
 /* Algemene stijlen */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -6,20 +12,23 @@ body {
     color: #f0f0f0; /* Lichte tekst */
     font-family: 'Arial', sans-serif;
     overflow-x: hidden; /* Geen horizontale scroll */
-    display: flex; /* Gebruik flexbox om de pagina te structureren */
-    flex-direction: column; /* Plaats elementen verticaal onder elkaar */
     min-height: 100vh; /* Zorg dat de pagina ten minste de volledige hoogte van het scherm is */
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Zorg dat de container ten minste de volledige hoogte van het scherm heeft */
+}
+
+
 /* Stijl voor de main content */
 main {
-    flex-grow: 1; /* Laat de main-content de resterende ruimte innemen */
-    margin: 20px 0; /* Houd een consistente marge boven en onder de main content */
-    padding: 0 20px; /* Voeg wat padding toe voor binnenruimte */
-    width: 80%; /* Houd dezelfde breedte voor de container */
-    max-width: 1200px; /* Stel een maximum breedte in voor grotere schermen */
-    margin-left: auto; /* Centreer de container horizontaal */
-    margin-right: auto; /* Centreer de container horizontaal */
+    flex-grow: 1;
+    margin: 20px auto; /* Voeg marge voor boven/onder én links/rechts toe */
+    padding: 0 20px;
+    width: 80%;
+    max-width: 1200px;
 }
 
 /* Header stijlen */
@@ -187,14 +196,13 @@ nav ul li a:hover {
 /* Geüpdatete stijlen voor de footer */
 footer {
     text-align: center;
-    padding: 20px 0; /* Houd de padding consistent */
+    padding: 20px 0;
     background-color: transparent; /* Zorgt ervoor dat de bewegende achtergrond zichtbaar blijft */
     color: white; /* Zorg ervoor dat de tekst in de footer wit is */
-    width: 80%; /* Houd dezelfde breedte voor de container */
-    max-width: 1200px; /* Stel een maximum breedte in voor grotere schermen */
-    margin-left: auto; /* Centreer de container horizontaal */
-    margin-right: auto; /* Centreer de container horizontaal */
+    width: 100%; /* Zorg ervoor dat de footer de volledige breedte gebruikt */
+    position: relative; /* Houd de positie relatief in de flex container */
 }
+
 
 /* Stijl voor de Privacy Statement link in de footer */
 footer .privacy-link {
