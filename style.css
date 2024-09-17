@@ -24,7 +24,7 @@ main {
 
 /* Header stijlen */
 header {
-    width: 85%; /* Houd dezelfde breedte voor de container */
+    width: 90%; /* Houd dezelfde breedte voor de container */
     max-width: 1200px; /* Stel een maximum breedte in voor grotere schermen */
     margin: 0 auto; /* Centreer de container horizontaal */
     display: flex; /* Flexbox om items horizontaal te positioneren */
