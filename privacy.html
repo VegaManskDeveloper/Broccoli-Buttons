@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacyverklaring - Broccoli Buttons</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Zorg ervoor dat deze CSS dezelfde is als op de homepage -->
     <script defer src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('selectedLang') || 'en';
             updateContentLanguage(savedLang);
 
-            // Zorg ervoor dat de dropdown van de juiste taal is bijgewerkt
+            // Update de dropdown naar de juiste vlag en taal
             const initialOption = document.querySelector(`.option[data-lang="${savedLang}"]`);
             if (initialOption) {
                 document.getElementById('selectedLanguage').innerHTML = initialOption.innerHTML;
@@ -31,93 +31,95 @@
 
 <body>
     <!-- Header Section -->
-    <header>
-        <div class="logo">
-            <h1>Broccoli Buttons</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Mystery</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <!-- Aangepaste Taalkeuze Menu -->
-                <li class="language-selector">
-                    <div class="custom-select">
-                        <div class="selected-option" id="selectedLanguage">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" class="flag-icon"> EN
+    <div class="container"> <!-- Container toegevoegd om consistentie met de homepage te behouden -->
+        <header>
+            <div class="logo">
+                <h1>Broccoli Buttons</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Mystery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <!-- Aangepaste Taalkeuze Menu -->
+                    <li class="language-selector">
+                        <div class="custom-select">
+                            <div class="selected-option" id="selectedLanguage">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" class="flag-icon"> EN
+                            </div>
+                            <div class="options-container">
+                                <div class="option" data-lang="en">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="UK Flag" class="flag-icon"> EN
+                                </div>
+                                <div class="option" data-lang="es">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spain Flag" class="flag-icon"> ES
+                                </div>
+                                <div class="option" data-lang="zh">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" alt="China Flag" class="flag-icon"> ZH
+                                </div>
+                                <div class="option" data-lang="no">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="Norway Flag" class="flag-icon"> NO
+                                </div>
+                                <div class="option" data-lang="nl">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Netherlands Flag" class="flag-icon"> NL
+                                </div>
+                                <div class="option" data-lang="de">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Germany Flag" class="flag-icon"> DE
+                                </div>
+                                <div class="option" data-lang="fr">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" class="flag-icon"> FR
+                                </div>
+                            </div>
                         </div>
-                        <div class="options-container">
-                            <div class="option" data-lang="en">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="UK Flag" class="flag-icon"> EN
-                            </div>
-                            <div class="option" data-lang="es">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spain Flag" class="flag-icon"> ES
-                            </div>
-                            <div class="option" data-lang="zh">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" alt="China Flag" class="flag-icon"> ZH
-                            </div>
-                            <div class="option" data-lang="no">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="Norway Flag" class="flag-icon"> NO
-                            </div>
-                            <div class="option" data-lang="nl">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Netherlands Flag" class="flag-icon"> NL
-                            </div>
-                            <div class="option" data-lang="de">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Germany Flag" class="flag-icon"> DE
-                            </div>
-                            <div class="option" data-lang="fr">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" class="flag-icon"> FR
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
-    <!-- Main Content Section -->
-    <main>
-        <section class="privacy">
-            <!-- Privacyverklaring voor Engels -->
-            <div class="privacy-content" data-lang="en">
-                <h2>Privacy Statement: Broccoli Buttons</h2>
-                <p><strong>Contact information:</strong></p>
-                <p>broccolibuttons@gmail.com</p>
-                <p>Broccoli Buttons does not process personal data. We also do not use social media plugins, cookies, or similar techniques. Broccoli Buttons does not provide information to third parties.</p>
-            </div>
+        <!-- Main Content Section -->
+        <main>
+            <section class="privacy">
+                <!-- Privacyverklaring voor Engels -->
+                <div class="privacy-content" data-lang="en">
+                    <h2>Privacy Statement: Broccoli Buttons</h2>
+                    <p><strong>Contact information:</strong></p>
+                    <p>broccolibuttons@gmail.com</p>
+                    <p>Broccoli Buttons does not process personal data. We also do not use social media plugins, cookies, or similar techniques. Broccoli Buttons does not provide information to third parties.</p>
+                </div>
 
-            <!-- Privacyverklaring voor Spaans -->
-            <div class="privacy-content" data-lang="es" style="display: none;">
-                <h2>Declaración de Privacidad: Broccoli Buttons</h2>
-                <p><strong>Información de contacto:</strong></p>
-                <p>broccolibuttons@gmail.com</p>
-                <p>Broccoli Buttons no procesa datos personales. Tampoco utilizamos plugins de redes sociales, cookies o técnicas similares. Broccoli Buttons no proporciona información a terceros.</p>
-            </div>
+                <!-- Privacyverklaring voor Spaans -->
+                <div class="privacy-content" data-lang="es" style="display: none;">
+                    <h2>Declaración de Privacidad: Broccoli Buttons</h2>
+                    <p><strong>Información de contacto:</strong></p>
+                    <p>broccolibuttons@gmail.com</p>
+                    <p>Broccoli Buttons no procesa datos personales. Tampoco utilizamos plugins de redes sociales, cookies o técnicas similares. Broccoli Buttons no proporciona información a terceros.</p>
+                </div>
 
-            <!-- Privacyverklaring voor Chinees -->
-            <div class="privacy-content" data-lang="zh" style="display: none;">
-                <h2>隐私声明：Broccoli Buttons</h2>
-                <p><strong>联系信息：</strong></p>
-                <p>broccolibuttons@gmail.com</p>
-                <p>Broccoli Buttons 不处理个人数据。我们也不使用社交媒体插件、Cookie 或类似技术。Broccoli Buttons 不向第三方提供信息。</p>
-            </div>
+                <!-- Privacyverklaring voor Chinees -->
+                <div class="privacy-content" data-lang="zh" style="display: none;">
+                    <h2>隐私声明：Broccoli Buttons</h2>
+                    <p><strong>联系信息：</strong></p>
+                    <p>broccolibuttons@gmail.com</p>
+                    <p>Broccoli Buttons 不处理个人数据。我们也不使用社交媒体插件、Cookie 或类似技术。Broccoli Buttons 不向第三方提供信息。</p>
+                </div>
 
-            <!-- Privacyverklaring voor Noors -->
-            <div class="privacy-content" data-lang="no" style="display: none;">
-                <h2>Personvernerklæring: Broccoli Buttons</h2>
-                <p><strong>Kontaktinformasjon:</strong></p>
-                <p>broccolibuttons@gmail.com</p>
-                <p>Broccoli Buttons behandler ikke personopplysninger. Vi bruker heller ikke sosiale medier-plugins, informasjonskapsler eller lignende teknikker. Broccoli Buttons gir ikke informasjon til tredjeparter.</p>
-            </div>
+                <!-- Privacyverklaring voor Noors -->
+                <div class="privacy-content" data-lang="no" style="display: none;">
+                    <h2>Personvernerklæring: Broccoli Buttons</h2>
+                    <p><strong>Kontaktinformasjon:</strong></p>
+                    <p>broccolibuttons@gmail.com</p>
+                    <p>Broccoli Buttons behandler ikke personopplysninger. Vi bruker heller ikke sosiale medier-plugins, informasjonskapsler eller lignende teknikker. Broccoli Buttons gir ikke informasjon til tredjeparter.</p>
+                </div>
 
-            <!-- Voeg hier meer talen toe zoals nodig -->
-        </section>
-    </main>
+                <!-- Voeg hier meer talen toe zoals nodig -->
+            </section>
+        </main>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2024 Broccoli Buttons. All rights reserved. <a href="privacy.html" class="privacy-link">Privacyverklaring</a></p>
-    </footer>
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2024 Broccoli Buttons. All rights reserved. <a href="privacy.html" class="privacy-link">Privacyverklaring</a></p>
+        </footer>
+    </div> <!-- Einde container -->
 </body>
 
 </html>
