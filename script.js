@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const optionsContainer = document.querySelector('.options-container');
     const optionsList = document.querySelectorAll('.option');
 
+    // Navigatie links
+    const navLinks = document.querySelectorAll('nav ul li a');
+
     // Klik op de geselecteerde optie opent/sluit de optiescontainer
     selectedOption.addEventListener('click', (event) => {
         event.stopPropagation(); // Voorkom dat het klikken op de container sluit
@@ -26,6 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
         optionsContainer.classList.remove('show');
     });
 
+    // Navigatie functionaliteit voor het tonen van secties
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Voorkom standaardgedrag
+            const sectionId = link.getAttribute('href').substring(1); // Haal de id van de sectie op (zonder '#')
+            showSection(sectionId);
+        });
+    });
+
     // Standaard taal instellen
     const savedLang = localStorage.getItem('selectedLang');
     if (savedLang) {
@@ -46,6 +58,19 @@ document.addEventListener('DOMContentLoaded', () => {
         updateContentLanguage(langToUse);
         selectedOption.innerHTML = initialOption.innerHTML; // Update de geselecteerde optie met de vlag en taal
     }
+
+    // Functie om de bewegende achtergrondpositie te behouden
+    document.addEventListener('mousemove', (event) => {
+        const { clientX, clientY } = event;
+        const background = document.querySelector('.moving-background');
+    
+        // Verplaats de achtergrond subtiel op basis van muisbeweging
+        background.style.backgroundPositionX = `${clientX / 20}px`;
+        background.style.backgroundPositionY = `${clientY / 20}px`;
+    });
+
+    // Toon standaard de home sectie bij het laden
+    showSection('home');
 });
 
 // Functie om secties weer te geven/verbergen
