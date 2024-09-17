@@ -1,160 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broccoli Buttons - Coming Soon</title>
+    <title>Broccoli Buttons - Single Page Application</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('selectedLang');
-
-            if (!savedLang) { // Geen opgeslagen taal, detecteer de taal van de browser
-                const userLang = navigator.language || navigator.userLanguage;
-                const langCode = userLang.split('-')[0]; // Gebruik alleen de taalcode, zoals 'en'
-
-                // Controleer of de gedetecteerde taal beschikbaar is
-                const availableLanguages = ['en', 'es', 'zh', 'no', 'nl', 'de', 'fr'];
-                const langToUse = availableLanguages.includes(langCode) ? langCode : 'en'; // Valt terug op 'en'
-
-                // Sla de gedetecteerde taal op en werk de inhoud bij
-                localStorage.setItem('selectedLang', langToUse);
-                updateContentLanguage(langToUse);
-
-                // Update de dropdown naar de juiste vlag en taal
-                const initialOption = document.querySelector(`.option[data-lang="${langToUse}"]`);
-                if (initialOption) {
-                    document.getElementById('selectedLanguage').innerHTML = initialOption.innerHTML;
-                }
-            }
-        });
-
-        function updateContentLanguage(lang) {
-            const contentElements = document.querySelectorAll('.intro-content');
-            contentElements.forEach(element => {
-                element.style.display = element.getAttribute('data-lang') === lang ? 'block' : 'none';
-            });
-        }
-    </script>
 </head>
 
-
-<!-- Voeg het iframe toe buiten de body om de achtergrond persistent te maken -->
-<iframe src="background.html" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; border: none;" scrolling="no"></iframe>
-    
 <body>
-    <!-- Resterende HTML blijft hetzelfde -->
-    <div class="container">
-        <!-- Header Section -->
-        <header>
-            <div class="logo">
-                <h1>Broccoli Buttons</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Mystery</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <!-- Aangepaste Taalkeuze Menu -->
-                    <li class="language-selector">
-                        <div class="custom-select">
-                            <div class="selected-option" id="selectedLanguage">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" class="flag-icon"> EN
+    <!-- Bewegende achtergrond blijft hier persistent -->
+    <div class="moving-background"></div>
+
+    <!-- Navigatiebalk blijft onveranderd -->
+    <header>
+        <div class="logo">
+            <h1>Broccoli Buttons</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('mystery')">Mystery</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                <li><a href="#" onclick="showSection('privacy')">Privacy</a></li>
+                <!-- Taalkeuzemenu blijft onveranderd -->
+                <li class="language-selector">
+                    <div class="custom-select">
+                        <div class="selected-option" id="selectedLanguage">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" class="flag-icon"> EN
+                        </div>
+                        <div class="options-container">
+                            <div class="option" data-lang="en">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="UK Flag" class="flag-icon"> EN
                             </div>
-                            <div class="options-container">
-                                <div class="option" data-lang="en">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="UK Flag" class="flag-icon"> EN
-                                </div>
-                                <div class="option" data-lang="es">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spain Flag" class="flag-icon"> ES
-                                </div>
-                                <div class="option" data-lang="zh">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" alt="China Flag" class="flag-icon"> ZH
-                                </div>
-                                <div class="option" data-lang="no">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="Norway Flag" class="flag-icon"> NO
-                                </div>
-                                <div class="option" data-lang="nl">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Netherlands Flag" class="flag-icon"> NL
-                                </div>
-                                <div class="option" data-lang="de">
-                                    <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Germany Flag" class="flag-icon"> DE
-                                </div>
-                                <div class="option" data-lang="fr">
-                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" class="flag-icon"> FR
-                                </div>
+                            <div class="option" data-lang="es">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spain Flag" class="flag-icon"> ES
+                            </div>
+                            <div class="option" data-lang="zh">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" alt="China Flag" class="flag-icon"> ZH
+                            </div>
+                            <div class="option" data-lang="no">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="Norway Flag" class="flag-icon"> NO
+                            </div>
+                            <div class="option" data-lang="nl">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Netherlands Flag" class="flag-icon"> NL
+                            </div>
+                            <div class="option" data-lang="de">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Germany Flag" class="flag-icon"> DE
+                            </div>
+                            <div class="option" data-lang="fr">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" class="flag-icon"> FR
                             </div>
                         </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- Main Content Section met Cirkulair Design -->
-        <main>
-            <!-- Je content secties blijven ongewijzigd -->
-              <section class="intro">
-                <!-- Content voor Engels -->
-                <div class="intro-content" data-lang="en">
-                    <h2>What's Behind the Green?</h2>
-                    <p>Something fresh is coming. Stay tuned and keep an eye on the horizon...</p>
-                    <a href="#" class="explore-button">Explore the Unknown</a>
-                </div>
+    <!-- Home Sectie -->
+    <main id="home" class="content-section">
+        <!-- Inhoud voor Engels -->
+        <div class="intro-content" data-lang="en">
+            <h2>What's Behind the Green?</h2>
+            <p>Something fresh is coming. Stay tuned and keep an eye on the horizon...</p>
+            <a href="#" class="explore-button">Explore the Unknown</a>
+        </div>
 
-                <!-- Content voor Spaans -->
-                <div class="intro-content" data-lang="es" style="display: none;">
-                    <h2>¿Qué hay detrás del verde?</h2>
-                    <p>Algo fresco está llegando. Mantente atento y no pierdas de vista el horizonte...</p>
-                    <a href="#" class="explore-button">Explora lo desconocido</a>
-                </div>
+        <!-- Inhoud voor Spaans -->
+        <div class="intro-content" data-lang="es" style="display: none;">
+            <h2>¿Qué hay detrás del verde?</h2>
+            <p>Algo fresco está llegando. Mantente atento y no pierdas de vista el horizonte...</p>
+            <a href="#" class="explore-button">Explora lo desconocido</a>
+        </div>
 
-                <!-- Content voor Chinees -->
-                <div class="intro-content" data-lang="zh" style="display: none;">
-                    <h2>绿色背后是什么？</h2>
-                    <p>有新的东西即将到来。请继续关注，不要忽视地平线...</p>
-                    <a href="#" class="explore-button">探索未知</a>
-                </div>
+        <!-- Inhoud voor Chinees -->
+        <div class="intro-content" data-lang="zh" style="display: none;">
+            <h2>绿色背后是什么？</h2>
+            <p>有新的东西即将到来。请继续关注，不要忽视地平线...</p>
+            <a href="#" class="explore-button">探索未知</a>
+        </div>
 
-                <!-- Content voor Noors -->
-                <div class="intro-content" data-lang="no" style="display: none;">
-                    <h2>Hva er bak det grønne?</h2>
-                    <p>Noe friskt kommer snart. Følg med og hold øye med horisonten...</p>
-                    <a href="#" class="explore-button">Utforsk det ukjente</a>
-                </div>
+        <!-- Inhoud voor Noors -->
+        <div class="intro-content" data-lang="no" style="display: none;">
+            <h2>Hva er bak det grønne?</h2>
+            <p>Noe friskt kommer snart. Følg med og hold øye med horisonten...</p>
+            <a href="#" class="explore-button">Utforsk det ukjente</a>
+        </div>
 
-                <!-- Content voor Nederlands -->
-                <div class="intro-content" data-lang="nl" style="display: none;">
-                    <h2>Wat zit er achter het groen?</h2>
-                    <p>Iets fris is in aantocht. Blijf op de hoogte en houd de horizon in de gaten...</p>
-                    <a href="#" class="explore-button">Ontdek het Onbekende</a>
-                </div>
+        <!-- Inhoud voor Nederlands -->
+        <div class="intro-content" data-lang="nl" style="display: none;">
+            <h2>Wat zit er achter het groen?</h2>
+            <p>Iets fris is in aantocht. Blijf op de hoogte en houd de horizon in de gaten...</p>
+            <a href="#" class="explore-button">Ontdek het Onbekende</a>
+        </div>
 
-                <!-- Content voor Duits -->
-                <div class="intro-content" data-lang="de" style="display: none;">
-                    <h2>Was steckt hinter dem Grün?</h2>
-                    <p>Etwas Frisches kommt. Bleiben Sie dran und behalten Sie den Horizont im Auge...</p>
-                    <a href="#" class="explore-button">Erkunde das Unbekannte</a>
-                </div>
+        <!-- Inhoud voor Duits -->
+        <div class="intro-content" data-lang="de" style="display: none;">
+            <h2>Was steckt hinter dem Grün?</h2>
+            <p>Etwas Frisches kommt. Bleiben Sie dran und behalten Sie den Horizont im Auge...</p>
+            <a href="#" class="explore-button">Erkunde das Unbekannte</a>
+        </div>
 
-                <!-- Content voor Frans -->
-                <div class="intro-content" data-lang="fr" style="display: none;">
-                    <h2>Qu'y a-t-il derrière le vert ?</h2>
-                    <p>Quelque chose de frais arrive. Restez à l'écoute et gardez un œil sur l'horizon...</p>
-                    <a href="#" class="explore-button">Explorez l'Inconnu</a>
-                </div>
-            </section>           
-        </main>
+        <!-- Inhoud voor Frans -->
+        <div class="intro-content" data-lang="fr" style="display: none;">
+            <h2>Qu'y a-t-il derrière le vert ?</h2>
+            <p>Quelque chose de frais arrive. Restez à l'écoute et gardez un œil sur l'horizon...</p>
+            <a href="#" class="explore-button">Explorez l'Inconnu</a>
+        </div>
+    </main>
 
-          
-        <!-- Footer Section -->
-        <footer>
-            <p>&copy; 2024 Broccoli Buttons. All rights reserved.</p>
-           <a href="privacy.html" class="privacy-link">Privacy Statement</a> <!-- Link naar privacy pagina -->
-        </footer>
-    </div>
+    <!-- Contact Sectie -->
+    <main id="contact" class="content-section" style="display: none;">
+        <!-- Inhoud voor Engels -->
+        <div class="intro-content" data-lang="en">
+            <h2>Contact Us</h2>
+            <p>We are working behind the scenes to create something very special... Contacting us will be possible, but when? That remains a mystery. Stay tuned and maybe you will be the first to discover it!</p>
+        </div>
+
+        <!-- Voeg hier de andere talen toe op dezelfde manier als hierboven -->
+        <!-- ... -->
+    </main>
+
+    <!-- Privacy Sectie -->
+    <main id="privacy" class="content-section" style="display: none;">
+        <!-- Inhoud voor Engels -->
+        <div class="privacy-content" data-lang="en">
+            <h2>Privacy Statement: Broccoli Buttons</h2>
+            <p>Broccoli Buttons does not process personal data. We also do not use social media plugins, cookies, or similar techniques...</p>
+        </div>
+
+        <!-- Voeg hier de andere talen toe op dezelfde manier als hierboven -->
+        <!-- ... -->
+    </main>
+
+    <!-- Footer Sectie blijft onveranderd -->
+    <footer>
+        <p>&copy; 2024 Broccoli Buttons. All rights reserved.</p>
+        <a href="#" onclick="showSection('privacy')" class="privacy-link">Privacy Statement</a>
+    </footer>
 </body>
 
 </html>
