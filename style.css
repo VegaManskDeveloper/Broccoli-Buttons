@@ -97,7 +97,6 @@ nav ul li a:hover {
     display: none; /* Standaard verbergen */
     position: absolute;
     background-color: #0b3d0b;
-    border: 1px solid #4caf50;
     border-radius: 5px;
     z-index: 1000;
     width: 100px;
