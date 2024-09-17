@@ -12,11 +12,17 @@ body {
 }
 
 /* Stijl voor de main content of container */
-main, .container {
-    margin: 0 auto; /* Centreer de container horizontaal */
-    padding: 0 20px; /* Voeg wat padding toe voor binnenruimte */
+main {
     flex: 1; /* Laat de main-content de resterende ruimte innemen */
+    display: flex; /* Gebruik flexbox om de inhoud te centreren */
+    align-items: center; /* Centreer de inhoud verticaal */
+    justify-content: center; /* Centreer de inhoud horizontaal */
+    flex-direction: column; /* Zet de inhoud in een kolom */
+    margin: 0 auto; /* Centreer de container horizontaal */
     width: 80%; /* Houd dezelfde breedte voor de container */
+    padding: 0 20px; /* Voeg wat padding toe voor binnenruimte */
+    max-height: 600px; /* Instellen van een maximale hoogte om consistentie te waarborgen */
+    box-sizing: border-box; /* Zorg ervoor dat padding wordt opgenomen in de hoogte */
 }
 
 /* Header stijlen */
