@@ -32,7 +32,7 @@ main {
 }
 
 /* Header stijlen */
-h/* Algemene stijl voor de header */
+/* Algemene stijl voor de header */
 header {
     width: 90%; /* Houd dezelfde breedte voor de container */
     max-width: 1400px; /* Stel een maximum breedte in voor grotere schermen */
