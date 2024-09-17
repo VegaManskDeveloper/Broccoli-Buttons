@@ -6,18 +6,17 @@ body {
     color: #f0f0f0; /* Lichte tekst */
     font-family: 'Arial', sans-serif;
     overflow-x: hidden; /* Geen horizontale scroll */
+    display: flex; /* Gebruik flexbox om de pagina te structureren */
+    flex-direction: column; /* Plaats elementen verticaal onder elkaar */
+    min-height: 100vh; /* Zorg dat de pagina ten minste de volledige hoogte van het scherm is */
 }
 
 /* Stijl voor de main content of container */
 main, .container {
-    margin-top: 0; /* Verwijder extra ruimte bovenaan */
-    margin-bottom: 50px; /* Consistente afstand onder de main content of container */
+    margin: 0 auto; /* Centreer de container horizontaal */
     padding: 0 20px; /* Voeg wat padding toe voor binnenruimte */
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
+    flex: 1; /* Laat de main-content de resterende ruimte innemen */
+    width: 80%; /* Houd dezelfde breedte voor de container */
 }
 
 /* Header stijlen */
@@ -26,7 +25,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0; /* Houd de padding consistent voor verticale ruimte binnen de header */
-    margin-bottom: 50px; /* Zorg voor consistente afstand onder de header */
+    margin-bottom: 20px; /* Consistente marge onder de header */
 }
 
 .logo h1 {
@@ -103,7 +102,6 @@ nav ul li a:hover {
 }
 
 /* Cirkelvormige Introductie sectie */
-/* Cirkelvormige Introductie sectie */
 .intro {
     position: relative;
     width: 400px;
@@ -144,7 +142,6 @@ nav ul li a:hover {
     display: none; /* Standaard alles verbergen */
 }
 
-
 /* Verken-knop stijl */
 .explore-button {
     display: inline-block;
@@ -171,28 +168,23 @@ nav ul li a:hover {
     height: 350%;
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
     background: url('images/rook4.jpg') repeat center center; /* Voeg je mistafbeelding toe */
-    /*background-size: 150% 150%; /* Verhoogt de grootte van de afbeelding */
-    background-size: cover; /* De afbeelding vult het scherm *
-    /*box-shadow: inset 0 0 100px 50px #0b3d0b; /* Aanpassen voor een vloeiendere overgang */
-    /* background-size: cover; /* Zorgt ervoor dat de afbeelding het scherm vult */
+    background-size: cover; /* De afbeelding vult het scherm */
     animation: moveBackground 200s linear infinite; /* Voegt animatie toe */
     opacity: 0.2; /* Pas de waarde aan tussen 0 (volledig transparant) en 1 (volledig ondoorzichtig) */
 }
-
 
 @keyframes moveBackground {
     0% { background-position: -3200px -3200px; }
     100% { background-position: 1000px 1000px; } /* Verplaats de achtergrond over tijd */
 }
 
-
 /* Geüpdatete stijlen voor de footer */
 footer {
     text-align: center;
-    padding: 30px 0; /* Verhoog de padding om meer ruimte te geven */
+    padding: 20px 0; /* Houd de padding consistent */
     background-color: transparent; /* Zorgt ervoor dat de bewegende achtergrond zichtbaar blijft */
     color: white; /* Zorg ervoor dat de tekst in de footer wit is */
-    margin: 0; /* Verwijder de margin-top om de footer dichter bij de main content te brengen */
+    margin-top: 20px; /* Kleine marge boven de footer */
 }
 
 /* Stijl voor de Privacy Statement link in de footer */
@@ -206,5 +198,3 @@ footer .privacy-link {
 footer .privacy-link:hover {
     text-decoration: underline; /* Onderstreep de tekst bij hover voor visuele feedback */
 }
-
-
