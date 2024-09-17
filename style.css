@@ -209,14 +209,15 @@ nav ul li a:hover {
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
     background: url('images/rook4.jpg') repeat center center; /* Voeg je mistafbeelding toe */
     background-size: cover; /* De afbeelding vult het scherm */
-    animation: moveBackground 200s linear infinite; /* Voegt animatie toe */
+    animation: moveBackground 200s linear infinite; /* Voegt animatie toe die oneindig doorloopt */
     opacity: 0.2; /* Pas de waarde aan tussen 0 (volledig transparant) en 1 (volledig ondoorzichtig) */
 }
 
 @keyframes moveBackground {
     0% { background-position: -3200px -3200px; }
-    100% { background-position: 1000px 1000px; } /* Verplaats de achtergrond over tijd */
+    100% { background-position: -3200px -3200px; } /* Stel de eindpositie gelijk aan de beginpositie */
 }
+
 
 /* Geüpdatete stijlen voor de footer */
 footer {
