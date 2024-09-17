@@ -32,6 +32,7 @@ main {
 }
 
 /* Header stijlen */
+h/* Algemene stijl voor de header */
 header {
     width: 90%; /* Houd dezelfde breedte voor de container */
     max-width: 1400px; /* Stel een maximum breedte in voor grotere schermen */
@@ -43,10 +44,14 @@ header {
     background-color: transparent; /* Zorg ervoor dat de header geen achtergrondkleur heeft */
 }
 
+/* Stijl voor het logo */
 .logo h1 {
     font-size: 2.5em;
     color: #e0ffe0; /* Lichter groen voor het logo */
+    margin: 0; /* Verwijder standaard marges */
+    padding-left: 20px; /* Voeg padding toe aan de linkerkant voor consistente uitlijning */
 }
+
 
 nav ul {
     list-style: none;
