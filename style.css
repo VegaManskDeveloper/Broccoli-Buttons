@@ -11,18 +11,15 @@ body {
     min-height: 100vh; /* Zorg dat de pagina ten minste de volledige hoogte van het scherm is */
 }
 
-/* Stijl voor de main content of container */
+/* Stijl voor de main content */
 main {
-    flex: 1; /* Laat de main-content de resterende ruimte innemen */
-    display: flex; /* Gebruik flexbox om de inhoud te centreren */
-    align-items: center; /* Centreer de inhoud verticaal */
-    justify-content: center; /* Centreer de inhoud horizontaal */
-    flex-direction: column; /* Zet de inhoud in een kolom */
-    margin: 0 auto; /* Centreer de container horizontaal */
-    width: 80%; /* Houd dezelfde breedte voor de container */
+    flex-grow: 1; /* Laat de main-content de resterende ruimte innemen */
+    margin: 20px 0; /* Houd een consistente marge boven en onder de main content */
     padding: 0 20px; /* Voeg wat padding toe voor binnenruimte */
-    max-height: 600px; /* Instellen van een maximale hoogte om consistentie te waarborgen */
-    box-sizing: border-box; /* Zorg ervoor dat padding wordt opgenomen in de hoogte */
+    width: 80%; /* Houd dezelfde breedte voor de container */
+    max-width: 1200px; /* Stel een maximum breedte in voor grotere schermen */
+    margin-left: auto; /* Centreer de container horizontaal */
+    margin-right: auto; /* Centreer de container horizontaal */
 }
 
 /* Header stijlen */
@@ -31,7 +28,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0; /* Houd de padding consistent voor verticale ruimte binnen de header */
-    margin-bottom: 20px; /* Consistente marge onder de header */
+    width: 80%; /* Houd dezelfde breedte voor de container */
+    max-width: 1200px; /* Stel een maximum breedte in voor grotere schermen */
+    margin-left: auto; /* Centreer de container horizontaal */
+    margin-right: auto; /* Centreer de container horizontaal */
 }
 
 .logo h1 {
@@ -190,7 +190,10 @@ footer {
     padding: 20px 0; /* Houd de padding consistent */
     background-color: transparent; /* Zorgt ervoor dat de bewegende achtergrond zichtbaar blijft */
     color: white; /* Zorg ervoor dat de tekst in de footer wit is */
-    margin-top: auto; /* Zorg ervoor dat de footer naar de onderkant van de pagina duwt */
+    width: 80%; /* Houd dezelfde breedte voor de container */
+    max-width: 1200px; /* Stel een maximum breedte in voor grotere schermen */
+    margin-left: auto; /* Centreer de container horizontaal */
+    margin-right: auto; /* Centreer de container horizontaal */
 }
 
 /* Stijl voor de Privacy Statement link in de footer */
