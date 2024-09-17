@@ -210,7 +210,7 @@ nav ul li a:hover {
     z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
     background: url('images/rook4.jpg') repeat center center; /* Voeg je mistafbeelding toe */
     background-size: cover; /* De afbeelding vult het scherm */
-    animation: moveBackground 200s linear infinite; /* Verlengde duur voor trage beweging */
+    animation: moveBackground 300s linear infinite; /* Verlengde duur voor trage beweging */
     opacity: 0.2; /* Pas de waarde aan tussen 0 (volledig transparant) en 1 (volledig ondoorzichtig) */
 }
 
