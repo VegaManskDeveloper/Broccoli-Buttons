@@ -135,6 +135,7 @@ nav ul li a:hover {
     justify-content: center; /* Centreer items horizontaal */
     flex-direction: column; /* Zet kinderen in een kolom (van boven naar beneden) */
     text-align: center;
+    padding: 30px; /* Verhoogde padding voor meer ruimte tussen tekst en rand */
     transition: transform 0.5s, box-shadow 0.5s;
     box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.3), 0 0 40px 20px rgba(0, 255, 0, 0.2); /* Meerdere lagen schaduw voor een gloed-effect */
     animation: pulse 5s infinite; /* Lichte puls-animatie */
