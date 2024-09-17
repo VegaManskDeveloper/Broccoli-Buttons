@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broccoli Buttons - Expanded Test Version</title>
+    <title>Broccoli Buttons - Single Page Application</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
     <!-- Bewegende achtergrond blijft hier persistent -->
     <div class="moving-background"></div>
 
-    <!-- Navigatiebalk -->
+    <!-- Navigatiebalk aangepast -->
     <header>
         <div class="logo">
             <h1>Broccoli Buttons</h1>
@@ -23,6 +24,7 @@
                 <li><a href="#" onclick="showSection('home')">Home</a></li>
                 <li><a href="#" onclick="showSection('mystery')">Mystery</a></li>
                 <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                <!-- Taalkeuzemenu blijft onveranderd -->
                 <li class="language-selector">
                     <div class="custom-select">
                         <div class="selected-option" id="selectedLanguage">
@@ -32,7 +34,24 @@
                             <div class="option" data-lang="en">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="UK Flag" class="flag-icon"> EN
                             </div>
-                            <!-- Andere taalopties kunnen hier worden toegevoegd -->
+                            <div class="option" data-lang="es">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spain Flag" class="flag-icon"> ES
+                            </div>
+                            <div class="option" data-lang="zh">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" alt="China Flag" class="flag-icon"> ZH
+                            </div>
+                            <div class="option" data-lang="no">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="Norway Flag" class="flag-icon"> NO
+                            </div>
+                            <div class="option" data-lang="nl">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Netherlands Flag" class="flag-icon"> NL
+                            </div>
+                            <div class="option" data-lang="de">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Germany Flag" class="flag-icon"> DE
+                            </div>
+                            <div class="option" data-lang="fr">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" class="flag-icon"> FR
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -61,7 +80,52 @@
         <p>We are working behind the scenes to create something very special... Contacting us will be possible, but when? That remains a mystery. Stay tuned and maybe you will be the first to discover it!</p>
     </main>
 
-    <!-- Footer -->
+    <!-- Privacy Sectie -->
+    <main id="privacy" class="content-section" style="display: none;">
+        <!-- Inhoud voor Engels -->
+        <div class="privacy-content" data-lang="en">
+            <h2>Privacy Statement: Broccoli Buttons</h2>
+            <p>Broccoli Buttons does not process personal data. We also do not use social media plugins, cookies, or similar techniques. Broccoli Buttons does not provide information to third parties.</p>
+        </div>
+
+        <!-- Privacyverklaring voor Spaans -->
+        <div class="privacy-content" data-lang="es" style="display: none;">
+            <h2>Declaración de Privacidad: Broccoli Buttons</h2>
+            <p>Broccoli Buttons no procesa datos personales. Tampoco utilizamos plugins de redes sociales, cookies o técnicas similares. Broccoli Buttons no proporciona información a terceros.</p>
+        </div>
+
+        <!-- Privacyverklaring voor Chinees -->
+        <div class="privacy-content" data-lang="zh" style="display: none;">
+            <h2>隐私声明：Broccoli Buttons</h2>
+            <p>Broccoli Buttons 不处理个人数据。我们也不使用社交媒体插件、Cookie 或类似技术。Broccoli Buttons 不向第三方提供信息。</p>
+        </div>
+
+        <!-- Privacyverklaring voor Noors -->
+        <div class="privacy-content" data-lang="no" style="display: none;">
+            <h2>Personvernerklæring: Broccoli Buttons</h2>
+            <p>Broccoli Buttons behandler ikke personopplysninger. Vi bruker heller ikke sosiale medier-plugins, informasjonskapsler eller lignende teknikker. Broccoli Buttons gir ikke informasjon til tredjeparter.</p>
+        </div>
+
+        <!-- Privacyverklaring voor Nederlands -->
+        <div class="privacy-content" data-lang="nl" style="display: none;">
+            <h2>Privacyverklaring: Broccoli Buttons</h2>
+            <p>Broccoli Buttons verwerkt geen persoonlijke gegevens. We gebruiken ook geen social media plugins, cookies of soortgelijke technieken. Broccoli Buttons verstrekt geen informatie aan derden.</p>
+        </div>
+
+        <!-- Privacyverklaring voor Duits -->
+        <div class="privacy-content" data-lang="de" style="display: none;">
+            <h2>Datenschutzerklärung: Broccoli Buttons</h2>
+            <p>Broccoli Buttons verarbeitet keine personenbezogenen Daten. Wir verwenden auch keine Social-Media-Plugins, Cookies oder ähnliche Techniken. Broccoli Buttons gibt keine Informationen an Dritte weiter.</p>
+        </div>
+
+        <!-- Privacyverklaring voor Frans -->
+        <div class="privacy-content" data-lang="fr" style="display: none;">
+            <h2>Déclaration de Confidentialité : Broccoli Buttons</h2>
+            <p>Broccoli Buttons ne traite pas de données personnelles. Nous n'utilisons pas non plus de plugins de réseaux sociaux, de cookies ou de techniques similaires. Broccoli Buttons ne fournit pas d'informations à des tiers.</p>
+        </div>
+    </main>
+
+    <!-- Footer Sectie blijft onveranderd -->
     <footer>
         <p>&copy; 2024 Broccoli Buttons. All rights reserved.</p>
         <a href="#" onclick="showSection('privacy')" class="privacy-link">Privacy Statement</a>
@@ -77,9 +141,21 @@
 
             // Toon de gekozen sectie
             document.getElementById(sectionId).style.display = 'block';
+
+            // Update de inhoudstaal bij het wisselen van secties
+            const currentLang = localStorage.getItem('selectedLang') || 'en';
+            updateContentLanguage(currentLang);
         }
 
-        // Standaard de home-sectie tonen
+        // Functie om de inhoudstaal bij te werken
+        function updateContentLanguage(lang) {
+            const contentElements = document.querySelectorAll('.intro-content, .privacy-content');
+            contentElements.forEach(element => {
+                element.style.display = element.getAttribute('data-lang') === lang ? 'block' : 'none';
+            });
+        }
+
+        // Standaard de home-sectie tonen bij het laden
         showSection('home');
     </script>
 </body>
