@@ -96,8 +96,9 @@ nav ul li a:hover {
 .options-container {
     display: none; /* Standaard verbergen */
     position: absolute;
-    background-color: #0b3d0b;
-    border-radius: 5px;
+    background-color: transparent; /* Maak de achtergrond transparant */
+    border: none; /* Verwijder eventuele rand */
+    border-radius: 5px; /* Houdt deze als je afgeronde hoeken wilt */
     z-index: 1000;
     width: 100px;
     margin-top: 5px;
@@ -106,6 +107,7 @@ nav ul li a:hover {
     overflow-y: hidden; /* Verberg de verticale scrollbar */
     -ms-overflow-style: none;  /* Verberg scrollbar in Internet Explorer en Edge */
     scrollbar-width: none;  /* Verberg scrollbar in Firefox */
+    box-shadow: none; /* Verwijder eventuele schaduw */
 }
 
 .options-container::-webkit-scrollbar {
@@ -121,11 +123,14 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     cursor: pointer;
+    background-color: transparent; /* Zorg dat de optie-achtergrond transparant is */
+    border: none; /* Verwijder eventuele randen */
 }
 
 .option:hover {
-    background-color: #1f6b1f;
+    background-color: transparent; /* Verwijder hover achtergrond */
 }
+
 
 /* Cirkelvormige Introductie sectie */
 .intro {
