@@ -13,14 +13,16 @@ body {
     font-family: 'Arial', sans-serif;
     overflow-x: hidden; /* Geen horizontale scroll */
     min-height: 100vh; /* Zorg dat de pagina ten minste de volledige hoogte van het scherm is */
+    display: flex; /* Maak het body-element een flexcontainer */
+    flex-direction: column; /* Plaats elementen in een kolom */
 }
 
 .container {
+    flex-grow: 1; /* Laat de container de resterende ruimte innemen */
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Zorg dat de container ten minste de volledige hoogte van het scherm heeft */
 }
-
 
 /* Stijl voor de main content */
 main {
@@ -51,7 +53,6 @@ header {
     margin: 0; /* Verwijder standaard marges */
     padding-left: 20px; /* Voeg padding toe aan de linkerkant voor consistente uitlijning */
 }
-
 
 nav ul {
     list-style: none;
@@ -206,8 +207,8 @@ footer {
     color: white; /* Zorg ervoor dat de tekst in de footer wit is */
     width: 100%; /* Zorg ervoor dat de footer de volledige breedte gebruikt */
     position: relative; /* Houd de positie relatief in de flex container */
+    margin-top: auto; /* Zorg dat de footer aan de onderkant blijft */
 }
-
 
 /* Stijl voor de Privacy Statement link in de footer */
 footer .privacy-link {
