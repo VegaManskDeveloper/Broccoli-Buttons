@@ -6,14 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacyverklaring - Broccoli Buttons</title>
-    <link rel="stylesheet" href="style.css"> <!-- Zorg ervoor dat deze CSS dezelfde is als op de homepage -->
+    <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('selectedLang') || 'en';
             updateContentLanguage(savedLang);
 
-            // Update de dropdown naar de juiste vlag en taal
             const initialOption = document.querySelector(`.option[data-lang="${savedLang}"]`);
             if (initialOption) {
                 document.getElementById('selectedLanguage').innerHTML = initialOption.innerHTML;
@@ -30,8 +29,8 @@
 </head>
 
 <body>
-    <!-- Header Section -->
-    <div class="container"> <!-- Container toegevoegd om consistentie met de homepage te behouden -->
+    <div class="container">
+        <!-- Header Section -->
         <header>
             <div class="logo">
                 <h1>Broccoli Buttons</h1>
@@ -41,7 +40,6 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#">Mystery</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <!-- Aangepaste Taalkeuze Menu -->
                     <li class="language-selector">
                         <div class="custom-select">
                             <div class="selected-option" id="selectedLanguage">
@@ -117,7 +115,8 @@
 
         <!-- Footer Section -->
         <footer>
-            <p>&copy; 2024 Broccoli Buttons. All rights reserved. <a href="privacy.html" class="privacy-link">Privacyverklaring</a></p>
+            <p>&copy; 2024 Broccoli Buttons. All rights reserved.</p>
+            <p class="privacy-link">Privacy Statement</p>
         </footer>
     </div> <!-- Einde container -->
 </body>
