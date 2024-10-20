@@ -3,6 +3,16 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
+      "package_name": "com.example.howtousecredentialmanager",
+      "sha256_cert_fingerprints": [
+        "EE:2D:0E:5E:2D:18:D9:20:5B:00:22:40:40:8C:3F:ED:D8:68:F5:3B:83:58:93:D8:E9:EC:DC:3D:58:1D:6B:F4"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
       "package_name": "com.broccoli_buttons.eventWhisperer",
       "sha256_cert_fingerprints": [
         "EE:2D:0E:5E:2D:18:D9:20:5B:00:22:40:40:8C:3F:ED:D8:68:F5:3B:83:58:93:D8:E9:EC:DC:3D:58:1D:6B:F4"
