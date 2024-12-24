@@ -200,7 +200,6 @@ nav ul li a:hover {
 
 
 /* Bewegende achtergrond */
-/* Bewegende achtergrond */
 .moving-background {
     position: fixed; /* Achtergrond blijft vast terwijl je scrolt */
     top: -200px;
@@ -236,6 +235,18 @@ nav ul li a:hover {
         background-position: -3200px -3200px;
         transform: rotate(0deg);
     }
+}
+
+
+/* Contact sectie */
+#contact a {
+    color: white; /* Verandert de tekstkleur naar wit */
+    text-decoration: none; /* Verwijdert de onderstreping */
+    font-weight: bold; /* Maakt de tekst dikker */
+}
+
+#contact a:hover {
+    text-decoration: underline; /* Onderstreping bij hover voor betere feedback */
 }
 
 
