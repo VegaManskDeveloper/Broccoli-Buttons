@@ -242,7 +242,6 @@ nav ul li a:hover {
 #contact a {
     color: white; /* Verandert de tekstkleur naar wit */
     text-decoration: none; /* Verwijdert de onderstreping */
-    font-weight: bold; /* Maakt de tekst dikker */
 }
 
 #contact a:hover {
