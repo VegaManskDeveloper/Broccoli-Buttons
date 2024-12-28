@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Controleer de huidige hash bij het laden van de pagina
+    if (window.location.hash) {
+        const sectionId = window.location.hash.substring(1); // Verwijdert de # uit de hash
+        showSection(sectionId);
+    } else {
+        // Toon standaard de home sectie
+        showSection('home');
+    }
+
+
     const selectedOption = document.getElementById('selectedLanguage');
     const optionsContainer = document.querySelector('.options-container');
     const optionsList = document.querySelectorAll('.option');
@@ -68,9 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
         background.style.backgroundPositionX = `${clientX / 20}px`;
         background.style.backgroundPositionY = `${clientY / 20}px`;
     });
-
-    // Toon standaard de home sectie bij het laden
-    showSection('home');
 });
 
 // Functie om secties weer te geven/verbergen
