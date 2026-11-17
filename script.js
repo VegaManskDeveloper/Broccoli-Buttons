@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.location.hash) {
         const sectionId = window.location.hash.substring(1); // Verwijdert de # uit de hash
         showSection(sectionId);
-    } else {
+    } else if (document.getElementById('home')) {
         // Toon standaard de home sectie
         showSection('home');
     }
@@ -42,9 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navigatie functionaliteit voor het tonen van secties
     navLinks.forEach(link => {
         link.addEventListener('click', (event) => {
-            event.preventDefault(); // Voorkom standaardgedrag
-            const sectionId = link.getAttribute('href').substring(1); // Haal de id van de sectie op (zonder '#')
-            showSection(sectionId);
+            const href = link.getAttribute('href') || '';
+            if (href.startsWith('#')) {
+                event.preventDefault(); // Voorkom standaardgedrag
+                showSection(href.substring(1)); // Haal de id van de sectie op (zonder '#')
+            }
         });
     });
 
