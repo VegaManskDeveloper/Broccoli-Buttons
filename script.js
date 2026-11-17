@@ -75,8 +75,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const background = document.querySelector('.moving-background');
     
         // Verplaats de achtergrond subtiel op basis van muisbeweging
-        background.style.backgroundPositionX = `${clientX / 20}px`;
-        background.style.backgroundPositionY = `${clientY / 20}px`;
+        if (background) {
+            background.style.backgroundPositionX = `${clientX / 20}px`;
+            background.style.backgroundPositionY = `${clientY / 20}px`;
+        }
+    });
+
+    // Hashchange-ondersteuning zodat #privacy en andere links direct schakelen
+    window.addEventListener('hashchange', () => {
+        const h = window.location.hash ? window.location.hash.substring(1) : '';
+        if (h) {
+            showSection(h);
+        }
     });
 });
 
@@ -86,8 +96,14 @@ function showSection(sectionId) {
     const sections = document.querySelectorAll('.content-section');
     sections.forEach(section => section.style.display = 'none');
 
-    // Toon de gekozen sectie
-    document.getElementById(sectionId).style.display = 'block';
+    // Toon de gekozen sectie (null-safe)
+    const target = document.getElementById(sectionId);
+    if (!target) {
+        const fallback = document.getElementById('home');
+        if (fallback) fallback.style.display = 'block';
+        return;
+    }
+    target.style.display = 'block';
 
     // Update de inhoudstaal bij het wisselen van secties
     const currentLang = localStorage.getItem('selectedLang') || 'en';

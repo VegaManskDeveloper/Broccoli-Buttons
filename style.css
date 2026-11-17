@@ -271,3 +271,46 @@ footer .privacy-link {
 footer .privacy-link:hover {
     text-decoration: underline; /* Onderstreep de tekst bij hover voor visuele feedback */
 }
+
+/* Privacyverklaring sectie & directe /privacy.html weergave */
+.privacy-card {
+    max-width: 820px;
+    margin: 40px auto;
+    padding: 28px 32px;
+    background: rgba(11, 61, 11, 0.9);
+    border: 1px solid rgba(102, 187, 106, 0.35);
+    border-radius: 16px;
+    line-height: 1.65;
+    text-align: left;
+    color: #f0f0f0;
+    box-sizing: border-box;
+}
+
+.privacy-card h2,
+.privacy-card h3 {
+    color: #a5d6a7;
+    margin-top: 1.25em;
+    margin-bottom: 0.5em;
+}
+
+.privacy-card h2:first-child {
+    margin-top: 0;
+}
+
+.privacy-card ul {
+    padding-left: 20px;
+    margin: 0.5em 0 1em 0;
+}
+
+.privacy-card li {
+    margin-bottom: 0.45em;
+}
+
+.privacy-card a {
+    color: #a5d6a7;
+    text-decoration: underline;
+}
+
+.privacy-card a:hover {
+    color: #ffffff;
+}
