@@ -1,0 +1,4 @@
+Contact: mailto:broccolibuttons@gmail.com
+Preferred-Languages: nl, en, de, fr, es, no, zh
+Canonical: https://broccolibuttons.netlify.app/.well-known/security.txt
+Expires: 2027-11-18T00:00:00.000Z

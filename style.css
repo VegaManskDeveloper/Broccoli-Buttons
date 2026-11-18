@@ -1,162 +1,322 @@
-/* Algemene stijlen */
-*, *::before, *::after {
-    box-sizing: border-box;
+:root {
+    --ew-ivory: #ffffe0;
+    --ew-serif: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, 'Noto Serif', 'Noto Serif SC', serif;
+    --ew-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --calm-ease-dur: 1.05s;
+    --btn-size: clamp(148px, 18vmin, 224px);
+    --canvas-max: min(94vw, 1680px);
+
+    /* Standaard nacht/schemer-kleuren (data-sky="night") */
+    --fg-primary: #ffffe0;
+    --fg-soft: rgba(255, 255, 224, 0.9);
+    --fg-shadow: 0 2px 16px rgba(3, 18, 5, 0.88);
+    --pill-bg: rgba(6, 36, 9, 0.56);
+    --pill-border: rgba(255, 255, 224, 0.36);
+    --pill-hover-bg: rgba(12, 54, 16, 0.74);
+    --pill-hover-border: rgba(255, 255, 224, 0.72);
+    --menu-bg: rgba(6, 34, 9, 0.96);
+    --menu-active-bg: rgba(102, 187, 106, 0.28);
+    --chip-bg: rgba(8, 38, 12, 0.72);
+    --chip-text: #f4fff5;
+    --chip-border: rgba(255, 255, 224, 0.28);
+    --noise-border: rgba(255, 255, 224, 0.28);
+    --noise-accent: #f0be9c;
+    --care-accent: #ffffe0;
+    --horizon-edge: rgba(148, 214, 152, 0.34);
+    --horizon-mid: rgba(255, 255, 224, 0.92);
+    --horizon-glow: rgba(154, 224, 158, 0.52);
+    --sheet-wash: radial-gradient(closest-side at 50% 50%, rgba(5, 26, 10, 0.84) 0%, rgba(5, 26, 10, 0.56) 54%, rgba(5, 26, 10, 0) 100%);
+    --card-bg: rgba(8, 42, 10, 0.92);
+    --card-border: rgba(175, 228, 178, 0.36);
+    --focus-color: #ffffe0;
 }
 
+/* Klara zonlicht-kleuren wanneer het buiten bij de gebruiker licht is */
+body[data-sky="day"] {
+    --fg-primary: #0f2412;
+    --fg-soft: #163019;
+    --fg-shadow: 0 1px 12px rgba(244, 248, 240, 0.86);
+    --pill-bg: rgba(252, 253, 248, 0.84);
+    --pill-border: rgba(15, 42, 20, 0.34);
+    --pill-hover-bg: rgba(255, 255, 250, 0.96);
+    --pill-hover-border: rgba(15, 42, 20, 0.68);
+    --menu-bg: rgba(247, 250, 244, 0.98);
+    --menu-active-bg: rgba(20, 86, 30, 0.14);
+    --chip-bg: rgba(252, 253, 248, 0.78);
+    --chip-text: #0f2412;
+    --chip-border: rgba(15, 42, 20, 0.22);
+    --noise-border: rgba(15, 42, 20, 0.22);
+    --noise-accent: #6c4a35;
+    --care-accent: #145420;
+    --horizon-edge: rgba(20, 74, 30, 0.18);
+    --horizon-mid: rgba(20, 74, 30, 0.58);
+    --horizon-glow: rgba(140, 198, 112, 0.32);
+    --sheet-wash: radial-gradient(closest-side at 50% 50%, rgba(246, 249, 242, 0.9) 0%, rgba(235, 243, 234, 0.68) 56%, rgba(235, 243, 234, 0) 100%);
+    --card-bg: rgba(248, 250, 244, 0.95);
+    --card-border: rgba(20, 74, 30, 0.32);
+    --focus-color: #0f2412;
+    background-color: #b5d1dc;
+}
+
+/* Algemene stijlen */
 html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
 body {
-    background-color: #0b3d0b; /* Donker groen */
-    color: #f0f0f0;
-    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding-block: 0;
+    padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
+    background-color: #0b3d0b;
+    color: var(--fg-primary);
+    font-family: var(--ew-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
+    line-height: 1.55;
+    transition: color 0.8s ease, background-color 0.8s ease;
 }
 
-/* Toetsenbord skip-link */
-.skip-link {
+body[data-sky="day"] {
+    background-color: #b5d1dc;
+}
+
+/* Pre-JS startstatus volgt systeemthema zodat overdag geen donkere flits optreedt */
+@media (prefers-color-scheme: light) {
+    body:not([data-sky]) {
+        --fg-primary: #0f2412;
+        --fg-soft: #163019;
+        --fg-shadow: 0 1px 12px rgba(244, 248, 240, 0.86);
+        --pill-bg: rgba(252, 253, 248, 0.84);
+        --pill-border: rgba(15, 42, 20, 0.34);
+        --pill-hover-bg: rgba(255, 255, 250, 0.96);
+        --pill-hover-border: rgba(15, 42, 20, 0.68);
+        --menu-bg: rgba(247, 250, 244, 0.98);
+        --menu-active-bg: rgba(20, 86, 30, 0.14);
+        --chip-bg: rgba(252, 253, 248, 0.78);
+        --chip-text: #0f2412;
+        --chip-border: rgba(15, 42, 20, 0.22);
+        --noise-border: rgba(15, 42, 20, 0.22);
+        --noise-accent: #6c4a35;
+        --care-accent: #145420;
+        --horizon-edge: rgba(20, 74, 30, 0.18);
+        --horizon-mid: rgba(20, 74, 30, 0.58);
+        --horizon-glow: rgba(140, 198, 112, 0.32);
+        --sheet-wash: radial-gradient(closest-side at 50% 50%, rgba(246, 249, 242, 0.9) 0%, rgba(235, 243, 234, 0.68) 56%, rgba(235, 243, 234, 0) 100%);
+        --card-bg: rgba(248, 250, 244, 0.95);
+        --card-border: rgba(20, 74, 30, 0.32);
+        --focus-color: #0f2412;
+        background-color: #b5d1dc;
+    }
+}
+
+html[lang="zh"] body {
+    line-height: 1.72;
+    letter-spacing: 0.02em;
+}
+
+/* Alleen voor screenreaders & onzichtbare SVG-filters */
+.svg-defs {
     position: absolute;
-    left: -9999px;
-    top: 12px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip link voor toetsenbord- & screenreadergebruikers */
+.skip-link {
+    position: fixed;
+    inset-block-start: -80px;
+    inset-inline-start: 16px;
     z-index: 2000;
-    padding: 10px 16px;
-    background-color: #082a08;
-    color: #e0ffe0;
-    border: 2px solid #a5d6a7;
-    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 8px 18px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    background: var(--menu-bg);
+    color: var(--fg-primary);
+    border: 2px solid var(--focus-color);
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.92rem;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    cursor: pointer;
+    transition: inset-block-start 0.15s ease;
+}
+
+.motion-skip-btn {
+    inset-inline-start: 240px;
 }
 
 .skip-link:focus,
 .skip-link:focus-visible {
-    left: 12px;
+    inset-block-start: 14px;
+    outline: 3px solid var(--focus-color);
+    outline-offset: 2px;
 }
 
-/* Zichtbare focusindicator (WCAG 2.2 AA) */
-a:focus-visible,
-button:focus-visible {
-    outline: 2px solid #e0ffe0;
-    outline-offset: 3px;
-}
-
-/* Main stage */
-#main-stage {
+.container {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
 }
 
+/* Stijl voor de main content (gebruikt de volledige schermbreedte per device) */
 main {
+    position: relative;
+    z-index: 2;
     flex-grow: 1;
-    margin: 20px auto;
-    padding: 0 20px;
-    width: 100%;
-    max-width: 1200px;
+    margin-block: 4px;
+    margin-inline: auto;
+    padding-block: 0;
+    padding-inline: clamp(10px, 2.5vw, 32px);
+    width: var(--canvas-max);
+    max-width: 1680px;
+    box-sizing: border-box;
 }
 
-/* Header stijlen */
+/* Rustige header */
 header {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+    position: relative;
+    z-index: 20;
+    width: var(--canvas-max);
+    max-width: 1680px;
+    margin-block: 0;
+    margin-inline: auto;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 12px 20px;
-    padding: 18px 24px;
+    padding-block: clamp(12px, 2vh, 22px) clamp(4px, 1vh, 10px);
+    padding-inline: clamp(4px, 1vw, 16px);
+    box-sizing: border-box;
     background-color: transparent;
 }
 
-.logo a {
-    text-decoration: none;
-    color: inherit;
-}
-
 .logo h1 {
-    font-size: 2.2em;
-    color: #e0ffe0;
+    font-family: var(--ew-serif);
+    font-size: clamp(1.25rem, 1.6vw, 1.75rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
     margin: 0;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
+.brand-link {
+    box-sizing: border-box;
+    display: inline-flex;
     align-items: center;
-    gap: 16px;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    position: relative;
-}
-
-nav ul li a {
+    min-height: 44px;
+    padding-inline: 4px;
+    color: var(--fg-primary);
     text-decoration: none;
-    color: #f0f0f0;
-    font-size: 1.05em;
-    padding: 4px 2px;
-    transition: color 0.3s;
+    transition: color 0.25s ease;
 }
 
-nav ul li a:hover,
-nav ul li a[aria-current="page"] {
-    color: #a5d6a7;
+.brand-link:hover {
+    opacity: 0.85;
 }
 
-/* Toegankelijk Taalkeuzemenu */
+.brand-link:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+/* Taalkeuzeknop zonder vlaggen (slanke 44px pill door box-sizing: border-box) */
+.language-selector {
+    display: flex;
+    align-items: center;
+}
+
 .custom-select {
     position: relative;
     display: inline-block;
+    user-select: none;
 }
 
 .selected-option {
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 7px 12px;
-    background: rgba(8, 42, 8, 0.85);
-    color: #f0f0f0;
-    border: 1px solid rgba(165, 214, 167, 0.5);
-    border-radius: 20px;
-    font-size: 0.95em;
-    cursor: pointer;
+    gap: 8px;
+    min-height: 44px;
+    padding-block: 8px;
+    padding-inline: 14px;
+    border-radius: 999px;
+    border: 1px solid var(--pill-border);
+    background: var(--pill-bg);
+    color: var(--fg-primary);
     font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
 
 .selected-option:hover {
-    background: rgba(18, 72, 18, 0.95);
-    border-color: #e0ffe0;
+    border-color: var(--pill-hover-border);
+    background: var(--pill-hover-bg);
 }
 
-.selected-option img.flag-icon,
-.option img.flag-icon {
-    width: 20px;
-    height: 14px;
+.selected-option:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 3px;
+}
+
+.globe-icon {
+    opacity: 0.88;
     flex-shrink: 0;
-    border-radius: 2px;
+}
+
+.chevron-icon {
+    opacity: 0.78;
+    flex-shrink: 0;
+    transition: transform 0.22s ease;
+}
+
+.selected-option[aria-expanded="true"] .chevron-icon {
+    transform: rotate(180deg);
 }
 
 .options-container {
     display: none;
     position: absolute;
-    right: 0;
-    top: calc(100% + 6px);
-    background-color: rgba(8, 42, 8, 0.96);
-    border: 1px solid rgba(165, 214, 167, 0.55);
-    border-radius: 10px;
+    inset-inline-end: 0;
+    inset-block-start: 100%;
+    margin-block-start: 8px;
+    background: var(--menu-bg);
+    border: 1px solid var(--pill-border);
+    border-radius: 14px;
     z-index: 1000;
-    min-width: 155px;
-    padding: 6px 0;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    min-width: 152px;
+    padding: 6px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur(10px);
 }
 
 .options-container.show {
@@ -164,345 +324,1654 @@ nav ul li a[aria-current="page"] {
 }
 
 .option {
-    width: 100%;
-    padding: 8px 14px;
+    box-sizing: border-box;
+    min-height: 44px;
+    padding-block: 6px;
+    padding-inline: 14px;
+    border-radius: 9px;
     display: flex;
     align-items: center;
-    gap: 8px;
     cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--fg-primary);
     background-color: transparent;
-    color: #f0f0f0;
-    border: none;
-    text-align: left;
-    font-size: 0.95em;
-    font-family: inherit;
+    transition: background-color 0.18s ease, color 0.18s ease;
 }
 
 .option:hover,
-.option[aria-selected="true"] {
-    background-color: rgba(102, 187, 106, 0.25);
-    color: #ffffff;
+.option.active,
+.option:focus-visible {
+    background-color: var(--menu-active-bg);
+    outline: none;
 }
 
-/* Home horizon & glowing orb layering */
+.option:focus-visible {
+    outline: 2px solid var(--focus-color);
+    outline-offset: -2px;
+}
+
+/* Home-ervaring */
 #home {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Lichtende groene horizon van links naar rechts achter de bol */
+/* Echte lokale tijd + fluisterzachte vrijwillige buitenweer-koppeling (zichtbaar na 1e ervaring) */
+.world-context-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2px 6px;
+    min-height: 44px;
+    margin: 0 auto clamp(8px, 2vh, 18px);
+}
+
+.world-time-anchor {
+    margin: 0;
+    min-height: 1.4em;
+    text-align: center;
+    font-size: clamp(0.92rem, 1.05vw, 1.14rem);
+    letter-spacing: 0.03em;
+    color: var(--fg-soft);
+    text-shadow: var(--fg-shadow);
+}
+
+#home:not(.has-revealed-more) .weather-optin-btn {
+    display: none !important;
+}
+
+.weather-optin-btn {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 44px;
+    padding-block: 6px;
+    padding-inline: 8px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--fg-primary);
+    opacity: 0.9;
+    font: inherit;
+    font-size: clamp(0.86rem, 0.98vw, 1.02rem);
+    text-shadow: var(--fg-shadow);
+    cursor: pointer;
+    transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.weather-optin-btn[hidden] {
+    display: none !important;
+}
+
+.weather-optin-btn:hover {
+    opacity: 1;
+    color: var(--fg-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.weather-optin-btn:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 2px;
+    opacity: 1;
+}
+
+/* 3-koloms CSS Grid dat op brede schermen ruim uitswaait over de vleugels */
+.home-horizon-stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 68px);
+    width: 100%;
+    min-height: clamp(250px, 38vh, 420px);
+    margin-block: clamp(4px, 1.5vh, 18px) 0;
+    margin-inline: auto;
+}
+
+.horizon-wing {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.6vh, 30px);
+    min-width: 0;
+}
+
+.horizon-wing--start {
+    align-items: flex-end;
+    text-align: end;
+}
+
+.horizon-wing--end {
+    align-items: flex-start;
+    text-align: start;
+}
+
+/* Ruimtelijke spreiding over het hele schermoppervlak bij brede schermen (> 960px) */
+@media (min-width: 961px) {
+    .horizon-wing--start .day-moment:nth-child(1) {
+        align-self: flex-start;
+        margin-inline-start: clamp(8px, 4vw, 72px);
+    }
+
+    .horizon-wing--start .day-moment:nth-child(2) {
+        align-self: center;
+    }
+
+    .horizon-wing--start .day-moment:nth-child(3) {
+        align-self: flex-end;
+        margin-inline-end: clamp(8px, 2vw, 32px);
+    }
+
+    .horizon-wing--end .day-moment:nth-child(1) {
+        align-self: flex-end;
+        margin-inline-end: clamp(8px, 4vw, 72px);
+    }
+
+    .horizon-wing--end .day-moment:nth-child(2) {
+        align-self: center;
+    }
+
+    .horizon-wing--end .day-moment:nth-child(3) {
+        align-self: flex-start;
+        margin-inline-start: clamp(8px, 2vw, 32px);
+    }
+}
+
+/* Lichtende horizonlijn */
 .horizon-line {
     position: absolute;
-    left: 0;
-    top: 58%;
-    width: 100%;
-    height: 2px;
+    left: 50%;
+    top: 50%;
+    width: 100vw;
+    height: 1px;
+    transform: translate(-50%, -50%);
     background: linear-gradient(
         90deg,
-        rgba(11, 61, 11, 0) 0%,
-        rgba(102, 187, 106, 0.32) 12%,
-        rgba(165, 214, 167, 0.78) 38%,
-        rgba(224, 255, 224, 0.96) 50%,
-        rgba(165, 214, 167, 0.78) 62%,
-        rgba(102, 187, 106, 0.32) 88%,
-        rgba(11, 61, 11, 0) 100%
+        transparent 0%,
+        var(--horizon-edge) 14%,
+        var(--horizon-mid) 50%,
+        var(--horizon-edge) 86%,
+        transparent 100%
     );
-    box-shadow:
-        0 0 12px rgba(102, 187, 106, 0.6),
-        0 0 28px rgba(0, 255, 85, 0.25);
+    box-shadow: 0 0 14px var(--horizon-glow);
     z-index: 0;
     pointer-events: none;
     animation: horizonPulse 8s ease-in-out infinite;
 }
 
-.horizon-line::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 56px;
-    background: radial-gradient(
-        ellipse 55% 100% at 50% 100%,
-        rgba(76, 175, 80, 0.28) 0%,
-        rgba(0, 255, 85, 0.08) 55%,
-        transparent 100%
-    );
-    pointer-events: none;
-}
-
-.horizon-line::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    height: 32px;
-    background: radial-gradient(
-        ellipse 60% 100% at 50% 0%,
-        rgba(4, 24, 4, 0.55) 0%,
-        transparent 100%
-    );
-    pointer-events: none;
-}
-
 @keyframes horizonPulse {
-    0%, 100% { opacity: 0.78; }
-    50% { opacity: 1; }
-}
-
-/* Cirkelvormige Introductie sectie */
-.intro {
-    position: relative;
-    z-index: 2;
-    width: 340px;
-    height: 340px;
-    max-width: calc(100vw - 40px);
-    background: radial-gradient(circle at 30% 30%, rgba(31, 107, 31, 0.96), #0b3d0b);
-    margin: 72px auto;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 30px;
-    transition: transform 0.5s, box-shadow 0.5s;
-    box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.3), 0 0 40px 20px rgba(0, 255, 0, 0.2);
-    animation: pulse 6s infinite;
-}
-
-@keyframes pulse {
     0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.3), 0 0 40px 20px rgba(0, 255, 0, 0.2);
+        opacity: 0.8;
     }
     50% {
-        transform: scale(1.03);
-        box-shadow: 0 0 25px 12px rgba(0, 255, 0, 0.4), 0 0 50px 25px rgba(0, 255, 0, 0.3);
+        opacity: 1;
     }
 }
 
-.intro:hover {
-    transform: scale(1.06) rotate(1.5deg);
-    box-shadow: 0 0 30px 15px rgba(0, 255, 0, 0.5), 0 0 60px 30px rgba(0, 255, 0, 0.4);
+.orb-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+/* Rustige golf over de horizonlijn op het tempo van een uitademing */
+.horizon-ripple {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100vw;
+    height: 3px;
+    transform: translate(-50%, -50%) scaleX(0.14);
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--horizon-mid) 50%,
+        transparent 100%
+    );
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.horizon-ripple.is-pulsing {
+    animation: horizonCalmWave var(--calm-ease-dur, 1.05s) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes horizonCalmWave {
+    0% {
+        opacity: 0.92;
+        transform: translate(-50%, -50%) scaleX(0.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scaleX(1.06);
+    }
+}
+
+/* Rechthoekige ongeknipte hit-pad rond de sculpturale ronde Broccoli-schijf (100% klikzekerheid) */
+.broccoli-button {
+    appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 3;
+    width: var(--btn-size);
+    height: var(--btn-size);
+    padding: 0;
+    margin: 0;
+    border-radius: 20px;
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.broccoli-button-disc {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 224, 0.44);
+    background: radial-gradient(
+        circle at 66% 26%,
+        #4e8c57 0%,
+        #285c31 58%,
+        #163b1d 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    box-shadow:
+        inset 0 2px 6px rgba(255, 255, 224, 0.22),
+        inset 0 -6px 14px rgba(4, 20, 8, 0.42),
+        0 10px 28px rgba(3, 18, 8, 0.36),
+        0 0 40px 4px rgba(142, 206, 150, 0.18);
+    transform: translateY(0) scale(1);
+    transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.35s ease;
+}
+
+body[data-sky="day"] .broccoli-button-disc {
+    background: radial-gradient(
+        circle at 66% 26%,
+        #7cb07c 0%,
+        #487f50 56%,
+        #2f5e38 100%
+    );
+    border-color: rgba(255, 253, 242, 0.78);
+    box-shadow:
+        inset 0 2px 6px rgba(255, 253, 240, 0.36),
+        inset 0 -6px 14px rgba(24, 54, 28, 0.24),
+        0 10px 28px rgba(32, 68, 42, 0.16),
+        0 0 36px 4px rgba(255, 252, 234, 0.34);
+}
+
+.broccoli-button-disc::before {
+    content: '';
+    position: absolute;
+    inset: 11%;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 232, 0.24);
+    background: transparent;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+.broccoli-button-core {
+    position: relative;
+    z-index: 2;
+    width: 34%;
+    height: 34%;
+    border-radius: 50%;
+    filter: blur(4px);
+    background: radial-gradient(
+        circle,
+        rgba(255, 254, 236, 0.9) 0%,
+        rgba(255, 253, 224, 0.35) 55%,
+        transparent 100%
+    );
+    box-shadow: none;
+    opacity: 0.42;
+    animation: coreOpacityBreath 6.5s ease-in-out infinite;
+    pointer-events: none;
+    transition: opacity 0.5s ease, background 0.5s ease;
+}
+
+@keyframes coreOpacityBreath {
+    0%, 100% {
+        opacity: 0.32;
+    }
+    50% {
+        opacity: 0.58;
+    }
+}
+
+.broccoli-button:hover .broccoli-button-disc {
+    transform: translateY(-1.5px) scale(1.012);
+    border-color: rgba(255, 255, 224, 0.72);
+    box-shadow:
+        inset 0 2px 8px rgba(255, 255, 236, 0.32),
+        inset 0 -5px 14px rgba(8, 28, 12, 0.36),
+        0 14px 32px rgba(8, 28, 12, 0.32),
+        0 0 48px 8px rgba(162, 220, 168, 0.26);
+}
+
+body[data-sky="day"] .broccoli-button:hover .broccoli-button-disc {
+    border-color: rgba(255, 254, 246, 0.92);
+    box-shadow:
+        inset 0 2px 8px rgba(255, 254, 244, 0.46),
+        inset 0 -5px 14px rgba(24, 54, 28, 0.2),
+        0 14px 32px rgba(32, 68, 42, 0.2),
+        0 0 46px 8px rgba(255, 252, 234, 0.44);
+}
+
+.broccoli-button[aria-pressed="true"] .broccoli-button-disc {
+    border-color: rgba(255, 255, 232, 0.76);
+    box-shadow:
+        inset 0 2px 8px rgba(255, 255, 232, 0.34),
+        inset 0 -4px 12px rgba(8, 28, 12, 0.3),
+        0 10px 26px rgba(8, 28, 12, 0.28),
+        0 0 54px 10px rgba(248, 240, 200, 0.28);
+}
+
+body[data-sky="day"] .broccoli-button[aria-pressed="true"] .broccoli-button-disc {
+    border-color: rgba(255, 254, 244, 0.9);
+    box-shadow:
+        inset 0 2px 8px rgba(255, 254, 244, 0.42),
+        inset 0 -4px 12px rgba(24, 54, 28, 0.18),
+        0 10px 26px rgba(32, 68, 42, 0.16),
+        0 0 48px 10px rgba(255, 252, 234, 0.42);
+}
+
+.broccoli-button[aria-pressed="true"] .broccoli-button-core {
+    opacity: 0.62;
+    background: radial-gradient(
+        circle,
+        rgba(255, 254, 236, 0.95) 0%,
+        rgba(248, 240, 200, 0.48) 58%,
+        transparent 100%
+    );
+}
+
+.broccoli-button.is-pressing .broccoli-button-disc,
+.broccoli-button:active .broccoli-button-disc {
+    transform: translateY(2.5px) scale(0.958);
+    box-shadow:
+        inset 0 1px 4px rgba(255, 255, 224, 0.22),
+        inset 0 -3px 10px rgba(8, 28, 12, 0.44),
+        0 4px 14px rgba(8, 28, 12, 0.3),
+        0 0 34px 6px rgba(162, 220, 168, 0.28);
+}
+
+.broccoli-button:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 6px;
 }
 
 .intro-content {
-    padding: 12px;
-    color: #f0f0f0;
+    padding: 16px;
+    color: var(--fg-primary);
     display: none;
 }
 
-/* Verken-knop stijl */
-.explore-button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 9px 18px;
-    background-color: rgba(165, 214, 167, 0.18);
-    color: #e0ffe0;
-    border: 1px solid rgba(165, 214, 167, 0.6);
-    text-decoration: none;
-    font-size: 0.94em;
-    border-radius: 24px;
-    transition: background-color 0.3s, transform 0.3s, color 0.3s;
+/* Systeemdruk (vóór indrukken): ingekaderde meldingen vs. kaderloze wereld ná indrukken */
+.day-moment {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding-block: clamp(8px, 0.9vh, 12px);
+    padding-inline: clamp(14px, 1.4vw, 20px);
+    border-radius: 999px;
+    font-size: clamp(0.88rem, 1.02vw, 1.08rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    color: var(--chip-text);
+    background: var(--chip-bg);
+    border: 1px solid var(--chip-border);
+    box-shadow: 0 3px 14px rgba(15, 36, 18, 0.08);
+    backdrop-filter: blur(8px);
+    transform: translate3d(0, 0, 0) scale(1);
+    transition:
+        transform var(--calm-ease-dur, 1.05s) cubic-bezier(0.22, 1, 0.36, 1),
+        opacity var(--calm-ease-dur, 1.05s) ease,
+        background-color 0.75s ease,
+        border-color 0.75s ease,
+        box-shadow 0.75s ease,
+        color 0.75s ease,
+        padding 0.75s ease,
+        font-size 0.75s ease,
+        visibility 0s linear 0s;
 }
 
-.explore-button:hover {
-    background-color: rgba(102, 187, 106, 0.4);
-    color: #ffffff;
-    transform: scale(1.04);
+.day-moment--noise {
+    border-color: var(--chip-border);
 }
 
-/* Bewegende achtergrond */
-.moving-background {
-    position: fixed;
-    top: -200px;
-    left: -200px;
-    width: 350%;
-    height: 350%;
-    z-index: -1;
-    background: url('images/rook4.jpg') repeat center center;
-    background-size: cover;
-    animation: moveBackground 300s linear infinite;
-    opacity: 0.2;
+.day-moment-glyph {
+    flex-shrink: 0;
+    font-size: 0.86rem;
+    line-height: 1;
 }
 
-@keyframes moveBackground {
-    0% { background-position: -3200px -3200px; transform: rotate(0deg); }
-    25% { background-position: -2000px -1000px; transform: rotate(5deg); }
-    50% { background-position: -1000px -2000px; transform: rotate(-5deg); }
-    75% { background-position: 0px -1000px; transform: rotate(3deg); }
-    100% { background-position: -3200px -3200px; transform: rotate(0deg); }
+.day-moment--noise .day-moment-glyph {
+    color: var(--noise-accent);
 }
 
-/* Cards (#mystery, #contact, #privacy, privacy.html) */
-.privacy-card {
-    max-width: 820px;
-    margin: 24px auto;
-    padding: 26px 28px;
-    background: rgba(11, 61, 11, 0.92);
-    border: 1px solid rgba(102, 187, 106, 0.4);
-    border-radius: 16px;
-    line-height: 1.65;
-    text-align: left;
-    color: #f0f0f0;
+.day-moment--care .day-moment-glyph {
+    color: var(--care-accent);
 }
 
-.privacy-card h2,
-.privacy-card h3 {
-    color: #c8f5c8;
-    margin-top: 1.1em;
-    margin-bottom: 0.45em;
+/* Ná indrukken: stoorzenders lossen op, zorgnotities staan kaderloos in de wereld */
+.home-horizon-stage.is-filtered .day-moment--noise {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate3d(0, 18px, 0) scale(0.94);
+    transition:
+        transform var(--calm-ease-dur, 1.05s) cubic-bezier(0.22, 1, 0.36, 1),
+        opacity var(--calm-ease-dur, 1.05s) ease,
+        visibility 0s linear var(--calm-ease-dur, 1.05s);
 }
 
-.privacy-card h2:first-child {
-    margin-top: 0;
+.home-horizon-stage.is-filtered .day-moment--care {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    padding-inline: 4px;
+    color: var(--fg-primary);
+    font-size: clamp(1.06rem, 1.4vw, 1.42rem);
+    font-weight: 500;
+    text-shadow: var(--fg-shadow);
 }
 
-.privacy-card ul {
-    padding-left: 20px;
-    margin: 0.6em 0 1em 0;
+@media (min-width: 961px) {
+    .home-horizon-stage.is-filtered .day-moment--care {
+        transform: translate3d(0, -24px, 0);
+    }
 }
 
-.privacy-card li {
-    margin-bottom: 0.55em;
-}
-
-.privacy-card a {
-    color: #b9f0ba;
-    text-decoration: underline;
-}
-
-.privacy-card a:hover {
-    color: #ffffff;
-}
-
-.plain-summary {
-    padding: 12px 16px;
-    margin: 12px 0 16px 0;
-    background: rgba(25, 92, 25, 0.55);
-    border-left: 3px solid #a5d6a7;
-    border-radius: 8px;
-    color: #f4fff4;
-}
-
-.release-note {
-    padding: 10px 14px;
-    margin: 12px 0;
-    background: rgba(165, 214, 167, 0.14);
-    border: 1px solid rgba(165, 214, 167, 0.42);
-    border-radius: 10px;
-    color: #e8ffe8;
-}
-
-.privacy-card .play-cta {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 11px 22px;
-    background-color: rgba(102, 187, 106, 0.28);
-    border: 1px solid rgba(165, 214, 167, 0.72);
-    border-radius: 24px;
-    color: #e8ffe8;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.privacy-card .play-cta:hover {
-    background-color: rgba(102, 187, 106, 0.48);
-    color: #ffffff;
-    text-decoration: none;
-    transform: scale(1.02);
-}
-
-#contact a {
-    color: #b9f0ba;
-    text-decoration: underline;
-}
-
-#contact a:hover {
-    color: #ffffff;
-}
-
-/* Footer */
-footer {
+/* Fluisterende serif-zin onder de horizon (matcht MorningGreetingSection.kt) */
+.horizon-whisper {
+    margin: clamp(14px, 2.5vh, 26px) auto 0;
+    max-width: min(88vw, 720px);
+    min-height: 1.7em;
+    padding-inline: 12px;
     text-align: center;
-    padding: 20px 16px 26px 16px;
-    background-color: transparent;
-    color: #f0f0f0;
-    width: 100%;
-    margin-top: auto;
+    font-family: var(--ew-serif);
+    font-size: clamp(1.12rem, 1.65vw, 1.54rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--fg-primary);
+    text-shadow: var(--fg-shadow);
+    opacity: 0.92;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-footer p {
-    margin: 0 0 8px 0;
+#home.is-horizon-calm .horizon-whisper {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.footer-links {
+/* Subtiele 3-staps dagritme-kiezer (verschijnt na 1e druk) */
+.day-rhythm-nav {
+    margin: clamp(6px, 1.2vh, 12px) auto 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px 18px;
+    gap: 2px 6px;
+    min-height: 44px;
+    opacity: 0;
+    transform: translateY(4px);
+    pointer-events: none;
+    transition: opacity 0.5s ease 0.12s, transform 0.5s ease 0.12s;
 }
 
+#home.has-revealed-more .day-rhythm-nav {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.day-rhythm-btn {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding-block: 6px;
+    padding-inline: 10px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--fg-primary);
+    opacity: 0.86;
+    font: inherit;
+    font-size: 0.86rem;
+    letter-spacing: 0.03em;
+    text-shadow: var(--fg-shadow);
+    cursor: pointer;
+    transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.day-rhythm-btn:hover,
+.day-rhythm-btn[aria-current="true"] {
+    opacity: 1;
+    color: var(--fg-primary);
+}
+
+.day-rhythm-btn[aria-current="true"] {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 2px;
+}
+
+.day-rhythm-btn:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 2px;
+}
+
+.day-rhythm-sep {
+    opacity: 0.65;
+    color: var(--fg-primary);
+    user-select: none;
+}
+
+/* Zachte productdeur (verschijnt na de 1e ervaring) */
+.home-more-stage {
+    margin: clamp(10px, 1.8vh, 18px) auto 0;
+    min-height: 44px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+    transition: opacity 0.5s ease 0.16s, transform 0.5s ease 0.16s;
+}
+
+#home.has-revealed-more .home-more-stage {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.home-more-stage .intro-content {
+    padding: 0;
+    margin: 0;
+}
+
+.quiet-more-link {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    max-width: 92vw;
+    min-height: 44px;
+    padding-block: 10px;
+    padding-inline: 20px;
+    border-radius: 999px;
+    color: var(--fg-primary);
+    font-size: 0.92rem;
+    line-height: 1.35;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: 1px solid var(--pill-border);
+    background: var(--pill-bg);
+    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.quiet-more-link:hover {
+    border-color: var(--pill-hover-border);
+    background: var(--pill-hover-bg);
+}
+
+.quiet-more-link:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 3px;
+}
+
+/* Klara & Spirited Away levende wereldlaag (echt buitenlicht / donker) */
+.moving-background {
+    --px: 0;
+    --py: 0;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    isolation: isolate;
+    background:
+        radial-gradient(circle at 80% 18%, rgba(159, 208, 255, 0.16) 0%, rgba(159, 208, 255, 0.04) 36%, transparent 64%),
+        radial-gradient(ellipse 95% 42% at 50% 62%, rgba(28, 78, 62, 0.28) 0%, rgba(12, 42, 34, 0.18) 48%, transparent 78%),
+        linear-gradient(180deg, #051319 0%, #092622 54%, #061c12 100%);
+    transition: background 1.2s ease;
+}
+
+body[data-sky="day"] .moving-background {
+    background:
+        radial-gradient(circle at 78% 14%, rgba(255, 251, 226, 0.72) 0%, rgba(255, 246, 204, 0.24) 30%, transparent 58%),
+        linear-gradient(180deg, #8fb8ce 0%, #b2d0dc 38%, #d4e3cf 74%, #b7cca2 100%);
+}
+
+body[data-sky="day"][data-weather="rain"] .moving-background {
+    background:
+        radial-gradient(circle at 52% 14%, rgba(232, 238, 234, 0.48) 0%, transparent 58%),
+        linear-gradient(180deg, #8aa3b2 0%, #abc0c8 44%, #cad6cd 78%, #a8bda8 100%);
+}
+
+body[data-sky="night"][data-daypart="dusk"] .moving-background {
+    background:
+        radial-gradient(ellipse 80% 34% at 50% 56%, rgba(246, 198, 138, 0.22) 0%, rgba(190, 146, 94, 0.08) 42%, transparent 72%),
+        radial-gradient(circle at 78% 22%, rgba(159, 208, 255, 0.1) 0%, transparent 48%),
+        linear-gradient(180deg, #071e19 0%, #0b321d 52%, #082914 78%, #04170a 100%);
+}
+
+/* CSS-only atmosfeer-sluiers */
+.moving-background::before,
+.moving-background::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+    -webkit-mask-image: radial-gradient(closest-side at 50% 50%, #000 0%, rgba(0, 0, 0, 0.65) 38%, rgba(0, 0, 0, 0.15) 66%, transparent 90%);
+    mask-image: radial-gradient(closest-side at 50% 50%, #000 0%, rgba(0, 0, 0, 0.65) 38%, rgba(0, 0, 0, 0.15) 66%, transparent 90%);
+}
+
+.moving-background::before {
+    inset: -18% -24%;
+    background: url('images/rook.jpg') center / cover no-repeat;
+    opacity: 0.22;
+    filter: blur(8px) contrast(1.45) brightness(0.78) saturate(1.05);
+    animation: cloudVeilDriftA 135s ease-in-out infinite alternate;
+}
+
+.moving-background::after {
+    inset: -20% -22%;
+    background: url('images/rook4.jpg') center / cover no-repeat;
+    opacity: 0.16;
+    filter: blur(10px) contrast(1.65) brightness(0.72) hue-rotate(-14deg);
+    animation: cloudVeilDriftB 175s ease-in-out -42s infinite alternate;
+}
+
+body[data-sky="day"] .moving-background::before,
+body[data-sky="day"] .moving-background::after {
+    mix-blend-mode: normal;
+    opacity: 0.34;
+    filter: url(#dayCloudAlpha) blur(10px);
+}
+
+@media (prefers-color-scheme: light) {
+    body:not([data-sky]) .moving-background {
+        background:
+            radial-gradient(circle at 78% 14%, rgba(255, 251, 226, 0.72) 0%, rgba(255, 246, 204, 0.24) 30%, transparent 58%),
+            linear-gradient(180deg, #8fb8ce 0%, #b2d0dc 38%, #d4e3cf 74%, #b7cca2 100%);
+    }
+
+    body:not([data-sky]) .moving-background::before,
+    body:not([data-sky]) .moving-background::after {
+        mix-blend-mode: normal;
+        opacity: 0.34;
+        filter: url(#dayCloudAlpha) blur(10px);
+    }
+}
+
+/* Databesparing: geen wolk-JPEG's laden, alleen rustig luchtverloop & CSS-glows */
+body.is-save-data .moving-background::before,
+body.is-save-data .moving-background::after {
+    background-image: none !important;
+    display: none !important;
+}
+
+/* Subtiele opklaring in het luchtlicht zodra de rust intreedt */
+.ambient-clearing {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(ellipse 66% 46% at 50% 48%, rgba(168, 232, 182, 0.14) 0%, rgba(159, 208, 255, 0.06) 46%, transparent 78%);
+    transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body[data-sky="day"] .ambient-clearing {
+    background: radial-gradient(ellipse 70% 48% at 50% 46%, rgba(255, 253, 236, 0.38) 0%, rgba(236, 248, 228, 0.16) 48%, transparent 78%);
+}
+
+body.is-world-calm .ambient-clearing {
+    opacity: 1;
+}
+
+/* Geen opacity/filter op containerlagen zodat mix-blend-mode: screen rechtstreeks tegen de lucht werkt */
+.cloud-parallax-layer {
+    position: absolute;
+    inset: -6%;
+    pointer-events: none;
+    will-change: transform;
+    transform: translate3d(
+        calc(var(--px, 0) * var(--depth, 0px)),
+        calc(var(--py, 0) * var(--depth, 0px)),
+        0
+    );
+}
+
+.cloud-formation {
+    position: absolute;
+    left: 0;
+    top: var(--y, 24%);
+    width: var(--w, 46vw);
+    height: var(--h, 28vh);
+    pointer-events: none;
+    will-change: transform;
+    animation: cloudDrift var(--dur, 145s) linear var(--delay, 0s) infinite;
+}
+
+.cloud-lobe {
+    position: absolute;
+    left: var(--lx, 0%);
+    top: var(--ly, 0%);
+    width: var(--lw, 76%);
+    height: var(--lh, 92%);
+    background-image: var(--img);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    mix-blend-mode: screen;
+    opacity: var(--lobe-opacity, 0.56);
+    filter: blur(5px) var(--lobe-filter, contrast(1.88) brightness(0.68) saturate(0.95));
+    -webkit-mask-image: radial-gradient(closest-side at 50% 50%, #000 0%, rgba(0, 0, 0, 0.78) 38%, rgba(0, 0, 0, 0.24) 66%, transparent 92%);
+    mask-image: radial-gradient(closest-side at 50% 50%, #000 0%, rgba(0, 0, 0, 0.78) 38%, rgba(0, 0, 0, 0.24) 66%, transparent 92%);
+    will-change: transform, opacity;
+    animation: cloudBillow var(--morph-dur, 32s) ease-in-out var(--morph-delay, 0s) infinite alternate;
+}
+
+body[data-sky="day"] .cloud-lobe {
+    mix-blend-mode: normal;
+    opacity: 0.72;
+    filter: url(#dayCloudAlpha) blur(6px);
+}
+
+.cloud-glow {
+    position: absolute;
+    left: var(--lx, 12%);
+    top: var(--ly, 16%);
+    width: var(--lw, 84%);
+    height: var(--lh, 74%);
+    border-radius: 50%;
+    background: var(
+        --glow-bg,
+        radial-gradient(ellipse at 50% 54%, rgba(165, 224, 175, 0.3) 0%, rgba(102, 187, 106, 0.14) 44%, transparent 74%)
+    );
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+    animation: cloudBillow var(--morph-dur, 32s) ease-in-out var(--morph-delay, -7s) infinite alternate;
+}
+
+body[data-sky="day"] .cloud-glow {
+    mix-blend-mode: normal;
+    opacity: 0.88;
+    filter: blur(4px);
+    background:
+        radial-gradient(ellipse 46% 42% at 38% 44%, rgba(255, 254, 248, 0.88) 0%, rgba(255, 253, 244, 0.44) 58%, transparent 84%),
+        radial-gradient(ellipse 48% 40% at 64% 50%, rgba(255, 254, 248, 0.82) 0%, rgba(244, 249, 246, 0.38) 60%, transparent 86%),
+        radial-gradient(ellipse 64% 26% at 52% 72%, rgba(78, 118, 138, 0.16) 0%, transparent 78%);
+}
+
+/* Ghibli zachte heuvellijnen onderaan (afgeleid van ComposeScreen.kt) */
+.ambient-hills {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 28vh;
+    min-height: 140px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.78;
+}
+
+.ambient-hills path {
+    transition: fill 1.2s ease;
+}
+
+.ambient-hill-1 {
+    fill: rgba(70, 122, 128, 0.12);
+}
+
+.ambient-hill-2 {
+    fill: rgba(24, 58, 56, 0.28);
+}
+
+.ambient-hill-3 {
+    fill: rgba(12, 34, 30, 0.4);
+}
+
+body[data-sky="day"] .ambient-hill-1 {
+    fill: rgba(154, 185, 120, 0.42);
+}
+
+body[data-sky="day"] .ambient-hill-2 {
+    fill: rgba(116, 156, 92, 0.36);
+}
+
+body[data-sky="day"] .ambient-hill-3 {
+    fill: rgba(82, 126, 68, 0.32);
+}
+
+/* Zonnestofjes overdag / stille sterrenpunten 's nachts */
+.ambient-motes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ambient-mote {
+    position: absolute;
+    border-radius: 50%;
+    background: #dbe9ff;
+    box-shadow: 0 0 8px rgba(219, 233, 255, 0.45);
+    animation: moteTwinkle var(--twinkle-dur, 9s) ease-in-out var(--twinkle-delay, 0s) infinite;
+}
+
+body[data-sky="day"] .ambient-mote {
+    background: rgba(255, 252, 224, 0.92);
+    box-shadow: 0 0 11px 2px rgba(255, 238, 162, 0.65);
+    --mote-min: 0.22;
+    --mote-max: 0.62;
+}
+
+@keyframes moteTwinkle {
+    0%, 100% {
+        opacity: var(--mote-min, 0.14);
+    }
+    50% {
+        opacity: var(--mote-max, 0.44);
+    }
+}
+
+/* Zeldzame Klara & Ghibli micro-wonders aan de buitenrand van het blikveld */
+.ambient-wonder {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.wonder-star-glint {
+    width: 16px;
+    height: 16px;
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+    animation: wonderStarGlint 3.2s ease-in-out forwards;
+}
+
+.wonder-star-glint::before,
+.wonder-star-glint::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 224, 0.92) 50%, transparent 100%);
+    border-radius: 999px;
+}
+
+.wonder-star-glint::before {
+    width: 16px;
+    height: 1.5px;
+}
+
+.wonder-star-glint::after {
+    width: 1.5px;
+    height: 16px;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 224, 0.92) 50%, transparent 100%);
+}
+
+@keyframes wonderStarGlint {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.45) rotate(0deg);
+    }
+    45% {
+        opacity: 0.85;
+        transform: translate(-50%, -50%) scale(1.15) rotate(12deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.45) rotate(24deg);
+    }
+}
+
+.wonder-sun-glint {
+    width: clamp(42px, 6vw, 76px);
+    height: clamp(34px, 4.8vw, 62px);
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(255, 249, 214, 0.5) 0%, rgba(255, 244, 184, 0.2) 48%, transparent 72%);
+    filter: blur(4px);
+    transform: translate(-50%, -50%) scale(0.75);
+    opacity: 0;
+    animation: wonderSunGlint 4.2s ease-in-out forwards;
+}
+
+@keyframes wonderSunGlint {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.75);
+    }
+    45% {
+        opacity: 0.78;
+        transform: translate(-50%, -50%) scale(1.12);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.85);
+    }
+}
+
+.wonder-seed {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 253, 232, 0.92);
+    box-shadow: 0 0 8px 2px rgba(255, 248, 206, 0.65);
+    opacity: 0;
+    animation: wonderSeedDrift 6.5s ease-in-out forwards;
+}
+
+.wonder-seed::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    width: 1px;
+    height: 7px;
+    transform: translateX(-50%) rotate(-12deg);
+    background: linear-gradient(180deg, rgba(255, 253, 232, 0.45), rgba(255, 253, 232, 0));
+}
+
+@keyframes wonderSeedDrift {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) scale(0.85);
+    }
+    20% {
+        opacity: 0.78;
+    }
+    80% {
+        opacity: 0.72;
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(var(--seed-dx, 46px), var(--seed-dy, -26px), 0) scale(1);
+    }
+}
+
+/* Zeldzame zwijgende vallende ster (alleen donkere lucht) */
+.shooting-star {
+    position: absolute;
+    top: var(--star-y, 16%);
+    left: var(--star-x, 22%);
+    width: 88px;
+    height: 1.5px;
+    background: linear-gradient(90deg, rgba(219, 233, 255, 0) 0%, rgba(255, 255, 224, 0.78) 100%);
+    opacity: 0;
+    transform: rotate(var(--star-angle, 22deg)) translate3d(-40px, 0, 0);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.shooting-star.is-streaking {
+    animation: silentStreak 1.3s ease-out forwards;
+}
+
+@keyframes silentStreak {
+    0% {
+        opacity: 0;
+        transform: rotate(var(--star-angle, 22deg)) translate3d(-54px, 0, 0);
+    }
+    25% {
+        opacity: 0.76;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(var(--star-angle, 22deg)) translate3d(175px, 0, 0);
+    }
+}
+
+@keyframes cloudVeilDriftA {
+    0% { transform: translate3d(-4%, -2%, 0) scale(1.04) rotate(-1.5deg); }
+    50% { transform: translate3d(2%, 1.5%, 0) scale(1.09) rotate(1deg); }
+    100% { transform: translate3d(5%, -1.5%, 0) scale(1.06) rotate(2.2deg); }
+}
+
+@keyframes cloudVeilDriftB {
+    0% { transform: translate3d(4%, 2%, 0) scale(1.08) rotate(1.8deg); }
+    50% { transform: translate3d(-1.5%, -1.5%, 0) scale(1.13) rotate(-0.8deg); }
+    100% { transform: translate3d(-5%, 1%, 0) scale(1.05) rotate(-2deg); }
+}
+
+@keyframes cloudDrift {
+    0% {
+        transform: translate3d(var(--from-x, -54vw), var(--float-a, 0px), 0) scale(var(--scale-a, 1));
+    }
+    50% {
+        transform: translate3d(var(--mid-x, 32vw), var(--float-b, -18px), 0) scale(var(--scale-b, 1.05));
+    }
+    100% {
+        transform: translate3d(var(--to-x, 118vw), var(--float-c, 8px), 0) scale(var(--scale-a, 1));
+    }
+}
+
+@keyframes cloudBillow {
+    0% {
+        transform: translate3d(-10px, 6px, 0) scale(var(--sx, 1), var(--sy, 1)) rotate(var(--rot-a, -3deg));
+        opacity: var(--lobe-min, 0.62);
+    }
+    50% {
+        transform: translate3d(8px, -8px, 0) scale(calc(var(--sx, 1) * 1.06), calc(var(--sy, 1) * 0.96)) rotate(var(--rot-mid, 1.5deg));
+        opacity: var(--lobe-max, 0.92);
+    }
+    100% {
+        transform: translate3d(14px, 4px, 0) scale(calc(var(--sx, 1) * 0.97), calc(var(--sy, 1) * 1.05)) rotate(var(--rot-b, 4deg));
+        opacity: var(--lobe-min, 0.66);
+    }
+}
+
+/* Zachte, volledig randloze nevelzone voor EventWhisperer & Contact (SPR-COS-AMB-001) */
+.whisper-sheet {
+    max-width: min(90vw, 760px);
+    margin-block: clamp(16px, 4vh, 36px);
+    margin-inline: auto;
+    padding-block: clamp(24px, 4vh, 48px);
+    padding-inline: clamp(22px, 4vw, 56px);
+    border-radius: 36px;
+    background: var(--sheet-wash);
+    border: none;
+    line-height: 1.7;
+    text-align: start;
+    color: var(--fg-primary);
+    box-sizing: border-box;
+}
+
+.whisper-sheet h2 {
+    font-family: var(--ew-serif);
+    font-weight: 400;
+    font-size: clamp(1.38rem, 2.2vw, 1.78rem);
+    color: var(--fg-primary);
+    margin: 0 0 16px;
+}
+
+.whisper-sheet p {
+    font-size: clamp(1rem, 1.15vw, 1.12rem);
+    margin: 0 0 14px;
+    color: var(--fg-soft);
+}
+
+.whisper-sheet .release-note {
+    font-size: 0.92rem;
+    opacity: 0.88;
+    margin-top: 0.75rem;
+}
+
+.whisper-sheet a:not(.card-back-link):not(.play-cta) {
+    color: var(--fg-primary);
+    text-decoration: underline;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.whisper-sheet a:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+#contact .whisper-sheet {
+    max-width: min(90vw, 580px);
+    text-align: center;
+}
+
+#contact .card-back-row {
+    text-align: start;
+}
+
+/* Footer met >= 44px aanraakdoelen & hoog contrast */
+footer {
+    text-align: center;
+    padding-block: clamp(6px, 1.2vh, 12px) clamp(8px, 1.5vh, 14px);
+    padding-inline: 12px;
+    background-color: transparent;
+    color: var(--fg-primary);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+    opacity: 0.96;
+    font-size: 0.86rem;
+    letter-spacing: 0.02em;
+    transition: opacity 0.35s ease;
+}
+
+footer:hover,
+footer:focus-within {
+    opacity: 1;
+}
+
+footer p {
+    margin: 0;
+}
+
+.footer-links {
+    margin: 2px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px 8px;
+}
+
+.footer-sep {
+    opacity: 0.6;
+}
+
+.footer-link,
 footer .privacy-link {
-    color: #d6f5d6;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 10px;
+    color: var(--fg-primary);
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.footer-link:hover,
+footer .privacy-link:hover {
     text-decoration: underline;
 }
 
-footer .privacy-link:hover {
-    color: #ffffff;
+.motion-toggle-btn {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    color: var(--fg-primary);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font: inherit;
+    cursor: pointer;
+    opacity: 0.92;
+    transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-@media (max-width: 640px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 14px 16px;
-    }
-
-    .logo h1 {
-        font-size: 1.75em;
-    }
-
-    nav {
-        width: 100%;
-    }
-
-    nav ul {
-        width: 100%;
-        justify-content: space-between;
-        gap: 10px 12px;
-    }
-
-    .options-container {
-        left: auto;
-        right: 0;
-    }
-
-    main {
-        margin: 10px auto;
-        padding: 0 14px;
-    }
-
-    .intro {
-        width: 296px;
-        height: 296px;
-        margin: 44px auto;
-        padding: 22px;
-    }
-
-    .privacy-card {
-        padding: 18px 16px;
-        margin: 14px auto;
-    }
+.motion-toggle-btn:hover {
+    opacity: 1;
+    border-color: var(--pill-border);
+    background: var(--pill-bg);
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .intro,
+.motion-icon--play {
+    display: none;
+}
+
+.motion-toggle-btn[aria-pressed="true"] {
+    opacity: 1;
+    border-color: var(--pill-border);
+    background: var(--pill-bg);
+}
+
+.motion-toggle-btn[aria-pressed="true"] .motion-icon--pause {
+    display: none;
+}
+
+.motion-toggle-btn[aria-pressed="true"] .motion-icon--play {
+    display: block;
+}
+
+.footer-link:focus-visible,
+footer .privacy-link:focus-visible,
+.motion-toggle-btn:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 2px;
+}
+
+/* Privacykaart in dezelfde zachte familie als whisper-sheet */
+.privacy-card {
+    max-width: min(92vw, 820px);
+    margin-block: clamp(16px, 3vh, 30px);
+    margin-inline: auto;
+    padding-block: clamp(20px, 3vh, 30px);
+    padding-inline: clamp(18px, 3vw, 34px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    line-height: 1.65;
+    text-align: start;
+    color: var(--fg-primary);
+    box-sizing: border-box;
+    backdrop-filter: blur(8px);
+}
+
+.card-back-row {
+    margin: 0 0 8px;
+}
+
+.card-back-link {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding-inline: 8px;
+    margin-inline-start: -8px;
+    font-size: 0.94rem;
+    color: var(--fg-primary) !important;
+    text-decoration: none !important;
+    border-radius: 8px;
+    transition: opacity 0.2s ease;
+}
+
+.card-back-link:hover {
+    text-decoration: underline !important;
+}
+
+.card-back-link:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 2px;
+}
+
+.privacy-card h2,
+.privacy-card h3 {
+    font-family: var(--ew-serif);
+    color: var(--fg-primary);
+    font-weight: 400;
+    margin-top: 1.15em;
+    margin-bottom: 0.5em;
+}
+
+.privacy-card h2:first-of-type {
+    margin-top: 0;
+}
+
+.privacy-card ul {
+    padding-inline-start: 20px;
+    margin: 0.6em 0 1.1em 0;
+}
+
+.privacy-card li {
+    margin-bottom: 0.45em;
+}
+
+.privacy-card a:not(.card-back-link) {
+    color: var(--fg-primary);
+    text-decoration: underline;
+}
+
+.privacy-card a:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.play-cta {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    margin-top: 8px;
+    padding-block: 8px;
+    padding-inline: 22px;
+    background-color: var(--pill-bg);
+    border: 1.5px solid var(--pill-hover-border);
+    border-radius: 999px;
+    color: var(--fg-primary) !important;
+    text-decoration: none !important;
+    font-weight: 500;
+    transition: background-color 0.28s ease, border-color 0.28s ease;
+}
+
+.play-cta:hover {
+    background-color: var(--pill-hover-bg);
+}
+
+.play-cta:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 3px;
+}
+
+/* Vestibulair-veilige pauze voor animaties (WCAG 2.2.2 / 2.3.3) met behoud van zachte fades */
+body.is-motion-paused .moving-background::before,
+body.is-motion-paused .moving-background::after,
+body.is-motion-paused .cloud-formation,
+body.is-motion-paused .cloud-lobe,
+body.is-motion-paused .cloud-glow,
+body.is-motion-paused .ambient-mote,
+body.is-motion-paused .ambient-wonder,
+body.is-motion-paused .horizon-line,
+body.is-motion-paused .broccoli-button-core,
+body.is-motion-paused .shooting-star {
+    animation-play-state: paused !important;
+}
+
+body.is-motion-paused .cloud-parallax-layer,
+body.is-motion-paused .broccoli-button:hover .broccoli-button-disc,
+body.is-motion-paused .broccoli-button.is-pressing .broccoli-button-disc,
+body.is-motion-paused .broccoli-button:active .broccoli-button-disc,
+body.is-motion-paused .day-moment,
+body.is-motion-paused .horizon-whisper,
+body.is-motion-paused .day-rhythm-nav,
+body.is-motion-paused .home-more-stage {
+    transform: none !important;
+}
+
+body.is-motion-paused .home-horizon-stage.is-filtered .horizon-line {
+    opacity: 0.34;
+}
+
+body.is-motion-paused .horizon-ripple {
+    display: none;
+}
+
+body.is-motion-paused .day-moment,
+body.is-motion-paused .horizon-whisper,
+body.is-motion-paused .day-rhythm-nav,
+body.is-motion-paused .home-more-stage,
+body.is-motion-paused .ambient-clearing {
+    transition: opacity 0.4s ease, color 0.4s ease, background-color 0.4s ease, border-color 0.4s ease !important;
+}
+
+body.is-motion-paused .home-horizon-stage.is-filtered .day-moment--noise {
+    transform: none !important;
+    transition: opacity 0.4s ease, visibility 0s linear 0.4s !important;
+}
+
+/* Tablet Portrait / Medium (640px–960px): 2-koloms vleugels onder centrale knop */
+@media (min-width: 640px) and (max-width: 960px) {
+    .home-horizon-stage {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        justify-items: center;
+        min-height: 0;
+        gap: 20px 28px;
+        margin-top: 12px;
+    }
+
+    .orb-stage {
+        grid-column: 1 / -1;
+        order: -1;
+    }
+
     .horizon-line,
-    .moving-background {
-        animation: none;
+    .horizon-ripple {
+        top: calc(var(--btn-size) / 2);
+    }
+
+    .horizon-wing {
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .home-horizon-stage.is-filtered .day-moment--noise {
+        position: absolute;
+        width: 0;
+        height: 0;
+        padding: 0;
+        border-width: 0;
+        margin: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .home-horizon-stage.is-filtered .day-moment--care {
+        transform: none;
+        text-align: start;
+        align-items: baseline;
+    }
+
+    #home.is-silent-horizon .horizon-wing {
+        display: none;
+    }
+}
+
+/* Phone Portrait (< 640px) + 400% zoom reflow */
+@media (max-width: 639px) {
+    :root {
+        --btn-size: clamp(136px, 38vw, 160px);
+    }
+
+    .motion-skip-btn:focus,
+    .motion-skip-btn:focus-visible {
+        inset-block-start: 66px;
+        inset-inline-start: 16px;
+    }
+
+    header {
+        gap: 10px;
+        padding-block: 12px 6px;
+        padding-inline: 2px;
+    }
+
+    .home-horizon-stage {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        min-height: 0;
+        gap: 14px;
+        margin-top: 10px;
+    }
+
+    .orb-stage {
+        order: -1;
+    }
+
+    .horizon-line,
+    .horizon-ripple {
+        top: calc(var(--btn-size) / 2);
+    }
+
+    .horizon-wing {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        max-width: 92vw;
+        gap: 8px;
+    }
+
+    .horizon-wing--start,
+    .horizon-wing--end {
+        align-items: center;
+        text-align: center;
+    }
+
+    .day-moment {
+        font-size: 0.86rem;
+        padding-block: 6px;
+        padding-inline: 12px;
+    }
+
+    .home-horizon-stage.is-filtered .day-moment--care {
+        transform: none;
+        text-align: start;
+        align-items: baseline;
+        font-size: 1rem;
+    }
+
+    .home-horizon-stage.is-filtered .day-moment--noise {
+        position: absolute;
+        width: 0;
+        height: 0;
+        padding: 0;
+        border-width: 0;
+        margin: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    #home.is-silent-horizon .horizon-wing {
+        display: none;
+    }
+
+    .whisper-sheet {
+        border-radius: 28px;
+    }
+}
+
+/* Telefoon / korte landschapshoogte: 3-koloms horizontale horizon behouden in één schermhoogte */
+@media (max-height: 540px) and (orientation: landscape) {
+    :root {
+        --btn-size: clamp(92px, 22vh, 118px);
+    }
+
+    header {
+        padding-block: 4px 0;
+    }
+
+    .world-context-row {
+        min-height: 0;
+        margin-bottom: 2px;
+    }
+
+    .home-horizon-stage {
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        min-height: 112px;
+        gap: 8px 18px;
+        margin-top: 0;
+    }
+
+    .orb-stage {
+        grid-column: auto;
+        order: 0;
+    }
+
+    .horizon-line,
+    .horizon-ripple {
+        top: 50%;
+    }
+
+    .horizon-wing {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .horizon-wing--start {
+        align-items: flex-end;
+        text-align: end;
+    }
+
+    .horizon-wing--end {
+        align-items: flex-start;
+        text-align: start;
+    }
+
+    .horizon-wing .day-moment {
+        align-self: auto !important;
+        margin-inline: 0 !important;
+        padding-block: 4px;
+        padding-inline: 10px;
+        font-size: 0.82rem;
+    }
+
+    .home-horizon-stage.is-filtered .day-moment--care {
+        transform: translate3d(0, -28px, 0);
+    }
+
+    .horizon-whisper {
+        margin-top: 2px;
+        min-height: 1.3em;
+        font-size: clamp(0.95rem, 2.2vh, 1.12rem);
+    }
+
+    .day-rhythm-nav {
+        margin-top: 0;
+    }
+
+    .home-more-stage {
+        margin-top: 0;
+    }
+
+    footer {
+        padding-block: 2px 4px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (prefers-contrast: more) {
+    .whisper-sheet,
+    .privacy-card {
+        background: var(--card-bg);
+        border: 2px solid var(--fg-primary);
+        border-radius: 20px;
+    }
+
+    .day-moment {
+        background: var(--card-bg);
+        border-width: 2px;
+    }
+
+    .home-horizon-stage.is-filtered .day-moment--care {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+}
+
+@media (forced-colors: active) {
+    .broccoli-button-disc,
+    .selected-option,
+    .day-moment,
+    .quiet-more-link,
+    .play-cta,
+    .whisper-sheet,
+    .privacy-card {
+        forced-color-adjust: auto;
+        border: 2px solid ButtonText;
+    }
+
+    .home-horizon-stage.is-filtered .day-moment--noise {
+        display: none;
     }
 }

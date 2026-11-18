@@ -5,144 +5,176 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — Broccoli Buttons &amp; EventWhisperer</title>
+    <title>Privacy — Broccoli Buttons &amp; EventWhisperer</title>
+    <meta name="description" id="metaDescription" content="Plain-language privacy statement for Broccoli Buttons and EventWhisperer: zero advertising cookies, zero profiling trackers, local-only calendar data.">
+    <meta name="theme-color" id="themeColorMeta" content="#8fb8ce">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Broccoli Buttons">
+    <meta property="og:title" content="Privacy — Broccoli Buttons &amp; EventWhisperer">
+    <meta property="og:description" content="Zero advertising cookies or profiling trackers. Your calendar and context stay private on your own device.">
+    <meta property="og:url" content="https://broccolibuttons.netlify.app/privacy.html">
+    <link rel="canonical" href="https://broccolibuttons.netlify.app/privacy.html">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 
-<body>
-    <a href="#main-stage" class="skip-link" data-i18n="skip">Skip to content</a>
+<body data-daypart="morning">
+    <svg class="svg-defs" aria-hidden="true" focusable="false">
+        <defs>
+            <filter id="dayCloudAlpha" color-interpolation-filters="sRGB">
+                <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.996  0 0 0 0 0.976  0.85 0.85 0.85 0 -0.22"></feColorMatrix>
+            </filter>
+        </defs>
+    </svg>
+    <a href="#privacy" class="skip-link" id="skipLink">Skip to privacy policy</a>
+    <button type="button" id="motionToggle" class="skip-link motion-skip-btn" aria-pressed="false">Pause background motion</button>
+
+    <!-- Levende Klara & Ghibli achtergrondwereld -->
     <div class="moving-background" aria-hidden="true"></div>
 
+    <!-- Rustige header -->
     <header>
         <div class="logo">
-            <h1><a href="/#home">Broccoli Buttons</a></h1>
+            <h1><a href="/" class="brand-link">Broccoli Buttons</a></h1>
         </div>
-        <nav aria-label="Primary navigation">
-            <ul>
-                <li><a href="/#home" data-i18n="home">Home</a></li>
-                <li><a href="/#mystery" data-i18n="mystery">EventWhisperer</a></li>
-                <li><a href="/#contact" data-i18n="contact">Contact</a></li>
-                <li class="language-selector">
-                    <div class="custom-select">
-                        <button type="button" class="selected-option" id="selectedLanguage" aria-haspopup="listbox" aria-expanded="false">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="" class="flag-icon"> <span>English</span>
-                        </button>
-                        <div class="options-container" role="listbox" aria-label="Language">
-                            <button type="button" class="option" role="option" data-lang="en">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="" class="flag-icon"> <span>English</span>
-                            </button>
-                            <button type="button" class="option" role="option" data-lang="es">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="" class="flag-icon"> <span>Español</span>
-                            </button>
-                            <button type="button" class="option" role="option" data-lang="zh">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" alt="" class="flag-icon"> <span>中文</span>
-                            </button>
-                            <button type="button" class="option" role="option" data-lang="no">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="" class="flag-icon"> <span>Norsk</span>
-                            </button>
-                            <button type="button" class="option" role="option" data-lang="nl">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="" class="flag-icon"> <span>Nederlands</span>
-                            </button>
-                            <button type="button" class="option" role="option" data-lang="de">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="" class="flag-icon"> <span>Deutsch</span>
-                            </button>
-                            <button type="button" class="option" role="option" data-lang="fr">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="" class="flag-icon"> <span>Français</span>
-                            </button>
-                        </div>
+        <nav aria-label="Language">
+            <div class="language-selector">
+                <div class="custom-select">
+                    <button type="button" class="selected-option" id="selectedLanguage" aria-haspopup="listbox" aria-expanded="false" aria-label="Language: English">
+                        <svg class="globe-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M2 12h20"></path>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        <span class="lang-label">English</span>
+                        <svg class="chevron-icon" width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M4 6l4 4 4-4"></path>
+                        </svg>
+                    </button>
+                    <div class="options-container" role="listbox" aria-label="Languages">
+                        <div class="option" role="option" tabindex="-1" data-lang="en">English</div>
+                        <div class="option" role="option" tabindex="-1" data-lang="es">Español</div>
+                        <div class="option" role="option" tabindex="-1" data-lang="zh">中文</div>
+                        <div class="option" role="option" tabindex="-1" data-lang="no">Norsk</div>
+                        <div class="option" role="option" tabindex="-1" data-lang="nl">Nederlands</div>
+                        <div class="option" role="option" tabindex="-1" data-lang="de">Deutsch</div>
+                        <div class="option" role="option" tabindex="-1" data-lang="fr">Français</div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <div id="main-stage" tabindex="-1">
-        <main id="privacy" class="content-section" style="display: block;">
-            <div class="intro-content privacy-card" lang="en" data-lang="en" style="display: block;">
-                <h2>Privacy Statement: Broccoli Buttons &amp; EventWhisperer</h2>
-                <p><strong>Effective Date:</strong> 2026-11-18 &middot; <strong>Contact:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-                <p class="plain-summary"><strong>In plain words:</strong> This website does not track visitors or show ads. In EventWhisperer, your calendar stays on your phone or tablet and is never sent to our servers or AI services. If you choose to sign in with Google, that token stays encrypted on your device. Test and release builds only send cleaned crash reports (without your email, login keys, or calendar events) that are deleted automatically within 90 days.</p>
-                <ul>
-                    <li><strong>Google Sign-In (OIDC / PKCE) in EventWhisperer:</strong> Processes your display name, email address, and session tokens solely for authentication. Tokens are encrypted locally on your Android device via Android Keystore (AES-256-GCM) and excluded from cloud backups and device transfers.</li>
-                    <li><strong>Calendar Data (<code>READ_CALENDAR</code>):</strong> Read strictly locally on your Android device to display events and timers, and never uploaded to Broccoli Buttons servers or AI services.</li>
-                    <li><strong>Crash &amp; Stability Diagnostics (Firebase Crashlytics in test/release builds):</strong> Sends TLS-encrypted, redacted crash logs and app/installation identifiers (emails and OAuth tokens scrubbed before upload), automatically deleted within <strong>90 days</strong>.</li>
-                    <li><strong>Support &amp; Deletion Rights:</strong> Support messages to <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> are used only to help you. Sign out or clear EventWhisperer app storage on Android anytime to delete local tokens, or email us to remove support correspondence.</li>
-                </ul>
-            </div>
-            <div class="intro-content privacy-card" data-lang="es" lang="es" style="display: none;">
-                <h2>Declaraci&oacute;n de Privacidad: Broccoli Buttons y EventWhisperer</h2>
-                <p><strong>Fecha de entrada en vigor:</strong> 18-11-2026 &middot; <strong>Contacto:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-                <p class="plain-summary"><strong>En palabras claras:</strong> Este sitio web no rastrea visitas ni muestra anuncios. En EventWhisperer, tu calendario permanece en tu tel&eacute;fono o tableta y nunca se env&iacute;a a nuestros servidores ni a servicios de IA. Si eliges iniciar sesi&oacute;n con Google, las claves quedan cifradas en tu dispositivo. Las versiones de prueba y publicaci&oacute;n solo env&iacute;an informes de fallos depurados (sin correos, claves ni eventos) que se borran autom&aacute;ticamente en 90 d&iacute;as.</p>
-                <ul>
-                    <li><strong>Inicio de sesi&oacute;n con Google (OIDC / PKCE) en EventWhisperer:</strong> Procesa tu nombre, correo electr&oacute;nico y tokens de sesi&oacute;n solo para autenticar tu cuenta. Los tokens se cifran localmente mediante Android Keystore (AES-256-GCM) y se excluyen de copias de seguridad y transferencias.</li>
-                    <li><strong>Datos de calendario (<code>READ_CALENDAR</code>):</strong> Se leen &uacute;nicamente de forma local en tu dispositivo y nunca se env&iacute;an a servidores de Broccoli Buttons ni a servicios de IA.</li>
-                    <li><strong>Diagn&oacute;stico de fallos (Firebase Crashlytics en compilaciones de prueba y publicaci&oacute;n):</strong> Env&iacute;a por TLS registros de fallos depurados (sin correos ni tokens OAuth) e identificadores de instalaci&oacute;n/dispositivo, eliminados autom&aacute;ticamente en <strong>90 d&iacute;as</strong>.</li>
-                    <li><strong>Derechos de soporte y eliminaci&oacute;n:</strong> Escribe a <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> o cierra sesi&oacute;n / borra los datos de la app en Android.</li>
-                </ul>
-            </div>
-            <div class="intro-content privacy-card" data-lang="zh" lang="zh" style="display: none;">
-                <h2>&#38544;&#31169;&#22768;&#26126;&#65306;Broccoli Buttons &#19982; EventWhisperer</h2>
-                <p><strong>&#29983;&#25928;&#26085;&#26399;&#65306;</strong>2026-11-18 &middot; <strong>&#32852;&#31995;&#26041;&#24335;&#65306;</strong><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-                <p class="plain-summary"><strong>&#31616;&#26126;&#35828;&#26126;&#65306;</strong>&#26412;&#32593;&#31449;&#19981;&#36394;&#36394;&#35775;&#23458;&#65292;&#20063;&#27809;&#26377;&#24191;&#21578;&#12290;&#22312; EventWhisperer &#20013;&#65292;&#24744;&#30340;&#26085;&#21382;&#20165;&#20445;&#30041;&#22312;&#24744;&#30340;&#25163;&#26426;&#25110;&#24179;&#26495;&#19978;&#65292;&#32477;&#19981;&#19978;&#20256;&#21040;&#25105;&#20204;&#30340;&#26381;&#21153;&#22120;&#25110; AI &#26381;&#21153;&#12290;&#22914;&#26524;&#36873;&#25321; Google &#30331;&#24405;&#65292;&#20973;&#35777;&#20250;&#22312;&#26412;&#22320;&#21152;&#23494;&#20445;&#23384;&#12290;&#27979;&#35797;&#21644;&#21457;&#24067;&#29256;&#20165;&#21457;&#36865;&#24050;&#21435;&#38500;&#37038;&#31665;&#12289;&#20196;&#29260;&#21644;&#26085;&#31243;&#20869;&#23481;&#30340;&#23849;&#28291;&#25253;&#21578;&#65292;&#24182;&#22312; 90 &#22825;&#20869;&#33258;&#21160;&#21024;&#38500;&#12290;</p>
-                <ul>
-                    <li><strong>Google &#30331;&#24405; (OIDC / PKCE)&#65306;</strong>&#20165;&#29992;&#20110;&#36523;&#20221;&#39564;&#35777;&#22788;&#29702;&#22995;&#21517;&#12289;&#37038;&#31665;&#21644;&#20250;&#35805;&#20196;&#29260;&#65292;&#20196;&#29260;&#36890;&#36807; Android Keystore (AES-256-GCM) &#22312;&#26412;&#22320;&#21152;&#23494;&#23384;&#20648;&#24182;&#25490;&#38500;&#20113;&#22791;&#20221;&#12290;</li>
-                    <li><strong>&#26085;&#21382;&#25968;&#25454; (<code>READ_CALENDAR</code>)&#65306;</strong>&#20165;&#22312;&#24744;&#30340;&#35774;&#22791;&#26412;&#22320;&#35835;&#21462;&#65292;&#32477;&#19981;&#19978;&#20256;&#33267; Broccoli Buttons &#26381;&#21153;&#22120;&#25110; AI &#26381;&#21153;&#12290;</li>
-                    <li><strong>&#31283;&#23450;&#24615;&#35786;&#26029; (Firebase Crashlytics)&#65306;</strong>&#22312;&#27979;&#35797;/&#21457;&#24067;&#29256;&#26412;&#20013;&#36890;&#36807; TLS &#21457;&#36865;&#24050;&#33073;&#25935;&#30340;&#23849;&#28291;&#26085;&#24535;&#19982;&#35774;&#22791;&#26631;&#35782;&#65292;<strong>90 &#22825;</strong>&#20869;&#33258;&#21160;&#21024;&#38500;&#12290;</li>
-                    <li><strong>&#25903;&#25345;&#19982;&#21024;&#38500;&#26435;&#21033;&#65306;</strong>&#21487;&#38543;&#26102;&#22312; Android &#20013;&#36864;&#20986;&#30331;&#24405;&#25110;&#28165;&#38500;&#24212;&#29992;&#25968;&#25454;&#65292;&#25110;&#21457;&#37038;&#20214;&#33267; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>&#12290;</li>
-                </ul>
-            </div>
-            <div class="intro-content privacy-card" data-lang="no" lang="no" style="display: none;">
-                <h2>Personvernerkl&aelig;ring: Broccoli Buttons og EventWhisperer</h2>
-                <p><strong>Ikrafttredelsesdato:</strong> 18.11.2026 &middot; <strong>Kontakt:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-                <p class="plain-summary"><strong>Kort forklart:</strong> Dette nettstedet sporer ikke bes&oslash;kende og viser ingen reklame. I EventWhisperer blir kalenderen din p&aring; din egen telefon eller nettbrett og sendes aldri til v&aring;re servere eller AI-tjenester. Hvis du logger inn med Google, lagres n&oslash;kkelen kryptert p&aring; enheten. Test- og utgivelsesversjoner sender kun rensede krasjrapporter (uten e-post, n&oslash;kler eller kalenderavtaler), som slettes automatisk innen 90 dager.</p>
-                <ul>
-                    <li><strong>Google-innlogging (OIDC / PKCE) i EventWhisperer:</strong> Behandler navn, e-postadresse og &oslash;kttokener kun for autentisering. Tokener krypteres lokalt med Android Keystore (AES-256-GCM) og ekskluderes fra skysikkerhetskopier og enhetsoverf&oslash;ring.</li>
-                    <li><strong>Kalenderdata (<code>READ_CALENDAR</code>):</strong> Leses utelukkende lokalt p&aring; din Android-enhet og lastes aldri opp til v&aring;re servere eller AI-tjenester.</li>
-                    <li><strong>Krasj- og stabilitetsdiagnostikk (Firebase Crashlytics i test-/utgivelsesbygg):</strong> Sender TLS-krypterte, rensede krasjlogger og enhets-/installasjons-ID-er som slettes automatisk innen <strong>90 dager</strong>.</li>
-                    <li><strong>Brukerst&oslash;tte og sletting:</strong> Logg ut eller t&oslash;m applagring i Android n&aring;r som helst, eller kontakt <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
-                </ul>
-            </div>
-            <div class="intro-content privacy-card" data-lang="nl" lang="nl" style="display: none;">
-                <h2>Privacyverklaring: Broccoli Buttons &amp; EventWhisperer</h2>
-                <p><strong>Ingangsdatum:</strong> 18-11-2026 &middot; <strong>Contact:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-                <p class="plain-summary"><strong>In gewone taal:</strong> Deze website plaatst geen advertentie- of trackingcookies. In EventWhisperer blijft jouw agenda op je eigen toestel en gaat die nooit naar onze servers of AI-diensten. Als je inlogt met Google, blijft dat inlogbewijs versleuteld op je toestel bewaard. Alleen in test- en winkelversies worden opgeschoonde crashmeldingen (zonder e-mail, inlogsleutel of afspraken) verstuurd om fouten te herstellen; deze verdwijnen automatisch binnen 90 dagen.</p>
-                <ul>
-                    <li><strong>Google-aanmelding (OIDC / PKCE) in EventWhisperer:</strong> Verwerkt jouw naam, e-mailadres en sessietokens uitsluitend voor authenticatie. Tokens worden lokaal versleuteld opgeslagen via Android Keystore (AES-256-GCM) en uitgesloten van cloudback-up en apparaatoverdracht.</li>
-                    <li><strong>Agendagegevens (<code>READ_CALENDAR</code>):</strong> Worden uitsluitend <strong>lokaal op je Android-toestel</strong> gelezen om afspraken en timers te tonen en gaan nooit naar servers van Broccoli Buttons of externe AI-diensten.</li>
-                    <li><strong>Crash- &amp; stabiliteitsdiagnostiek (Firebase Crashlytics in test-/releasebuilds):</strong> Verzendt via TLS vooraf gescrubde crashlogs en apparaat-/installatie-ID's (e-mails en OAuth-tokens worden v&oacute;&oacute;raf verwijderd), automatisch gewist binnen <strong>90 dagen</strong>.</li>
-                    <li><strong>Support &amp; verwijderingsrechten (AVG):</strong> Supportmails naar <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> worden alleen gebruikt voor hulp en anonieme bugfixes. Log uit of wis de app-opslag op Android om lokale gegevens te verwijderen, of mail ons voor inzage/verwijdering.</li>
-                </ul>
-            </div>
-            <div class="intro-content privacy-card" data-lang="de" lang="de" style="display: none;">
-                <h2>Datenschutzerkl&auml;rung: Broccoli Buttons &amp; EventWhisperer</h2>
-                <p><strong>Stand:</strong> 18.11.2026 &middot; <strong>Kontakt:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-                <p class="plain-summary"><strong>Kurz und verst&auml;ndlich:</strong> Diese Website verfolgt Besucher nicht und zeigt keine Werbung. In EventWhisperer bleibt dein Kalender auf deinem Smartphone oder Tablet und gelangt nie auf unsere Server oder an KI-Dienste. Wenn du dich mit Google anmeldest, bleibt das Token verschl&uuml;sselt auf deinem Ger&auml;t. Test- und Store-Versionen senden nur bereinigte Absturzberichte (ohne E-Mail, Schl&uuml;ssel oder Termine), die innerhalb von 90 Tagen automatisch gel&ouml;scht werden.</p>
-                <ul>
-                    <li><strong>Google-Anmeldung (OIDC / PKCE) in EventWhisperer:</strong> Verarbeitet Name, E-Mail-Adresse und Sitzungstokens ausschlie&szlig;lich zur Authentifizierung. Tokens werden lokal per Android Keystore (AES-256-GCM) verschl&uuml;sselt und von Cloud-Backups sowie Ger&auml;te&uuml;bertragungen ausgeschlossen.</li>
-                    <li><strong>Kalenderdaten (<code>READ_CALENDAR</code>):</strong> Werden ausschlie&szlig;lich lokal auf deinem Android-Ger&auml;t gelesen und niemals auf Server von Broccoli Buttons oder an KI-Dienste hochgeladen.</li>
-                    <li><strong>Absturzdiagnose (Firebase Crashlytics in Test-/Release-Builds):</strong> &Uuml;bertr&auml;gt per TLS bereinigte Absturzberichte (ohne E-Mails/OAuth-Tokens) und Installations-IDs, die sp&auml;testens nach <strong>90 Tagen</strong> automatisch gel&ouml;scht werden.</li>
-                    <li><strong>Support &amp; L&ouml;schrechte (DSGVO):</strong> Melde dich ab bzw. l&ouml;sche die App-Daten unter Android oder schreibe an <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
-                </ul>
-            </div>
-            <div class="intro-content privacy-card" data-lang="fr" lang="fr" style="display: none;">
-                <h2>Politique de Confidentialit&eacute; : Broccoli Buttons &amp; EventWhisperer</h2>
-                <p><strong>Date d'effet :</strong> 18/11/2026 &middot; <strong>Contact :</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-                <p class="plain-summary"><strong>En clair :</strong> Ce site ne suit pas les visiteurs et n'affiche aucune publicit&eacute;. Dans EventWhisperer, votre agenda reste sur votre t&eacute;l&eacute;phone ou tablette et n'est jamais envoy&eacute; vers nos serveurs ni vers des services d'IA. Si vous vous connectez avec Google, le jeton reste chiffr&eacute; sur votre appareil. Les versions test et Store envoient uniquement des rapports de plantage nettoy&eacute;s (sans e-mail, cl&eacute; ni rendez-vous), supprim&eacute;s sous 90 jours.</p>
-                <ul>
-                    <li><strong>Connexion Google (OIDC / PKCE) dans EventWhisperer :</strong> Traite votre nom, e-mail et jetons de session uniquement pour l'authentification. Les jetons sont chiffr&eacute;s localement via Android Keystore (AES-256-GCM) et exclus des sauvegardes cloud et transferts d'appareils.</li>
-                    <li><strong>Donn&eacute;es d'agenda (<code>READ_CALENDAR</code>) :</strong> Lues exclusivement en local sur votre appareil Android et jamais envoy&eacute;es vers nos serveurs ou des services d'IA.</li>
-                    <li><strong>Diagnostics de plantage (Firebase Crashlytics sur les versions test/production) :</strong> Envoie via TLS des journaux nettoy&eacute;s (sans e-mails ni jetons OAuth) et identifiants d'installation, supprim&eacute;s automatiquement sous <strong>90 jours</strong>.</li>
-                    <li><strong>Support et suppression (RGPD) :</strong> D&eacute;connectez-vous ou effacez le stockage de l'application sur Android, ou &eacute;crivez &agrave; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
-                </ul>
-            </div>
-        </main>
-    </div>
+    <!-- Privacy Sectie -->
+    <main id="privacy" class="content-section" style="display: block;">
+        <div class="intro-content privacy-card" data-lang="en" style="display: block;">
+            <p class="card-back-row"><a href="/" class="card-back-link">&larr; Back</a></p>
+            <h2>Privacy Statement: Broccoli Buttons &amp; EventWhisperer</h2>
+            <p><strong>Effective Date:</strong> 2026-11-18 &middot; <strong>Contact:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            <p class="plain-summary">Broccoli Buttons respects your privacy. We do not use advertising cookies, profiling trackers, social media plugins, or third-party data sales on this website.</p>
+            <ul>
+                <li><strong>Website Preferences &amp; Privacy Signals:</strong> Functional display choices (language and motion pause) stay in local browser storage on your device &mdash; never sent as HTTP cookies &mdash; and are automatically skipped when your browser signals <code>Global Privacy Control</code> (<code>Sec-GPC</code>) or <code>Do Not Track</code>.</li>
+                <li><strong>Optional Local Daylight &amp; Weather:</strong> Only if browser location permission is already granted or you choose to share it, coordinates are rounded locally on your device to <code>0.1&deg;</code> (&asymp; 11&nbsp;km) to check daylight and weather via Open-Meteo, without storage or tracking.</li>
+                <li><strong>Google Sign-In (OIDC / PKCE) in EventWhisperer:</strong> Processes your display name, email address, and session tokens solely for authentication. Tokens are encrypted locally on your Android device via Android Keystore (AES-256-GCM) and excluded from cloud backups and device transfers.</li>
+                <li><strong>Calendar Data (<code>READ_CALENDAR</code>):</strong> Read strictly locally on your Android device to display events and timers, and never uploaded to Broccoli Buttons servers or AI services.</li>
+                <li><strong>Crash &amp; Stability Diagnostics (Firebase Crashlytics in test/release builds):</strong> Sends TLS-encrypted, redacted crash logs and app/installation identifiers (emails and OAuth tokens scrubbed before upload), automatically deleted within <strong>90 days</strong>.</li>
+                <li><strong>Support &amp; Deletion Rights:</strong> Support messages to <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> are used only to help you. Sign out or clear EventWhisperer app storage on Android anytime to delete local tokens, or email us to remove support correspondence.</li>
+            </ul>
+        </div>
+        <div class="intro-content privacy-card" data-lang="es" style="display: none;">
+            <p class="card-back-row"><a href="/" class="card-back-link">&larr; Volver</a></p>
+            <h2>Declaraci&oacute;n de Privacidad: Broccoli Buttons y EventWhisperer</h2>
+            <p><strong>Fecha de entrada en vigor:</strong> 18-11-2026 &middot; <strong>Contacto:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            <p class="plain-summary">Broccoli Buttons no utiliza cookies publicitarias, rastreadores de perfilado, plugins de redes sociales ni vende datos a terceros.</p>
+            <ul>
+                <li><strong>Preferencias web y se&ntilde;ales de privacidad:</strong> Las preferencias funcionales (idioma y pausa de animaci&oacute;n) permanecen solo en el almacenamiento local de tu dispositivo &mdash; nunca como cookies HTTP &mdash; y se omiten autom&aacute;ticamente si tu navegador env&iacute;a <code>Global Privacy Control</code> (<code>Sec-GPC</code>) o <code>Do Not Track</code>.</li>
+                <li><strong>Luz solar y clima local opcionales:</strong> Solo cuando el permiso de ubicaci&oacute;n est&aacute; concedido, las coordenadas se redondean localmente a <code>0,1&deg;</code> (&asymp; 11&nbsp;km) para consultar la luz y el clima en Open-Meteo, sin guardar ni rastrear nada.</li>
+                <li><strong>Inicio de sesi&oacute;n con Google (OIDC / PKCE) en EventWhisperer:</strong> Procesa tu nombre, correo electr&oacute;nico y tokens de sesi&oacute;n solo para autenticar tu cuenta. Los tokens se cifran localmente mediante Android Keystore (AES-256-GCM) y se excluyen de copias de seguridad y transferencias.</li>
+                <li><strong>Datos de calendario (<code>READ_CALENDAR</code>):</strong> Se leen &uacute;nicamente de forma local en tu dispositivo y nunca se env&iacute;an a servidores de Broccoli Buttons ni a servicios de IA.</li>
+                <li><strong>Diagn&oacute;stico de fallos (Firebase Crashlytics en compilaciones de prueba y publicaci&oacute;n):</strong> Env&iacute;a por TLS registros de fallos depurados (sin correos ni tokens OAuth) e identificadores de instalaci&oacute;n/dispositivo, eliminados autom&aacute;ticamente en <strong>90 d&iacute;as</strong>.</li>
+                <li><strong>Derechos de soporte y eliminaci&oacute;n:</strong> Escribe a <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> o cierra sesi&oacute;n / borra los datos de la app en Android.</li>
+            </ul>
+        </div>
+        <div class="intro-content privacy-card" data-lang="zh" style="display: none;">
+            <p class="card-back-row"><a href="/" class="card-back-link">&larr; &#36820;&#22238;</a></p>
+            <h2>&#38544;&#31169;&#22768;&#26126;&#65306;Broccoli Buttons &#19982; EventWhisperer</h2>
+            <p><strong>&#29983;&#25928;&#26085;&#26399;&#65306;</strong>2026-11-18 &middot; <strong>&#32852;&#31995;&#26041;&#24335;&#65306;</strong><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            <p class="plain-summary">&#26412;&#32593;&#31449;&#19981;&#20351;&#29992;&#24191;&#21578; Cookie&#12289;&#36861;&#36394;&#22120;&#12289;&#31038;&#20132;&#23186;&#20307;&#25554;&#20214;&#25110;&#20986;&#21806;&#20010;&#20154;&#25968;&#25454;&#12290;</p>
+            <ul>
+                <li><strong>&#32593;&#31449;&#20559;&#22909;&#19982;&#38544;&#31169;&#20449;&#21495;&#65306;</strong>&#35821;&#35328;&#19982;&#21160;&#30011;&#26242;&#20572;&#31561;&#21151;&#33021;&#20559;&#22909;&#20165;&#20445;&#23384;&#22312;&#26412;&#22320;&#27983;&#35272;&#22120;&#23384;&#20648;&#65292;&#19981;&#20250;&#20316;&#20026; HTTP Cookie &#21457;&#36865;&#65307;&#22914;&#26524;&#27983;&#35272;&#22120;&#24320;&#21551;&#20102; <code>Global Privacy Control</code> (<code>Sec-GPC</code>) &#25110; <code>Do Not Track</code>&#65292;&#23558;&#33258;&#21160;&#36339;&#36807;&#26412;&#22320;&#20889;&#20837;&#12290;</li>
+                <li><strong>&#21487;&#36873;&#26412;&#22320;&#26172;&#22812;&#19982;&#22825;&#27668;&#65306;</strong>&#20165;&#22312;&#24744;&#25480;&#26435;&#20301;&#32622;&#26435;&#38480;&#21518;&#65292;&#22352;&#26631;&#20250;&#20808;&#22312;&#26412;&#22320;&#22235;&#33293;&#20116;&#20837;&#20026; <code>0.1&deg;</code>&#65288;&#32422; 11 &#20844;&#37324;&#65289;&#65292;&#20877;&#36890;&#36807; Open-Meteo &#26597;&#35810;&#22825;&#27668;&#19982;&#26172;&#22812;&#65292;&#19981;&#20570;&#23384;&#20648;&#25110;&#36861;&#36394;&#12290;</li>
+                <li><strong>Google &#30331;&#24405; (OIDC / PKCE)&#65306;</strong>&#20165;&#29992;&#20110;&#36523;&#20221;&#39564;&#35777;&#22788;&#29702;&#22995;&#21517;&#12289;&#37038;&#31665;&#21644;&#20250;&#35805;&#20196;&#29260;&#65292;&#20196;&#29260;&#36890;&#36807; Android Keystore (AES-256-GCM) &#22312;&#26412;&#22320;&#21152;&#23494;&#23384;&#20648;&#24182;&#25490;&#38500;&#20113;&#22791;&#20221;&#12290;</li>
+                <li><strong>&#26085;&#21382;&#25968;&#25454; (<code>READ_CALENDAR</code>)&#65306;</strong>&#20165;&#22312;&#24744;&#30340;&#35774;&#22791;&#26412;&#22320;&#35835;&#21462;&#65292;&#32477;&#19981;&#19978;&#20256;&#33267; Broccoli Buttons &#26381;&#21153;&#22120;&#25110; AI &#26381;&#21153;&#12290;</li>
+                <li><strong>&#31283;&#23450;&#24615;&#35786;&#26029; (Firebase Crashlytics)&#65306;</strong>&#22312;&#27979;&#35797;/&#21457;&#24067;&#29256;&#26412;&#20013;&#36890;&#36807; TLS &#21457;&#36865;&#24050;&#33073;&#25935;&#30340;&#23849;&#28291;&#26085;&#24535;&#19982;&#35774;&#22791;&#26631;&#35782;&#65292;<strong>90 &#22825;</strong>&#20869;&#33258;&#21160;&#21024;&#38500;&#12290;</li>
+                <li><strong>&#25903;&#25345;&#19982;&#21024;&#38500;&#26435;&#21033;&#65306;</strong>&#21487;&#38543;&#26102;&#22312; Android &#20013;&#36864;&#20986;&#30331;&#24405;&#25110;&#28165;&#38500;&#24212;&#29992;&#25968;&#25454;&#65292;&#25110;&#21457;&#37038;&#20214;&#33267; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>&#12290;</li>
+            </ul>
+        </div>
+        <div class="intro-content privacy-card" data-lang="no" style="display: none;">
+            <p class="card-back-row"><a href="/" class="card-back-link">&larr; Tilbake</a></p>
+            <h2>Personvernerkl&aelig;ring: Broccoli Buttons og EventWhisperer</h2>
+            <p><strong>Ikrafttredelsesdato:</strong> 18.11.2026 &middot; <strong>Kontakt:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            <p class="plain-summary">Broccoli Buttons bruker ikke reklamekapsler, profileringskapsler, sosiale medier-plugins eller salg av opplysninger til tredjeparter.</p>
+            <ul>
+                <li><strong>Nettstedsvalg og personvernsignaler:</strong> Funksjonelle visningsvalg (spr&aring;k og animasjonspause) lagres kun lokalt i nettleseren p&aring; din enhet &mdash; aldri som HTTP-kapsler &mdash; og hoppes automatisk over n&aring;r nettleseren sender <code>Global Privacy Control</code> (<code>Sec-GPC</code>) eller <code>Do Not Track</code>.</li>
+                <li><strong>Valgfritt dagslys og lokalt v&aelig;r:</strong> Bare n&aring;r posisjonstillatelse er gitt, rundes koordinatene lokalt av til <code>0,1&deg;</code> (&asymp; 11&nbsp;km) for &aring; hente dagslys og v&aelig;r fra Open-Meteo, uten lagring eller sporing.</li>
+                <li><strong>Google-innlogging (OIDC / PKCE) i EventWhisperer:</strong> Behandler navn, e-postadresse og &oslash;kttokener kun for autentisering. Tokener krypteres lokalt med Android Keystore (AES-256-GCM) og ekskluderes fra skysikkerhetskopier og enhetsoverf&oslash;ring.</li>
+                <li><strong>Kalenderdata (<code>READ_CALENDAR</code>):</strong> Leses utelukkende lokalt p&aring; din Android-enhet og lastes aldri opp til v&aring;re servere eller AI-tjenester.</li>
+                <li><strong>Krasj- og stabilitetsdiagnostikk (Firebase Crashlytics i test-/utgivelsesbygg):</strong> Sender TLS-krypterte, rensede krasjlogger og enhets-/installasjons-ID-er som slettes automatisk innen <strong>90 dager</strong>.</li>
+                <li><strong>Brukerst&oslash;tte og sletting:</strong> Logg ut eller t&oslash;m applagring i Android n&aring;r som helst, eller kontakt <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
+            </ul>
+        </div>
+        <div class="intro-content privacy-card" data-lang="nl" style="display: none;">
+            <p class="card-back-row"><a href="/" class="card-back-link">&larr; Terug</a></p>
+            <h2>Privacyverklaring: Broccoli Buttons &amp; EventWhisperer</h2>
+            <p><strong>Ingangsdatum:</strong> 18-11-2026 &middot; <strong>Contact:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            <p class="plain-summary">Broccoli Buttons respecteert jouw privacy. Deze website gebruikt geen advertentiecookies, trackers voor gedragsprofilering, social-media-plugins of verkoop/deling van gegevens met derden.</p>
+            <ul>
+                <li><strong>Websitevoorkeuren &amp; privacysignalen:</strong> Functionele voorkeuren (taal en animatiepauze) blijven lokaal in je browseropslag &mdash; nooit als HTTP-cookies verstuurd &mdash; en worden automatisch overgeslagen wanneer je browser <code>Global Privacy Control</code> (<code>Sec-GPC</code>) of <code>Do Not Track</code> aangeeft.</li>
+                <li><strong>Optioneel daglicht &amp; buitenweer:</strong> Alleen wanneer locatietoestemming in je browser actief is, ronden we co&ouml;rdinaten eerst lokaal af op <code>0,1&deg;</code> (&asymp; 11&nbsp;km) om via Open-Meteo het weer en echte daglicht op te halen, zonder opslag of tracking.</li>
+                <li><strong>Google-aanmelding (OIDC / PKCE) in EventWhisperer:</strong> Verwerkt jouw naam, e-mailadres en sessietokens uitsluitend voor authenticatie. Tokens worden lokaal versleuteld opgeslagen via Android Keystore (AES-256-GCM) en uitgesloten van cloudback-up en apparaatoverdracht.</li>
+                <li><strong>Agendagegevens (<code>READ_CALENDAR</code>):</strong> Worden uitsluitend <strong>lokaal op je Android-toestel</strong> gelezen om afspraken en timers te tonen en gaan nooit naar servers van Broccoli Buttons of externe AI-diensten.</li>
+                <li><strong>Crash- &amp; stabiliteitsdiagnostiek (Firebase Crashlytics in test-/releasebuilds):</strong> Verzendt via TLS vooraf gescrubde crashlogs en apparaat-/installatie-ID&rsquo;s (e-mails en OAuth-tokens worden v&oacute;&oacute;raf verwijderd), automatisch gewist binnen <strong>90 dagen</strong>.</li>
+                <li><strong>Support &amp; verwijderingsrechten (AVG):</strong> Supportmails naar <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> worden alleen gebruikt voor hulp en anonieme bugfixes. Log uit of wis de app-opslag op Android om lokale gegevens te verwijderen, of mail ons voor inzage/verwijdering.</li>
+            </ul>
+        </div>
+        <div class="intro-content privacy-card" data-lang="de" style="display: none;">
+            <p class="card-back-row"><a href="/" class="card-back-link">&larr; Zur&uuml;ck</a></p>
+            <h2>Datenschutzerkl&auml;rung: Broccoli Buttons &amp; EventWhisperer</h2>
+            <p><strong>Stand:</strong> 18.11.2026 &middot; <strong>Kontakt:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            <p class="plain-summary">Broccoli Buttons verwendet auf dieser Website keine Werbe-Cookies, Tracking-Cookies oder Social-Media-Plugins und verkauft keine Daten an Dritte.</p>
+            <ul>
+                <li><strong>Website-Einstellungen &amp; Datenschutzsignale:</strong> Rein funktionale Anzeigew&uuml;nsche (Sprache und Animationspause) bleiben lokal auf deinem Ger&auml;t &mdash; niemals als HTTP-Cookies &uuml;bertragen &mdash; und entfallen automatisch bei aktivem <code>Global Privacy Control</code> (<code>Sec-GPC</code>) oder <code>Do Not Track</code>.</li>
+                <li><strong>Optionales Tageslicht &amp; Wetter:</strong> Nur wenn du die Standortfreigabe erteilst, werden Koordinaten lokal auf <code>0,1&deg;</code> (&asymp; 11&nbsp;km) gerundet und ohne Speicherung oder Tracking &uuml;ber Open-Meteo abgefragt.</li>
+                <li><strong>Google-Anmeldung (OIDC / PKCE) in EventWhisperer:</strong> Verarbeitet Name, E-Mail-Adresse und Sitzungstokens ausschlie&szlig;lich zur Authentifizierung. Tokens werden lokal per Android Keystore (AES-256-GCM) verschl&uuml;sselt und von Cloud-Backups sowie Ger&auml;te&uuml;bertragungen ausgeschlossen.</li>
+                <li><strong>Kalenderdaten (<code>READ_CALENDAR</code>):</strong> Werden ausschlie&szlig;lich lokal auf deinem Android-Ger&auml;t gelesen und niemals auf Server von Broccoli Buttons oder an KI-Dienste hochgeladen.</li>
+                <li><strong>Absturzdiagnose (Firebase Crashlytics in Test-/Release-Builds):</strong> &Uuml;bertr&auml;gt per TLS bereinigte Absturzberichte (ohne E-Mails/OAuth-Tokens) und Installations-IDs, die sp&auml;testens nach <strong>90 Tagen</strong> automatisch gel&ouml;scht werden.</li>
+                <li><strong>Support &amp; L&ouml;schrechte (DSGVO):</strong> Melde dich ab bzw. l&ouml;sche die App-Daten unter Android oder schreibe an <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
+            </ul>
+        </div>
+        <div class="intro-content privacy-card" data-lang="fr" style="display: none;">
+            <p class="card-back-row"><a href="/" class="card-back-link">&larr; Retour</a></p>
+            <h2>Politique de Confidentialit&eacute; : Broccoli Buttons &amp; EventWhisperer</h2>
+            <p><strong>Date d&rsquo;effet :</strong> 18/11/2026 &middot; <strong>Contact :</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            <p class="plain-summary">Broccoli Buttons n&rsquo;utilise aucun cookie publicitaire, traceur de profilage ni plugin de r&eacute;seaux sociaux, et ne vend ni ne partage de donn&eacute;es avec des tiers.</p>
+            <ul>
+                <li><strong>Pr&eacute;f&eacute;rences du site &amp; signaux de confidentialit&eacute; :</strong> Les r&eacute;glages fonctionnels (langue et pause d&rsquo;animation) restent en stockage local sur votre appareil &mdash; jamais envoy&eacute;s en cookies HTTP &mdash; et sont ignor&eacute;s automatiquement si votre navigateur envoie <code>Global Privacy Control</code> (<code>Sec-GPC</code>) ou <code>Do Not Track</code>.</li>
+                <li><strong>Lumi&egrave;re du jour &amp; m&eacute;t&eacute;o locales (optionnel) :</strong> Uniquement si la g&eacute;olocalisation est accord&eacute;e, vos coordonn&eacute;es sont arrondies localement &agrave; <code>0,1&deg;</code> (&asymp; 11&nbsp;km) pour consulter Open-Meteo, sans stockage ni suivi.</li>
+                <li><strong>Connexion Google (OIDC / PKCE) dans EventWhisperer :</strong> Traite votre nom, e-mail et jetons de session uniquement pour l&rsquo;authentification. Les jetons sont chiffr&eacute;s localement via Android Keystore (AES-256-GCM) et exclus des sauvegardes cloud et transferts d&rsquo;appareils.</li>
+                <li><strong>Donn&eacute;es d&rsquo;agenda (<code>READ_CALENDAR</code>) :</strong> Lues exclusivement en local sur votre appareil Android et jamais envoy&eacute;es vers nos serveurs ou des services d&rsquo;IA.</li>
+                <li><strong>Diagnostics de plantage (Firebase Crashlytics sur les versions test/production) :</strong> Envoie via TLS des journaux nettoy&eacute;s (sans e-mails ni jetons OAuth) et identifiants d&rsquo;installation, supprim&eacute;s automatiquement sous <strong>90 jours</strong>.</li>
+                <li><strong>Support et suppression (RGPD) :</strong> D&eacute;connectez-vous ou effacez le stockage de l&rsquo;application sur Android, ou &eacute;crivez &agrave; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
+            </ul>
+        </div>
+    </main>
 
+    <!-- Toegankelijke footer -->
     <footer>
-        <p>&copy; 2024&ndash;2026 Broccoli Buttons.</p>
+        <p class="footer-copy">&copy; 2024&ndash;2026 Broccoli Buttons</p>
         <div class="footer-links">
-            <a href="/" class="privacy-link" data-i18n="back">Back to Broccoli Buttons</a>
+            <a href="/#contact" data-footer-nav="contact" class="footer-link">Contact</a>
+            <span aria-hidden="true" class="footer-sep">&middot;</span>
+            <a href="/" class="privacy-link footer-link">Broccoli Buttons</a>
         </div>
     </footer>
 </body>
