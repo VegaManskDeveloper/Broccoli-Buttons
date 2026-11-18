@@ -1,64 +1,96 @@
 /* Algemene stijlen */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background-color: #0b3d0b; /* Donker groen */
-    color: #f0f0f0; /* Lichte tekst */
+    color: #f0f0f0;
     font-family: 'Arial', sans-serif;
-    overflow-x: hidden; /* Geen horizontale scroll */
-    min-height: 100vh; /* Zorg dat de pagina ten minste de volledige hoogte van het scherm is */
-    display: flex; /* Maak het body-element een flexcontainer */
-    flex-direction: column; /* Plaats elementen in een kolom */
-}
-
-.container {
-    flex-grow: 1; /* Laat de container de resterende ruimte innemen */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Zorg dat de container ten minste de volledige hoogte van het scherm heeft */
 }
 
-/* Stijl voor de main content */
+/* Toetsenbord skip-link */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 12px;
+    z-index: 2000;
+    padding: 10px 16px;
+    background-color: #082a08;
+    color: #e0ffe0;
+    border: 2px solid #a5d6a7;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    left: 12px;
+}
+
+/* Zichtbare focusindicator (WCAG 2.2 AA) */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #e0ffe0;
+    outline-offset: 3px;
+}
+
+/* Main stage */
+#main-stage {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 main {
     flex-grow: 1;
-    margin: 20px auto; /* Voeg marge voor boven/onder én links/rechts toe */
+    margin: 20px auto;
     padding: 0 20px;
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
 }
 
 /* Header stijlen */
-/* Algemene stijl voor de header */
 header {
-    width: 90%; /* Houd dezelfde breedte voor de container */
-    max-width: 1400px; /* Stel een maximum breedte in voor grotere schermen */
-    margin: 0 auto; /* Centreer de container horizontaal */
-    display: flex; /* Flexbox om items horizontaal te positioneren */
-    justify-content: space-between; /* Verdeel items gelijkmatig */
-    align-items: center; /* Centreer items verticaal */
-    padding: 20px 0; /* Houd de padding consistent voor verticale ruimte binnen de header */
-    background-color: transparent; /* Zorg ervoor dat de header geen achtergrondkleur heeft */
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 20px;
+    padding: 18px 24px;
+    background-color: transparent;
 }
 
-/* Stijl voor het logo */
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .logo h1 {
-    font-size: 2.5em;
-    color: #e0ffe0; /* Lichter groen voor het logo */
-    margin: 0; /* Verwijder standaard marges */
-    padding-left: 20px; /* Voeg padding toe aan de linkerkant voor consistente uitlijning */
+    font-size: 2.2em;
+    color: #e0ffe0;
+    margin: 0;
 }
 
 nav ul {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     margin: 0;
     padding: 0;
 }
@@ -70,67 +102,87 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: #f0f0f0;
-    font-size: 1.1em;
+    font-size: 1.05em;
+    padding: 4px 2px;
     transition: color 0.3s;
 }
 
-nav ul li a:hover {
-    color: #8ccf88; /* Hover effect: lichter groen */
+nav ul li a:hover,
+nav ul li a[aria-current="page"] {
+    color: #a5d6a7;
 }
 
-/* Aangepaste Taalkeuze Menu */
+/* Toegankelijk Taalkeuzemenu */
 .custom-select {
     position: relative;
     display: inline-block;
+}
+
+.selected-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    background: rgba(8, 42, 8, 0.85);
+    color: #f0f0f0;
+    border: 1px solid rgba(165, 214, 167, 0.5);
+    border-radius: 20px;
+    font-size: 0.95em;
     cursor: pointer;
-    user-select: none; /* Voorkom onbedoeld selecteren van tekst */
+    font-family: inherit;
+}
+
+.selected-option:hover {
+    background: rgba(18, 72, 18, 0.95);
+    border-color: #e0ffe0;
 }
 
 .selected-option img.flag-icon,
 .option img.flag-icon {
     width: 20px;
     height: 14px;
-    margin-right: 5px;
+    flex-shrink: 0;
+    border-radius: 2px;
 }
 
 .options-container {
-    display: none; /* Standaard verbergen */
+    display: none;
     position: absolute;
-    background-color: transparent; /* Maak de achtergrond transparant */
-    border: none; /* Verwijder eventuele rand */
-    border-radius: 5px; /* Houdt deze als je afgeronde hoeken wilt */
+    right: 0;
+    top: calc(100% + 6px);
+    background-color: rgba(8, 42, 8, 0.96);
+    border: 1px solid rgba(165, 214, 167, 0.55);
+    border-radius: 10px;
     z-index: 1000;
-    width: 100px;
-    margin-top: 5px;
-    cursor: pointer;
-    max-height: 200px; /* Beperk hoogte voor overflow */
-    overflow-y: hidden; /* Verberg de verticale scrollbar */
-    -ms-overflow-style: none;  /* Verberg scrollbar in Internet Explorer en Edge */
-    scrollbar-width: none;  /* Verberg scrollbar in Firefox */
-    box-shadow: none; /* Verwijder eventuele schaduw */
-}
-
-.options-container::-webkit-scrollbar {
-    display: none;  /* Verberg scrollbar in Chrome, Safari, Opera */
+    min-width: 155px;
+    padding: 6px 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 .options-container.show {
-    display: block; /* Toon de opties wanneer de container wordt geopend */
+    display: block;
 }
 
 .option {
-    padding: 5px 10px;
+    width: 100%;
+    padding: 8px 14px;
     display: flex;
     align-items: center;
+    gap: 8px;
     cursor: pointer;
-    background-color: transparent; /* Zorg dat de optie-achtergrond transparant is */
-    border: none; /* Verwijder eventuele randen */
+    background-color: transparent;
+    color: #f0f0f0;
+    border: none;
+    text-align: left;
+    font-size: 0.95em;
+    font-family: inherit;
 }
 
-.option:hover {
-    background-color: transparent; /* Verwijder hover achtergrond */
+.option:hover,
+.option[aria-selected="true"] {
+    background-color: rgba(102, 187, 106, 0.25);
+    color: #ffffff;
 }
-
 
 /* Home horizon & glowing orb layering */
 #home {
@@ -140,11 +192,10 @@ nav ul li a:hover {
 /* Lichtende groene horizon van links naar rechts achter de bol */
 .horizon-line {
     position: absolute;
-    left: 50%;
+    left: 0;
     top: 58%;
-    width: 100vw;
+    width: 100%;
     height: 2px;
-    transform: translateX(-50%);
     background: linear-gradient(
         90deg,
         rgba(11, 61, 11, 0) 0%,
@@ -195,12 +246,8 @@ nav ul li a:hover {
 }
 
 @keyframes horizonPulse {
-    0%, 100% {
-        opacity: 0.78;
-    }
-    50% {
-        opacity: 1;
-    }
+    0%, 100% { opacity: 0.78; }
+    50% { opacity: 1; }
 }
 
 /* Cirkelvormige Introductie sectie */
@@ -209,162 +256,103 @@ nav ul li a:hover {
     z-index: 2;
     width: 340px;
     height: 340px;
-    background: radial-gradient(circle at 30% 30%, rgba(31, 107, 31, 0.96), #0b3d0b); /* Gebruik van een gelaagde achtergrond met een lichte overgang */
-    margin: 100px auto;
-    border-radius: 50%; /* Maakt de sectie een perfecte cirkel */
+    max-width: calc(100vw - 40px);
+    background: radial-gradient(circle at 30% 30%, rgba(31, 107, 31, 0.96), #0b3d0b);
+    margin: 72px auto;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column; /* Zorgt ervoor dat de elementen boven elkaar staan */
-    align-items: center; /* Centreer de elementen horizontaal */
-    justify-content: center; /* Centreer de elementen verticaal */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 30px; /* Verhoogde padding voor meer ruimte tussen tekst en rand */
-    box-sizing: border-box; /* Zorg ervoor dat padding binnen de opgegeven breedte/hoogte blijft */
+    padding: 30px;
     transition: transform 0.5s, box-shadow 0.5s;
-    box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.3), 0 0 40px 20px rgba(0, 255, 0, 0.2); /* Meerdere lagen schaduw voor een gloed-effect */
-    animation: pulse 6s infinite; /* Langzamere puls-animatie voor een subtieler effect */
+    box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.3), 0 0 40px 20px rgba(0, 255, 0, 0.2);
+    animation: pulse 6s infinite;
 }
 
-
-
-
-/* Animatie voor de puls */
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
         box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.3), 0 0 40px 20px rgba(0, 255, 0, 0.2);
     }
     50% {
-        transform: scale(1.03); /* Kleine schaalvergroting voor een subtiele beweging */
-        box-shadow: 0 0 25px 12px rgba(0, 255, 0, 0.4), 0 0 50px 25px rgba(0, 255, 0, 0.3); /* Zachtere gloed en schaduw */
+        transform: scale(1.03);
+        box-shadow: 0 0 25px 12px rgba(0, 255, 0, 0.4), 0 0 50px 25px rgba(0, 255, 0, 0.3);
     }
 }
 
-/* Hover-effect voor nog meer interactie */
 .intro:hover {
-    transform: scale(1.1) rotate(2deg); /* Lichte rotatie bij hover */
-    box-shadow: 0 0 30px 15px rgba(0, 255, 0, 0.5), 0 0 60px 30px rgba(0, 255, 0, 0.4); /* Versterkte schaduw en gloed bij hover */
+    transform: scale(1.06) rotate(1.5deg);
+    box-shadow: 0 0 30px 15px rgba(0, 255, 0, 0.5), 0 0 60px 30px rgba(0, 255, 0, 0.4);
 }
 
 .intro-content {
-    padding: 20px;
+    padding: 12px;
     color: #f0f0f0;
-    display: none; /* Standaard alles verbergen */
+    display: none;
 }
 
 /* Verken-knop stijl */
 .explore-button {
     display: inline-block;
-    margin-top: 8px;
-    padding: 8px 18px;
-    background-color: rgba(165, 214, 167, 0.16);
+    margin-top: 10px;
+    padding: 9px 18px;
+    background-color: rgba(165, 214, 167, 0.18);
     color: #e0ffe0;
-    border: 1px solid rgba(165, 214, 167, 0.5);
+    border: 1px solid rgba(165, 214, 167, 0.6);
     text-decoration: none;
-    font-size: 0.92em;
+    font-size: 0.94em;
     border-radius: 24px;
     transition: background-color 0.3s, transform 0.3s, color 0.3s;
 }
 
-
 .explore-button:hover {
-    background-color: rgba(102, 187, 106, 0.38);
+    background-color: rgba(102, 187, 106, 0.4);
     color: #ffffff;
     transform: scale(1.04);
 }
 
-
 /* Bewegende achtergrond */
 .moving-background {
-    position: fixed; /* Achtergrond blijft vast terwijl je scrolt */
+    position: fixed;
     top: -200px;
     left: -200px;
     width: 350%;
     height: 350%;
-    z-index: -1; /* Zorg dat de achtergrond achter de content blijft */
-    background: url('images/rook4.jpg') repeat center center; /* Voeg je mistafbeelding toe */
-    background-size: cover; /* De afbeelding vult het scherm */
-    animation: moveBackground 300s linear infinite; /* Verlengde duur voor trage beweging */
-    opacity: 0.2; /* Pas de waarde aan tussen 0 (volledig transparant) en 1 (volledig ondoorzichtig) */
+    z-index: -1;
+    background: url('images/rook4.jpg') repeat center center;
+    background-size: cover;
+    animation: moveBackground 300s linear infinite;
+    opacity: 0.2;
 }
 
-/* Aangepaste keyframes voor langzame, complexe beweging */
 @keyframes moveBackground {
-    0% {
-        background-position: -3200px -3200px;
-        transform: rotate(0deg);
-    }
-    25% {
-        background-position: -2000px -1000px;
-        transform: rotate(5deg);
-    }
-    50% {
-        background-position: -1000px -2000px;
-        transform: rotate(-5deg);
-    }
-    75% {
-        background-position: 0px -1000px;
-        transform: rotate(3deg);
-    }
-    100% {
-        background-position: -3200px -3200px;
-        transform: rotate(0deg);
-    }
+    0% { background-position: -3200px -3200px; transform: rotate(0deg); }
+    25% { background-position: -2000px -1000px; transform: rotate(5deg); }
+    50% { background-position: -1000px -2000px; transform: rotate(-5deg); }
+    75% { background-position: 0px -1000px; transform: rotate(3deg); }
+    100% { background-position: -3200px -3200px; transform: rotate(0deg); }
 }
 
-
-/* Contact sectie */
-#contact a {
-    color: white; /* Verandert de tekstkleur naar wit */
-    text-decoration: none; /* Verwijdert de onderstreping */
-}
-
-#contact a:hover {
-    text-decoration: underline; /* Onderstreping bij hover voor betere feedback */
-}
-
-
-/* Geüpdatete stijlen voor de footer */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: transparent; /* Zorgt ervoor dat de bewegende achtergrond zichtbaar blijft */
-    color: white; /* Zorg ervoor dat de tekst in de footer wit is */
-    width: 100%; /* Zorg ervoor dat de footer de volledige breedte gebruikt */
-    position: relative; /* Houd de positie relatief in de flex container */
-    margin-top: auto; /* Zorg dat de footer aan de onderkant blijft */
-}
-
-/* Stijl voor de Privacy Statement link in de footer */
-footer .privacy-link {
-    color: white; /* Maakt de tekst 'Privacy Statement' wit */
-    display: block; /* Zorg ervoor dat de link op een nieuwe regel staat */
-    margin-top: 10px; /* Voeg wat marge toe boven de link voor ruimte */
-    text-decoration: none; /* Verwijder onderstreping voor een nettere look */
-}
-
-footer .privacy-link:hover {
-    text-decoration: underline; /* Onderstreep de tekst bij hover voor visuele feedback */
-}
-
-/* Privacyverklaring sectie & directe /privacy.html weergave */
+/* Cards (#mystery, #contact, #privacy, privacy.html) */
 .privacy-card {
     max-width: 820px;
-    margin: 40px auto;
-    padding: 28px 32px;
-    background: rgba(11, 61, 11, 0.9);
-    border: 1px solid rgba(102, 187, 106, 0.35);
+    margin: 24px auto;
+    padding: 26px 28px;
+    background: rgba(11, 61, 11, 0.92);
+    border: 1px solid rgba(102, 187, 106, 0.4);
     border-radius: 16px;
     line-height: 1.65;
     text-align: left;
     color: #f0f0f0;
-    box-sizing: border-box;
 }
 
 .privacy-card h2,
 .privacy-card h3 {
-    color: #a5d6a7;
-    margin-top: 1.25em;
-    margin-bottom: 0.5em;
+    color: #c8f5c8;
+    margin-top: 1.1em;
+    margin-bottom: 0.45em;
 }
 
 .privacy-card h2:first-child {
@@ -373,15 +361,15 @@ footer .privacy-link:hover {
 
 .privacy-card ul {
     padding-left: 20px;
-    margin: 0.5em 0 1em 0;
+    margin: 0.6em 0 1em 0;
 }
 
 .privacy-card li {
-    margin-bottom: 0.45em;
+    margin-bottom: 0.55em;
 }
 
 .privacy-card a {
-    color: #a5d6a7;
+    color: #b9f0ba;
     text-decoration: underline;
 }
 
@@ -389,24 +377,126 @@ footer .privacy-link:hover {
     color: #ffffff;
 }
 
+.plain-summary {
+    padding: 12px 16px;
+    margin: 12px 0 16px 0;
+    background: rgba(25, 92, 25, 0.55);
+    border-left: 3px solid #a5d6a7;
+    border-radius: 8px;
+    color: #f4fff4;
+}
+
+.release-note {
+    padding: 10px 14px;
+    margin: 12px 0;
+    background: rgba(165, 214, 167, 0.14);
+    border: 1px solid rgba(165, 214, 167, 0.42);
+    border-radius: 10px;
+    color: #e8ffe8;
+}
+
 .privacy-card .play-cta {
     display: inline-block;
     margin-top: 8px;
-    padding: 10px 20px;
-    background-color: rgba(102, 187, 106, 0.25);
-    border: 1px solid rgba(165, 214, 167, 0.65);
+    padding: 11px 22px;
+    background-color: rgba(102, 187, 106, 0.28);
+    border: 1px solid rgba(165, 214, 167, 0.72);
     border-radius: 24px;
-    color: #e0ffe0;
+    color: #e8ffe8;
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 .privacy-card .play-cta:hover {
-    background-color: rgba(102, 187, 106, 0.45);
+    background-color: rgba(102, 187, 106, 0.48);
     color: #ffffff;
     text-decoration: none;
     transform: scale(1.02);
+}
+
+#contact a {
+    color: #b9f0ba;
+    text-decoration: underline;
+}
+
+#contact a:hover {
+    color: #ffffff;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 16px 26px 16px;
+    background-color: transparent;
+    color: #f0f0f0;
+    width: 100%;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0 0 8px 0;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 18px;
+}
+
+footer .privacy-link {
+    color: #d6f5d6;
+    text-decoration: underline;
+}
+
+footer .privacy-link:hover {
+    color: #ffffff;
+}
+
+@media (max-width: 640px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 16px;
+    }
+
+    .logo h1 {
+        font-size: 1.75em;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px 12px;
+    }
+
+    .options-container {
+        left: auto;
+        right: 0;
+    }
+
+    main {
+        margin: 10px auto;
+        padding: 0 14px;
+    }
+
+    .intro {
+        width: 296px;
+        height: 296px;
+        margin: 44px auto;
+        padding: 22px;
+    }
+
+    .privacy-card {
+        padding: 18px 16px;
+        margin: 14px auto;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
