@@ -1,120 +1,258 @@
+const UI_LABELS = {
+    en: {
+        skip: 'Skip to content',
+        home: 'Home',
+        mystery: 'EventWhisperer',
+        contact: 'Contact',
+        privacy: 'Privacy Statement',
+        privacy_page: 'Full Privacy Page',
+        back: 'Back to Broccoli Buttons'
+    },
+    es: {
+        skip: 'Ir al contenido',
+        home: 'Inicio',
+        mystery: 'EventWhisperer',
+        contact: 'Contacto',
+        privacy: 'Declaración de Privacidad',
+        privacy_page: 'Página de Privacidad Completa',
+        back: 'Volver a Broccoli Buttons'
+    },
+    zh: {
+        skip: '跳至正文',
+        home: '主页',
+        mystery: 'EventWhisperer',
+        contact: '联系我们',
+        privacy: '隐私声明',
+        privacy_page: '完整隐私页面',
+        back: '返回 Broccoli Buttons'
+    },
+    no: {
+        skip: 'Hopp til innhold',
+        home: 'Hjem',
+        mystery: 'EventWhisperer',
+        contact: 'Kontakt',
+        privacy: 'Personvernerklæring',
+        privacy_page: 'Fullstendig personvernside',
+        back: 'Tilbake til Broccoli Buttons'
+    },
+    nl: {
+        skip: 'Ga naar hoofdinhoud',
+        home: 'Home',
+        mystery: 'EventWhisperer',
+        contact: 'Contact',
+        privacy: 'Privacyverklaring',
+        privacy_page: 'Volledige privacypagina',
+        back: 'Terug naar Broccoli Buttons'
+    },
+    de: {
+        skip: 'Zum Inhalt springen',
+        home: 'Start',
+        mystery: 'EventWhisperer',
+        contact: 'Kontakt',
+        privacy: 'Datenschutzerklärung',
+        privacy_page: 'Vollständige Datenschutzseite',
+        back: 'Zurück zu Broccoli Buttons'
+    },
+    fr: {
+        skip: 'Aller au contenu',
+        home: 'Accueil',
+        mystery: 'EventWhisperer',
+        contact: 'Contact',
+        privacy: 'Politique de confidentialité',
+        privacy_page: 'Page complète de confidentialité',
+        back: 'Retour à Broccoli Buttons'
+    }
+};
+
+let currentLang = 'en';
+
+function resolveInitialLanguage() {
+    const saved = localStorage.getItem('selectedLang');
+    if (saved && UI_LABELS[saved]) {
+        return saved;
+    }
+    const navLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
+    return UI_LABELS[navLang] ? navLang : 'en';
+}
+
+function applyLocalizedUiLabels(lang) {
+    const dict = UI_LABELS[lang] || UI_LABELS.en;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+            el.textContent = dict[key];
+        }
+    });
+}
+
+function updateContentLanguage(lang) {
+    const effLang = UI_LABELS[lang] ? lang : 'en';
+    currentLang = effLang;
+    applyLocalizedUiLabels(effLang);
+
+    const contentElements = document.querySelectorAll('.intro-content, .privacy-content');
+    contentElements.forEach(element => {
+        const match = element.getAttribute('data-lang') === effLang;
+        element.hidden = !match;
+        element.style.display = match ? 'block' : 'none';
+    });
+
+    const optionsList = document.querySelectorAll('.option[data-lang]');
+    const selectedButton = document.getElementById('selectedLanguage');
+    optionsList.forEach(opt => {
+        const isSel = opt.getAttribute('data-lang') === effLang;
+        opt.setAttribute('aria-selected', isSel ? 'true' : 'false');
+        if (isSel && selectedButton) {
+            selectedButton.innerHTML = opt.innerHTML;
+        }
+    });
+}
+
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.content-section');
+    if (sections.length === 0) {
+        updateContentLanguage(currentLang);
+        return;
+    }
+    sections.forEach(section => {
+        section.hidden = true;
+        section.style.display = 'none';
+    });
+    const target = document.getElementById(sectionId) || document.getElementById('home');
+    if (target) {
+        target.hidden = false;
+        target.style.display = 'block';
+    }
+    document.querySelectorAll('nav ul li a[href^="#"]').forEach(link => {
+        const linkSec = (link.getAttribute('href') || '').substring(1);
+        if (target && linkSec === target.id) {
+            link.setAttribute('aria-current', 'page');
+        } else {
+            link.removeAttribute('aria-current');
+        }
+    });
+    updateContentLanguage(currentLang);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Controleer de huidige hash bij het laden van de pagina
-    if (window.location.hash) {
-        const sectionId = window.location.hash.substring(1); // Verwijdert de # uit de hash
-        showSection(sectionId);
-    } else if (document.getElementById('home')) {
-        // Toon standaard de home sectie
-        showSection('home');
+    currentLang = resolveInitialLanguage();
+
+    const selectedButton = document.getElementById('selectedLanguage');
+    const optionsContainer = document.querySelector('.options-container');
+    const optionsList = Array.from(document.querySelectorAll('.option[data-lang]'));
+
+    const closeMenu = (restoreFocus = false) => {
+        if (!optionsContainer || !selectedButton) return;
+        optionsContainer.classList.remove('show');
+        selectedButton.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) {
+            selectedButton.focus();
+        }
+    };
+
+    const openMenu = () => {
+        if (!optionsContainer || !selectedButton) return;
+        optionsContainer.classList.add('show');
+        selectedButton.setAttribute('aria-expanded', 'true');
+    };
+
+    if (selectedButton && optionsContainer) {
+        selectedButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            if (optionsContainer.classList.contains('show')) {
+                closeMenu(false);
+            } else {
+                openMenu();
+            }
+        });
+
+        selectedButton.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openMenu();
+                const firstActive = optionsList.find(o => o.getAttribute('data-lang') === currentLang) || optionsList[0];
+                if (firstActive) firstActive.focus();
+            } else if (event.key === 'Escape') {
+                closeMenu(true);
+            }
+        });
     }
 
-
-    const selectedOption = document.getElementById('selectedLanguage');
-    const optionsContainer = document.querySelector('.options-container');
-    const optionsList = document.querySelectorAll('.option');
-
-    // Navigatie links
-    const navLinks = document.querySelectorAll('nav ul li a');
-
-    // Klik op de geselecteerde optie opent/sluit de optiescontainer
-    selectedOption.addEventListener('click', (event) => {
-        event.stopPropagation(); // Voorkom dat het klikken op de container sluit
-        optionsContainer.classList.toggle('show'); // Toon/verberg de opties
-    });
-
-    // Klikken op een optie in de container selecteert de taal
-    optionsList.forEach(option => {
+    optionsList.forEach((option, idx) => {
         option.addEventListener('click', (event) => {
-            event.stopPropagation(); // Voorkom dat de container sluit
+            event.stopPropagation();
             const lang = option.getAttribute('data-lang');
+            localStorage.setItem('selectedLang', lang);
             updateContentLanguage(lang);
-            selectedOption.innerHTML = option.innerHTML; // Update de geselecteerde optie met de vlag en taal
-            optionsContainer.classList.remove('show'); // Sluit de dropdown
-            localStorage.setItem('selectedLang', lang); // Sla de geselecteerde taal op
+            closeMenu(true);
         });
-    });
 
-    // Klik ergens anders op de pagina sluit de dropdown
-    document.addEventListener('click', () => {
-        optionsContainer.classList.remove('show');
-    });
-
-    // Navigatie functionaliteit voor het tonen van secties
-    navLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            const href = link.getAttribute('href') || '';
-            if (href.startsWith('#')) {
-                event.preventDefault(); // Voorkom standaardgedrag
-                showSection(href.substring(1)); // Haal de id van de sectie op (zonder '#')
+        option.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeMenu(true);
+            } else if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                optionsList[(idx + 1) % optionsList.length].focus();
+            } else if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                optionsList[(idx - 1 + optionsList.length) % optionsList.length].focus();
             }
         });
     });
 
-    // Standaard taal instellen
-    const savedLang = localStorage.getItem('selectedLang');
-    if (savedLang) {
-        updateContentLanguage(savedLang);
-        const initialOption = document.querySelector(`.option[data-lang="${savedLang}"]`);
-        if (initialOption) {
-            selectedOption.innerHTML = initialOption.innerHTML;
-        }
-    } else {
-        // Detecteer de browsertaal als er geen opgeslagen taal is
-        const userLang = navigator.language || navigator.userLanguage; // Haal de taal van de browser op
-        const langCode = userLang.split('-')[0]; // Gebruik alleen de eerste twee letters (bv. 'en', 'es')
-
-        // Controleer of de gedetecteerde taal beschikbaar is in de opties
-        const initialOption = document.querySelector(`.option[data-lang="${langCode}"]`) || document.querySelector(`.option[data-lang="en"]`); // Valt terug op Engels als de taal niet wordt gevonden
-        const langToUse = initialOption ? initialOption.getAttribute('data-lang') : 'en';
-
-        updateContentLanguage(langToUse);
-        selectedOption.innerHTML = initialOption.innerHTML; // Update de geselecteerde optie met de vlag en taal
-    }
-
-    // Functie om de bewegende achtergrondpositie te behouden
-    document.addEventListener('mousemove', (event) => {
-        const { clientX, clientY } = event;
-        const background = document.querySelector('.moving-background');
-    
-        // Verplaats de achtergrond subtiel op basis van muisbeweging
-        if (background) {
-            background.style.backgroundPositionX = `${clientX / 20}px`;
-            background.style.backgroundPositionY = `${clientY / 20}px`;
-        }
+    document.addEventListener('click', () => {
+        closeMenu(false);
     });
 
-    // Hashchange-ondersteuning zodat #privacy en andere links direct schakelen
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href') || '';
+            if (href === '#main-stage') {
+                const stage = document.getElementById('main-stage');
+                if (stage) {
+                    event.preventDefault();
+                    stage.focus();
+                }
+                return;
+            }
+            if (href.length > 1) {
+                const secId = href.substring(1);
+                if (document.getElementById(secId)) {
+                    event.preventDefault();
+                    showSection(secId);
+                    if (window.location.hash !== href) {
+                        history.pushState(null, '', href);
+                    }
+                }
+            }
+        });
+    });
+
     window.addEventListener('hashchange', () => {
         const h = window.location.hash ? window.location.hash.substring(1) : '';
-        if (h) {
+        if (h && document.getElementById(h)) {
             showSection(h);
         }
     });
-});
 
-// Functie om secties weer te geven/verbergen
-function showSection(sectionId) {
-    // Verberg alle secties
-    const sections = document.querySelectorAll('.content-section');
-    sections.forEach(section => section.style.display = 'none');
-
-    // Toon de gekozen sectie (null-safe)
-    const target = document.getElementById(sectionId);
-    if (!target) {
-        const fallback = document.getElementById('home');
-        if (fallback) fallback.style.display = 'block';
-        return;
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+        document.addEventListener('mousemove', (event) => {
+            const background = document.querySelector('.moving-background');
+            if (background) {
+                background.style.backgroundPositionX = `${event.clientX / 20}px`;
+                background.style.backgroundPositionY = `${event.clientY / 20}px`;
+            }
+        });
     }
-    target.style.display = 'block';
 
-    // Update de inhoudstaal bij het wisselen van secties
-    const currentLang = localStorage.getItem('selectedLang') || 'en';
-    updateContentLanguage(currentLang);
-}
-
-function updateContentLanguage(lang) {
-    const contentElements = document.querySelectorAll('.intro-content, .privacy-content');
-    contentElements.forEach(element => {
-        element.style.display = element.getAttribute('data-lang') === lang ? 'block' : 'none';
-    });
-}
+    if (window.location.hash && window.location.hash.length > 1) {
+        showSection(window.location.hash.substring(1));
+    } else if (document.getElementById('home')) {
+        showSection('home');
+    } else {
+        updateContentLanguage(currentLang);
+    }
+});

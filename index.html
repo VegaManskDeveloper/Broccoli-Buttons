@@ -5,53 +5,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broccoli Buttons - Single Page Application</title>
+    <title>Broccoli Buttons — EventWhisperer</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 
 <body>
-    <!-- Bewegende achtergrond blijft hier persistent -->
-    <div class="moving-background"></div>
+    <a href="#main-stage" class="skip-link" data-i18n="skip">Skip to content</a>
+    <div class="moving-background" aria-hidden="true"></div>
 
-    <!-- Navigatiebalk aangepast -->
     <header>
         <div class="logo">
-            <h1>Broccoli Buttons</h1>
+            <h1><a href="#home">Broccoli Buttons</a></h1>
         </div>
-        <nav>
+        <nav aria-label="Primary navigation">
             <ul>
-                <li><a href="#home" onclick="showSection('home')">Home</a></li>
-                <li><a href="#mystery" onclick="showSection('mystery')">Mystery</a></li>
-                <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
-                <!-- Taalkeuzemenu blijft onveranderd -->
+                <li><a href="#home" data-i18n="home">Home</a></li>
+                <li><a href="#mystery" data-i18n="mystery">EventWhisperer</a></li>
+                <li><a href="#contact" data-i18n="contact">Contact</a></li>
                 <li class="language-selector">
                     <div class="custom-select">
-                        <div class="selected-option" id="selectedLanguage">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" class="flag-icon"> EN
-                        </div>
-                        <div class="options-container">
-                            <div class="option" data-lang="en">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="UK Flag" class="flag-icon"> EN
-                            </div>
-                            <div class="option" data-lang="es">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spain Flag" class="flag-icon"> ES
-                            </div>
-                            <div class="option" data-lang="zh">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" alt="China Flag" class="flag-icon"> ZH
-                            </div>
-                            <div class="option" data-lang="no">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="Norway Flag" class="flag-icon"> NO
-                            </div>
-                            <div class="option" data-lang="nl">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Netherlands Flag" class="flag-icon"> NL
-                            </div>
-                            <div class="option" data-lang="de">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Germany Flag" class="flag-icon"> DE
-                            </div>
-                            <div class="option" data-lang="fr">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" class="flag-icon"> FR
-                            </div>
+                        <button type="button" class="selected-option" id="selectedLanguage" aria-haspopup="listbox" aria-expanded="false">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="" class="flag-icon"> <span>English</span>
+                        </button>
+                        <div class="options-container" role="listbox" aria-label="Language">
+                            <button type="button" class="option" role="option" data-lang="en">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" alt="" class="flag-icon"> <span>English</span>
+                            </button>
+                            <button type="button" class="option" role="option" data-lang="es">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="" class="flag-icon"> <span>Español</span>
+                            </button>
+                            <button type="button" class="option" role="option" data-lang="zh">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" alt="" class="flag-icon"> <span>中文</span>
+                            </button>
+                            <button type="button" class="option" role="option" data-lang="no">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="" class="flag-icon"> <span>Norsk</span>
+                            </button>
+                            <button type="button" class="option" role="option" data-lang="nl">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="" class="flag-icon"> <span>Nederlands</span>
+                            </button>
+                            <button type="button" class="option" role="option" data-lang="de">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="" class="flag-icon"> <span>Deutsch</span>
+                            </button>
+                            <button type="button" class="option" role="option" data-lang="fr">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="" class="flag-icon"> <span>Français</span>
+                            </button>
                         </div>
                     </div>
                 </li>
@@ -59,278 +57,276 @@
         </nav>
     </header>
 
-    <!-- Home Sectie -->
-    <main id="home" class="content-section">
-        <div class="horizon-line" aria-hidden="true"></div>
-        <!-- Home content voor alle talen -->
-        <div class="intro-content" data-lang="en">
-            <section class="intro">
-                <h2>What's Behind the Green?</h2>
-                <p>Something fresh is coming. Stay tuned and keep an eye on the horizon...</p>
-                <a href="#mystery" onclick="showSection('mystery')" class="explore-button">Explore the Unknown</a>
-            </section>
-        </div>
-        <div class="intro-content" data-lang="es" style="display: none;">
-            <section class="intro">
-                <h2>¿Qué hay detrás del verde?</h2>
-                <p>Algo fresco está llegando. Mantente atento y no pierdas de vista el horizonte...</p>
-                <a href="#mystery" onclick="showSection('mystery')" class="explore-button">Explora lo desconocido</a>
-            </section>
-        </div>
-        <div class="intro-content" data-lang="zh" style="display: none;">
-            <section class="intro">
-                <h2>绿色背后是什么？</h2>
-                <p>有新的东西即将到来。请继续关注，不要忽视地平线...</p>
-                <a href="#mystery" onclick="showSection('mystery')" class="explore-button">探索未知</a>
-            </section>
-        </div>
-        <div class="intro-content" data-lang="no" style="display: none;">
-             <section class="intro">
-                <h2>Hva er bak det grønne?</h2>
-                <p>Noe friskt kommer snart. Følg med og hold øye med horisonten...</p>
-                <a href="#mystery" onclick="showSection('mystery')" class="explore-button">Utforsk det ukjente</a>
-              </section>
-        </div>
-        <div class="intro-content" data-lang="nl" style="display: none;">
-            <section class="intro">
-               <h2>Wat zit er achter het groen?</h2>
-               <p>Iets fris is in aantocht. Blijf op de hoogte en houd de horizon in de gaten...</p>
-               <a href="#mystery" onclick="showSection('mystery')" class="explore-button">Ontdek het Onbekende</a>
-            </section>
-        </div>
-        <div class="intro-content" data-lang="de" style="display: none;">
-            <section class="intro">
-               <h2>Was steckt hinter dem Grün?</h2>
-               <p>Etwas Frisches kommt. Bleiben Sie dran und behalten Sie den Horizont im Auge...</p>
-               <a href="#mystery" onclick="showSection('mystery')" class="explore-button">Erkunde das Unbekannte</a>
-            </section>
-        </div>
-        <div class="intro-content" data-lang="fr" style="display: none;">
-            <section class="intro">
-               <h2>Qu'y a-t-il derrière le vert ?</h2>
-               <p>Quelque chose de frais arrive. Restez à l'écoute et gardez un œil sur l'horizon...</p>
-               <a href="#mystery" onclick="showSection('mystery')" class="explore-button">Explorez l'Inconnu</a>
-            </section>
-        </div>
-    </main>
+    <div id="main-stage" tabindex="-1">
+        <!-- Home Sectie -->
+        <main id="home" class="content-section">
+            <div class="horizon-line" aria-hidden="true"></div>
+            <div class="intro-content" data-lang="en" lang="en">
+                <section class="intro">
+                    <h2>What's Behind the Green?</h2>
+                    <p>Something fresh is coming. Stay tuned and keep an eye on the horizon...</p>
+                    <a href="#mystery" class="explore-button">Explore the Unknown</a>
+                </section>
+            </div>
+            <div class="intro-content" data-lang="es" lang="es" style="display: none;">
+                <section class="intro">
+                    <h2>¿Qué hay detrás del verde?</h2>
+                    <p>Algo fresco está llegando. Mantente atento y no pierdas de vista el horizonte...</p>
+                    <a href="#mystery" class="explore-button">Explora lo desconocido</a>
+                </section>
+            </div>
+            <div class="intro-content" data-lang="zh" lang="zh" style="display: none;">
+                <section class="intro">
+                    <h2>绿色背后是什么？</h2>
+                    <p>有新的东西即将到来。请继续关注，不要忽视地平线...</p>
+                    <a href="#mystery" class="explore-button">探索未知</a>
+                </section>
+            </div>
+            <div class="intro-content" data-lang="no" lang="no" style="display: none;">
+                <section class="intro">
+                    <h2>Hva er bak det grønne?</h2>
+                    <p>Noe friskt kommer snart. Følg med og hold øye med horisonten...</p>
+                    <a href="#mystery" class="explore-button">Utforsk det ukjente</a>
+                </section>
+            </div>
+            <div class="intro-content" data-lang="nl" lang="nl" style="display: none;">
+                <section class="intro">
+                    <h2>Wat zit er achter het groen?</h2>
+                    <p>Iets fris is in aantocht. Blijf op de hoogte en houd de horizon in de gaten...</p>
+                    <a href="#mystery" class="explore-button">Ontdek het Onbekende</a>
+                </section>
+            </div>
+            <div class="intro-content" data-lang="de" lang="de" style="display: none;">
+                <section class="intro">
+                    <h2>Was steckt hinter dem Grün?</h2>
+                    <p>Etwas Frisches kommt. Bleiben Sie dran und behalten Sie den Horizont im Auge...</p>
+                    <a href="#mystery" class="explore-button">Erkunde das Unbekannte</a>
+                </section>
+            </div>
+            <div class="intro-content" data-lang="fr" lang="fr" style="display: none;">
+                <section class="intro">
+                    <h2>Qu'y a-t-il derrière le vert ?</h2>
+                    <p>Quelque chose de frais arrive. Restez à l'écoute et gardez un œil sur l'horizon...</p>
+                    <a href="#mystery" class="explore-button">Explorez l'Inconnu</a>
+                </section>
+            </div>
+        </main>
 
-    <!-- Mystery Sectie -->
-    <main id="mystery" class="content-section" style="display: none;">
-        <!-- Mystery content voor alle talen -->
-        <div class="intro-content privacy-card" data-lang="en">
-            <h2>Behind the Green: EventWhisperer</h2>
-            <p>EventWhisperer is the calm Android companion by Broccoli Buttons, built for families, seniors, and shared spaces on tablet or phone.</p>
-            <p><em>You don't have to do anything &mdash; EventWhisperer quietly shows what matters and stays silent when calm is better.</em></p>
-            <ul>
-                <li><strong>Calm &amp; always readable:</strong> One quiet place for upcoming events without notification spam.</li>
-                <li><strong>Privacy by default:</strong> Calendar data (<code>READ_CALENDAR</code>) stays 100% local on your Android device &mdash; zero advertising trackers or profiling.</li>
-                <li><strong>Human measure:</strong> Designed for orientation, continuity, and peace of mind.</li>
-            </ul>
-            <p><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">View EventWhisperer on Google Play</a></p>
-            <p><a href="#privacy" onclick="showSection('privacy')">Privacy Statement</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        </div>
-        <div class="intro-content privacy-card" data-lang="es" style="display: none;">
-            <h2>Detr&aacute;s del Verde: EventWhisperer</h2>
-            <p>EventWhisperer es el compa&ntilde;ero Android sereno de Broccoli Buttons, pensado para familias, personas mayores y espacios compartidos en tableta o tel&eacute;fono.</p>
-            <p><em>No tienes que hacer nada: EventWhisperer muestra con calma lo que importa y guarda silencio cuando la tranquilidad es mejor.</em></p>
-            <ul>
-                <li><strong>Claro y siempre legible:</strong> Un lugar fijo para tus citas sin spam de notificaciones.</li>
-                <li><strong>Privacidad por defecto:</strong> Tus datos de calendario (<code>READ_CALENDAR</code>) permanecen 100% locales en tu dispositivo Android, sin rastreadores ni perfiles publicitarios.</li>
-                <li><strong>Medida humana:</strong> Dise&ntilde;ado para la orientaci&oacute;n, la continuidad y la serenidad.</li>
-            </ul>
-            <p><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">Ver EventWhisperer en Google Play</a></p>
-            <p><a href="#privacy" onclick="showSection('privacy')">Declaraci&oacute;n de Privacidad</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        </div>
-        <div class="intro-content privacy-card" data-lang="zh" style="display: none;">
-            <h2>&#32511;&#33394;&#32972;&#21518;&#65306;EventWhisperer</h2>
-            <p>EventWhisperer &#26159; Broccoli Buttons &#25512;&#20986;&#30340;&#23433;&#38745; Android &#20276;&#20387;&#24212;&#29992;&#65292;&#19987;&#20026;&#23478;&#24237;&#12289;&#38271;&#32773;&#21450;&#20849;&#20139;&#31354;&#38388;&#30340;&#24179;&#26495;&#19982;&#25163;&#26426;&#35774;&#35745;&#12290;</p>
-            <p><em>&#24744;&#26080;&#38656;&#22810;&#20313;&#25805;&#20316;&#8212;&#8212;EventWhisperer &#20250;&#22312;&#21512;&#36866;&#30340;&#26102;&#21051;&#23433;&#38745;&#23637;&#31034;&#37325;&#35201;&#26085;&#31243;&#65292;&#24182;&#22312;&#38656;&#35201;&#23425;&#38745;&#26102;&#20445;&#25345;&#27785;&#40664;&#12290;</em></p>
-            <ul>
-                <li><strong>&#28165;&#26224;&#23433;&#38745;&#65306;</strong>&#19968;&#30446;&#20102;&#28982;&#30340;&#26085;&#31243;&#27010;&#35272;&#65292;&#27809;&#26377;&#39057;&#32321;&#36890;&#30693;&#25171;&#25200;&#12290;</li>
-                <li><strong>&#40664;&#35748;&#38544;&#31169;&#65306;</strong>&#26085;&#21382;&#25968;&#25454;&#65288;<code>READ_CALENDAR</code>&#65289;100% &#20445;&#30041;&#22312;&#24744;&#30340; Android &#35774;&#22791;&#26412;&#22320;&#65292;&#38646;&#24191;&#21578;&#36861;&#36394;&#25110;&#29992;&#25143;&#30011;&#20687;&#12290;</li>
-                <li><strong>&#20197;&#20154;&#20026;&#26412;&#65306;</strong>&#20026;&#26041;&#21521;&#24863;&#12289;&#36830;&#32493;&#24615;&#19982;&#20869;&#24515;&#24179;&#38745;&#32780;&#35774;&#35745;&#12290;</li>
-            </ul>
-            <p><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">&#22312; Google Play &#19978;&#26597;&#30475; EventWhisperer</a></p>
-            <p><a href="#privacy" onclick="showSection('privacy')">&#38544;&#31169;&#22768;&#26126;</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        </div>
-        <div class="intro-content privacy-card" data-lang="no" style="display: none;">
-            <h2>Bak det gr&oslash;nne: EventWhisperer</h2>
-            <p>EventWhisperer er den rolige Android-ledsageren fra Broccoli Buttons, utviklet for familier, eldre og fellesrom p&aring; nettbrett eller telefon.</p>
-            <p><em>Du trenger ikke &aring; gj&oslash;re noe &mdash; EventWhisperer viser rolig det som betyr noe, og forblir stille n&aring;r ro er best.</em></p>
-            <ul>
-                <li><strong>Rolig og alltid lesbar:</strong> Ett fast sted for oversikt uten varslingsst&oslash;y.</li>
-                <li><strong>Personvern som standard:</strong> Kalenderdata (<code>READ_CALENDAR</code>) forblir 100% lokalt p&aring; din Android-enhet &mdash; uten annonsesporing eller profilering.</li>
-                <li><strong>Menneskelig m&aring;l:</strong> Skapt for orientering, kontinuitet og sinnsro.</li>
-            </ul>
-            <p><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">Se EventWhisperer p&aring; Google Play</a></p>
-            <p><a href="#privacy" onclick="showSection('privacy')">Personvernerkl&aelig;ring</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        </div>
-        <div class="intro-content privacy-card" data-lang="nl" style="display: none;">
-            <h2>Achter het groen: EventWhisperer</h2>
-            <p>EventWhisperer is de stille Android-companion van Broccoli Buttons voor gezinnen, ouderen en gedeelde ruimtes op tablet of telefoon.</p>
-            <p><em>Je hoeft niets te doen &mdash; EventWhisperer laat op het juiste moment zien wat ertoe doet en zwijgt wanneer rust beter is.</em></p>
-            <ul>
-                <li><strong>Rustig &amp; altijd leesbaar:</strong> E&eacute;n helder overzicht op je scherm zonder notificatiespam.</li>
-                <li><strong>Privacy als basis:</strong> Je agendagegevens (<code>READ_CALENDAR</code>) blijven 100% lokaal op je Android-toestel &mdash; nul reclame-trackers of profielen.</li>
-                <li><strong>Menselijke maat:</strong> Gebouwd voor ori&euml;ntatie, continu&iuml;teit en gemoedsrust.</li>
-            </ul>
-            <p><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">Bekijk EventWhisperer op Google Play</a></p>
-            <p><a href="#privacy" onclick="showSection('privacy')">Privacyverklaring</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        </div>
-        <div class="intro-content privacy-card" data-lang="de" style="display: none;">
-            <h2>Hinter dem Gr&uuml;n: EventWhisperer</h2>
-            <p>EventWhisperer ist der ruhige Android-Begleiter von Broccoli Buttons f&uuml;r Familien, &auml;ltere Menschen und gemeinsame R&auml;ume auf Tablet oder Smartphone.</p>
-            <p><em>Du musst nichts tun &mdash; EventWhisperer zeigt im richtigen Moment, was z&auml;hlt, und schweigt, wenn Ruhe besser ist.</em></p>
-            <ul>
-                <li><strong>Ruhig &amp; immer lesbar:</strong> Ein fester Ort f&uuml;r Termine ohne Benachrichtigungsflut.</li>
-                <li><strong>Datenschutz ab Werk:</strong> Kalenderdaten (<code>READ_CALENDAR</code>) bleiben 100% lokal auf deinem Android-Ger&auml;t &mdash; ohne Werbe-Tracker oder Profiling.</li>
-                <li><strong>Menschliches Ma&szlig;:</strong> Entwickelt f&uuml;r Orientierung, Kontinuit&auml;t und Gelassenheit.</li>
-            </ul>
-            <p><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">EventWhisperer bei Google Play ansehen</a></p>
-            <p><a href="#privacy" onclick="showSection('privacy')">Datenschutzerkl&auml;rung</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        </div>
-        <div class="intro-content privacy-card" data-lang="fr" style="display: none;">
-            <h2>Derri&egrave;re le Vert : EventWhisperer</h2>
-            <p>EventWhisperer est le compagnon Android apais&eacute; de Broccoli Buttons, con&ccedil;u pour les familles, les a&icirc;n&eacute;s et les espaces partag&eacute;s sur tablette ou t&eacute;l&eacute;phone.</p>
-            <p><em>Vous n'avez rien &agrave; faire : EventWhisperer affiche calmement l'essentiel et reste silencieux lorsque le calme est pr&eacute;f&eacute;rable.</em></p>
-            <ul>
-                <li><strong>Clair &amp; toujours lisible :</strong> Un aper&ccedil;u stable sans avalanche de notifications.</li>
-                <li><strong>Confidentialit&eacute; par d&eacute;faut :</strong> Vos donn&eacute;es d'agenda (<code>READ_CALENDAR</code>) restent 100% locales sur votre appareil Android &mdash; sans traceurs publicitaires ni profilage.</li>
-                <li><strong>Mesure humaine :</strong> Pens&eacute; pour l'orientation, la continuit&eacute; et la s&eacute;r&eacute;nit&eacute;.</li>
-            </ul>
-            <p><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">Voir EventWhisperer sur Google Play</a></p>
-            <p><a href="#privacy" onclick="showSection('privacy')">Politique de Confidentialit&eacute;</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        </div>
-    </main>
+        <!-- Mystery / EventWhisperer Sectie -->
+        <main id="mystery" class="content-section" style="display: none;">
+            <div class="intro-content privacy-card" data-lang="en" lang="en">
+                <h2>Behind the Green: EventWhisperer</h2>
+                <p>EventWhisperer is an Android calendar companion by Broccoli Buttons for phones and tablets. It helps families, older adults, and people in shared rooms see what matters today at a glance.</p>
+                <p><strong>What it does today:</strong> Your Google Calendar stays quietly in the background and EventWhisperer shows upcoming events on one clear, readable screen &mdash; without noisy notification alerts, ads, or tracking.</p>
+                <ul>
+                    <li><strong>Calm &amp; easy to read:</strong> Designed for an always-visible tablet in the kitchen, living room, or care space, as well as personal phones.</li>
+                    <li><strong>Private by default:</strong> Your calendar (<code>READ_CALENDAR</code>) stays locally on your Android device and is never uploaded to Broccoli Buttons servers or AI services.</li>
+                    <li><strong>Simple choices:</strong> Open the app on Google Play, read how your data is handled, or email us if you need help.</li>
+                </ul>
+                <p class="play-anchor-en"><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">View EventWhisperer on Google Play</a></p>
+                <p><a href="#privacy">Privacy Statement</a> &middot; <a href="/privacy.html">Full Privacy Page</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </div>
+            <div class="intro-content privacy-card" data-lang="es" lang="es" style="display: none;">
+                <h2>Detr&aacute;s del Verde: EventWhisperer</h2>
+                <p>EventWhisperer es una aplicaci&oacute;n Android de Broccoli Buttons para tel&eacute;fonos y tabletas. Ayuda a familias, personas mayores y espacios compartidos a ver lo importante del d&iacute;a de un vistazo.</p>
+                <p><strong>Qu&eacute; hace hoy:</strong> Tu Google Calendar permanece en segundo plano y EventWhisperer muestra tus pr&oacute;ximas citas en una pantalla clara y legible &mdash; sin avalanchas de notificaciones, anuncios ni seguimiento.</p>
+                <ul>
+                    <li><strong>Sereno y legible:</strong> Pensado para una tableta siempre visible en la cocina o sala com&uacute;n, y tambi&eacute;n para tu tel&eacute;fono.</li>
+                    <li><strong>Privacidad por defecto:</strong> Tu calendario (<code>READ_CALENDAR</code>) permanece de forma local en tu dispositivo Android y nunca se sube a servidores de Broccoli Buttons ni a servicios de IA.</li>
+                    <li><strong>Pasos claros:</strong> Abre la app en Google Play, consulta la pol&iacute;tica de privacidad o escr&iacute;benos si necesitas ayuda.</li>
+                </ul>
+                <p class="play-anchor-es"><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">Ver EventWhisperer en Google Play</a></p>
+                <p><a href="#privacy">Declaraci&oacute;n de Privacidad</a> &middot; <a href="/privacy.html">P&aacute;gina de Privacidad</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </div>
+            <div class="intro-content privacy-card" data-lang="zh" lang="zh" style="display: none;">
+                <h2>&#32511;&#33394;&#32972;&#21518;&#65306;EventWhisperer</h2>
+                <p>EventWhisperer &#26159; Broccoli Buttons &#25512;&#20986;&#30340; Android &#24212;&#29992;&#65292;&#36866;&#29992;&#20110;&#25163;&#26426;&#21644;&#24179;&#26495;&#12290;&#23427;&#24110;&#21161;&#23478;&#24237;&#12289;&#38271;&#32773;&#21644;&#20849;&#20139;&#31354;&#38388;&#20013;&#30340;&#20154;&#20204;&#19968;&#30446;&#20102;&#28982;&#22320;&#30475;&#21040;&#20170;&#22825;&#37325;&#35201;&#30340;&#20107;&#12290;</p>
+                <p><strong>&#30446;&#21069;&#21151;&#33021;&#65306;</strong>&#24744;&#30340; Google &#26085;&#21382;&#20445;&#25345;&#22312;&#21518;&#21488;&#23433;&#38745;&#36816;&#34892;&#65292;EventWhisperer &#22312;&#19968;&#20010;&#28165;&#26224;&#26131;&#35835;&#30340;&#30028;&#38754;&#19978;&#26174;&#31034;&#21363;&#23558;&#21040;&#26469;&#30340;&#26085;&#31243;&#23433;&#25490;&#8212;&#8212;&#27809;&#26377;&#39057;&#32321;&#30340;&#36890;&#30693;&#25171;&#25200;&#12289;&#24191;&#21578;&#25110;&#36861;&#36394;&#12290;</p>
+                <ul>
+                    <li><strong>&#23433;&#38745;&#26131;&#35835;&#65306;</strong>&#36866;&#21512;&#25918;&#22312;&#21416;&#25151;&#12289;&#23458;&#21381;&#25110;&#29031;&#25252;&#31354;&#38388;&#24120;&#20142;&#26174;&#31034;&#30340;&#24179;&#26495;&#65292;&#20063;&#36866;&#21512;&#20010;&#20154;&#25163;&#26426;&#12290;</li>
+                    <li><strong>&#40664;&#35748;&#38544;&#31169;&#65306;</strong>&#24744;&#30340;&#26085;&#21382;&#65288;<code>READ_CALENDAR</code>&#65289;&#20165;&#20445;&#30041;&#22312;&#24744;&#30340; Android &#35774;&#22791;&#26412;&#22320;&#65292;&#32477;&#19981;&#19978;&#20256;&#33267; Broccoli Buttons &#26381;&#21153;&#22120;&#25110; AI &#26381;&#21153;&#12290;</li>
+                    <li><strong>&#31616;&#21333;&#26126;&#20102;&#65306;</strong>&#22312; Google Play &#26597;&#30475;&#24212;&#29992;&#12289;&#38405;&#35835;&#38544;&#31169;&#35828;&#26126;&#65292;&#25110;&#21457;&#37038;&#20214;&#33719;&#21462;&#24110;&#21161;&#12290;</li>
+                </ul>
+                <p class="play-anchor-zh"><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">&#22312; Google Play &#19978;&#26597;&#30475; EventWhisperer</a></p>
+                <p><a href="#privacy">&#38544;&#31169;&#22768;&#26126;</a> &middot; <a href="/privacy.html">&#23436;&#25972;&#38544;&#31169;&#39029;&#38754;</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </div>
+            <div class="intro-content privacy-card" data-lang="no" lang="no" style="display: none;">
+                <h2>Bak det gr&oslash;nne: EventWhisperer</h2>
+                <p>EventWhisperer er en Android-app fra Broccoli Buttons for telefon og nettbrett. Den hjelper familier, eldre og folk i fellesrom med &aring; se det viktigste for dagen p&aring; et &oslash;yeblikk.</p>
+                <p><strong>Dette gj&oslash;r den i dag:</strong> Google-kalenderen din ligger rolig i bakgrunnen, og EventWhisperer viser kommende avtaler p&aring; &eacute;n tydelig og lettlest skjerm &mdash; uten masete varsler, reklame eller sporing.</p>
+                <ul>
+                    <li><strong>Rolig og lett &aring; lese:</strong> Laget for et fast nettbrett p&aring; kj&oslash;kkenet eller i stua, og for personlig telefon.</li>
+                    <li><strong>Personvern som standard:</strong> Kalenderen din (<code>READ_CALENDAR</code>) blir lokalt p&aring; din Android-enhet og lastes aldri opp til Broccoli Buttons eller AI-tjenester.</li>
+                    <li><strong>Enkle valg:</strong> Se appen p&aring; Google Play, les hvordan data behandles, eller send oss e-post hvis du trenger hjelp.</li>
+                </ul>
+                <p class="play-anchor-no"><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">Se EventWhisperer p&aring; Google Play</a></p>
+                <p><a href="#privacy">Personvernerkl&aelig;ring</a> &middot; <a href="/privacy.html">Fullstendig personvernside</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </div>
+            <div class="intro-content privacy-card" data-lang="nl" lang="nl" style="display: none;">
+                <h2>Achter het groen: EventWhisperer</h2>
+                <p>EventWhisperer is een Android-app van Broccoli Buttons voor telefoon en tablet. De app helpt gezinnen, ouderen en mensen in een gedeelde ruimte om in &eacute;&eacute;n oogopslag te zien wat vandaag telt.</p>
+                <p><strong>Wat de app nu doet:</strong> Je Google Agenda draait stil op de achtergrond en EventWhisperer toont aankomende afspraken op &eacute;&eacute;n overzichtelijk, goed leesbaar scherm &mdash; zonder drukke meldingen, reclame of tracking.</p>
+                <ul>
+                    <li><strong>Rustig &amp; altijd leesbaar:</strong> Handig voor een vast scherm in de woonkamer of keuken, &eacute;n op je eigen telefoon.</li>
+                    <li><strong>Geen reclame, geen tracking:</strong> Jouw agenda (<code>READ_CALENDAR</code>) blijft lokaal op je Android-toestel en gaat nooit naar servers van Broccoli Buttons of AI-diensten.</li>
+                    <li><strong>Direct verder:</strong> Bekijk EventWhisperer in Google Play, lees de duidelijke privacyuitleg of mail ons als je een vraag hebt.</li>
+                </ul>
+                <p class="play-anchor-nl"><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">Bekijk EventWhisperer op Google Play</a></p>
+                <p><a href="#privacy">Privacyverklaring</a> &middot; <a href="/privacy.html">Volledige privacypagina</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </div>
+            <div class="intro-content privacy-card" data-lang="de" lang="de" style="display: none;">
+                <h2>Hinter dem Gr&uuml;n: EventWhisperer</h2>
+                <p>EventWhisperer ist eine Android-App von Broccoli Buttons f&uuml;r Smartphone und Tablet. Sie hilft Familien, &auml;lteren Menschen und gemeinsamen Wohnr&auml;umen, heute Wichtiges auf einen Blick zu sehen.</p>
+                <p><strong>Was die App heute tut:</strong> Dein Google Kalender bleibt ruhig im Hintergrund, und EventWhisperer zeigt anstehende Termine auf einem klaren, gut lesbaren Bildschirm &mdash; ohne st&auml;ndige Benachrichtigungen, Werbung oder Tracking.</p>
+                <ul>
+                    <li><strong>Ruhig &amp; gut lesbar:</strong> Ideal f&uuml;r ein festes Tablet in K&uuml;che oder Wohnzimmer sowie f&uuml;r das eigene Smartphone.</li>
+                    <li><strong>Datenschutz ab Werk:</strong> Dein Kalender (<code>READ_CALENDAR</code>) bleibt lokal auf deinem Android-Ger&auml;t und wird nie auf Server von Broccoli Buttons oder an KI-Dienste geladen.</li>
+                    <li><strong>Einfach weiter:</strong> App bei Google Play ansehen, Hinweise zum Datenschutz lesen oder per E-Mail Hilfe anfordern.</li>
+                </ul>
+                <p class="play-anchor-de"><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">EventWhisperer bei Google Play ansehen</a></p>
+                <p><a href="#privacy">Datenschutzerkl&auml;rung</a> &middot; <a href="/privacy.html">Datenschutzseite</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </div>
+            <div class="intro-content privacy-card" data-lang="fr" lang="fr" style="display: none;">
+                <h2>Derri&egrave;re le Vert : EventWhisperer</h2>
+                <p>EventWhisperer est une application Android de Broccoli Buttons pour t&eacute;l&eacute;phone et tablette. Elle aide les familles, les a&icirc;n&eacute;s et les espaces partag&eacute;s &agrave; voir l'essentiel de la journ&eacute;e d'un coup d'&oelig;il.</p>
+                <p><strong>Ce qu'elle fait aujourd'hui :</strong> Votre agenda Google reste discret en arri&egrave;re-plan et EventWhisperer affiche vos prochains rendez-vous sur un &eacute;cran clair et lisible &mdash; sans pluie de notifications, ni publicit&eacute;, ni suivi.</p>
+                <ul>
+                    <li><strong>Calme &amp; lisible :</strong> Con&ccedil;u aussi bien pour une tablette pos&eacute;e dans la cuisine ou le salon que pour un t&eacute;l&eacute;phone personnel.</li>
+                    <li><strong>Confidentialit&eacute; par d&eacute;faut :</strong> Votre agenda (<code>READ_CALENDAR</code>) reste sur votre appareil Android et n'est jamais envoy&eacute; vers les serveurs de Broccoli Buttons ni vers des services d'IA.</li>
+                    <li><strong>Acc&egrave;s simple :</strong> Consultez l'application sur Google Play, lisez le r&eacute;sum&eacute; de confidentialit&eacute; ou &eacute;crivez-nous pour toute question.</li>
+                </ul>
+                <p class="play-anchor-fr"><a href="https://play.google.com/store/apps/details?id=com.broccoli_buttons.eventWhisperer" target="_blank" rel="noopener noreferrer" class="play-cta">Voir EventWhisperer sur Google Play</a></p>
+                <p><a href="#privacy">Politique de Confidentialit&eacute;</a> &middot; <a href="/privacy.html">Page de Confidentialit&eacute;</a> &middot; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </div>
+        </main>
 
-    <!-- Contact Sectie -->
-    <main id="contact" class="content-section" style="display: none;">
-        <!-- Contact content voor alle talen -->
-        
-            <!-- De Bol met teksten in Engels -->
-        <section class="intro-content" data-lang="en">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or comments, feel free to reach us at:</p>
-            <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>
-        </section>
-        <section class="intro-content" data-lang="es" style="display: none;">
-            <h2>Contáctanos</h2>
-            <p>¿Tienes preguntas o comentarios? No dudes en ponerte en contacto con nosotros a través de:</p>
-            <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>
-        </section>
-        <section class="intro-content" data-lang="zh" style="display: none;">
-            <h2>联系我们</h2>
-            <p>您有任何问题或意见吗？请通过以下方式联系我们：</p>
-            <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>
-        </section>
-        <section class="intro-content" data-lang="no" style="display: none;">
-            <h2>Kontakt oss</h2>
-            <p>Har du spørsmål eller kommentarer? Ikke nøl med å kontakte oss på:</p>
-            <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>
-        </section>
-        <section class="intro-content" data-lang="nl" style="display: none;">
-            <h2>Neem contact met ons op</h2>
-            <p>Heb je vragen of opmerkingen? Neem gerust contact met ons op via:</p>
-            <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>
-        </section>
-        <section class="intro-content" data-lang="de" style="display: none;">
-            <h2>Kontaktieren Sie uns</h2>
-            <p>Haben Sie Fragen oder Anmerkungen? Zögern Sie nicht, uns zu kontaktieren unter:</p>
-            <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>
-        </section>
-        <section class="intro-content" data-lang="fr" style="display: none;">
-            <h2>Contactez-nous</h2>
-            <p>Avez-vous des questions ou des commentaires ? N'hésitez pas à nous contacter à :</p>
-            <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>
-        </section>
-    </main>
+        <!-- Contact Sectie -->
+        <main id="contact" class="content-section" style="display: none;">
+            <section class="intro-content privacy-card" data-lang="en" lang="en">
+                <h2>Contact Us</h2>
+                <p>If you have questions about Broccoli Buttons or need help with EventWhisperer, write to us at:</p>
+                <p><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </section>
+            <section class="intro-content privacy-card" data-lang="es" lang="es" style="display: none;">
+                <h2>Cont&aacute;ctanos</h2>
+                <p>Si tienes preguntas sobre Broccoli Buttons o necesitas ayuda con EventWhisperer, escr&iacute;benos a:</p>
+                <p><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </section>
+            <section class="intro-content privacy-card" data-lang="zh" lang="zh" style="display: none;">
+                <h2>&#32852;&#31995;&#25105;&#20204;</h2>
+                <p>&#22914;&#26524;&#24744;&#23545; Broccoli Buttons &#26377;&#30097;&#38382;&#25110;&#38656;&#35201; EventWhisperer &#24110;&#21161;&#65292;&#27426;&#36814;&#21457;&#37038;&#20214;&#33267;&#65306;</p>
+                <p><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </section>
+            <section class="intro-content privacy-card" data-lang="no" lang="no" style="display: none;">
+                <h2>Kontakt oss</h2>
+                <p>Har du sp&oslash;rsm&aring;l om Broccoli Buttons eller trenger hjelp med EventWhisperer, skriv til oss p&aring;:</p>
+                <p><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </section>
+            <section class="intro-content privacy-card" data-lang="nl" lang="nl" style="display: none;">
+                <h2>Neem contact met ons op</h2>
+                <p>Heb je vragen over Broccoli Buttons of hulp nodig met EventWhisperer? Mail ons op:</p>
+                <p><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </section>
+            <section class="intro-content privacy-card" data-lang="de" lang="de" style="display: none;">
+                <h2>Kontakt</h2>
+                <p>Bei Fragen zu Broccoli Buttons oder Hilfe zu EventWhisperer erreichst du uns unter:</p>
+                <p><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </section>
+            <section class="intro-content privacy-card" data-lang="fr" lang="fr" style="display: none;">
+                <h2>Contactez-nous</h2>
+                <p>Pour toute question sur Broccoli Buttons ou besoin d'aide avec EventWhisperer, &eacute;crivez-nous &agrave; :</p>
+                <p><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+            </section>
+        </main>
 
-<!-- Privacy Sectie -->
-<main id="privacy" class="content-section" style="display: none;">
-    <!-- Privacy content voor alle talen -->
-    <div class="intro-content privacy-card" data-lang="en">
-        <h2>Privacy Statement: Broccoli Buttons &amp; EventWhisperer</h2>
-        <p><strong>Effective Date:</strong> 2026-11-17 &middot; <strong>Contact:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        <p>Broccoli Buttons respects your privacy. We do not use advertising trackers, profiling cookies, social media plugins, or third-party data sales on this website.</p>
-        <ul>
-            <li><strong>Google Sign-In (OIDC / PKCE) in EventWhisperer:</strong> Processes your display name, email address, and session tokens solely for authentication. Tokens are encrypted locally on your Android device via Android Keystore (AES-256-GCM) and excluded from cloud backups and device transfers.</li>
-            <li><strong>Calendar Data (<code>READ_CALENDAR</code>):</strong> Read strictly locally on your Android device to display events and timers, and never uploaded to Broccoli Buttons servers or AI services.</li>
-            <li><strong>Crash &amp; Stability Diagnostics (Firebase Crashlytics in test/release builds):</strong> Sends TLS-encrypted, redacted crash logs and app/installation identifiers (emails and OAuth tokens scrubbed before upload), automatically deleted within <strong>90 days</strong>.</li>
-            <li><strong>Support &amp; Deletion Rights:</strong> Support messages to <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> are used only to help you. Sign out or clear EventWhisperer app storage on Android anytime to delete local tokens, or email us to remove support correspondence.</li>
-        </ul>
+        <!-- Privacy Sectie -->
+        <main id="privacy" class="content-section" style="display: none;">
+            <div class="intro-content privacy-card" data-lang="en" lang="en">
+                <h2>Privacy Statement: Broccoli Buttons &amp; EventWhisperer</h2>
+                <p><strong>Effective Date:</strong> 2026-11-18 &middot; <strong>Contact:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+                <p class="plain-summary"><strong>In plain words:</strong> This website does not track visitors or show ads. In EventWhisperer, your calendar stays on your phone or tablet and is never sent to our servers or AI services. If you choose to sign in with Google, that token stays encrypted on your device. Test and release builds only send cleaned crash reports (without your email, login keys, or calendar events) that are deleted automatically within 90 days.</p>
+                <ul>
+                    <li><strong>Google Sign-In (OIDC / PKCE) in EventWhisperer:</strong> Processes your display name, email address, and session tokens solely for authentication. Tokens are encrypted locally on your Android device via Android Keystore (AES-256-GCM) and excluded from cloud backups and device transfers.</li>
+                    <li><strong>Calendar Data (<code>READ_CALENDAR</code>):</strong> Read strictly locally on your Android device to display events and timers, and never uploaded to Broccoli Buttons servers or AI services.</li>
+                    <li><strong>Crash &amp; Stability Diagnostics (Firebase Crashlytics in test/release builds):</strong> Sends TLS-encrypted, redacted crash logs and app/installation identifiers (emails and OAuth tokens scrubbed before upload), automatically deleted within <strong>90 days</strong>.</li>
+                    <li><strong>Support &amp; Deletion Rights:</strong> Support messages to <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> are used only to help you. Sign out or clear EventWhisperer app storage on Android anytime to delete local tokens, or email us to remove support correspondence.</li>
+                </ul>
+            </div>
+            <div class="intro-content privacy-card" data-lang="es" lang="es" style="display: none;">
+                <h2>Declaraci&oacute;n de Privacidad: Broccoli Buttons y EventWhisperer</h2>
+                <p><strong>Fecha de entrada en vigor:</strong> 18-11-2026 &middot; <strong>Contacto:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+                <p class="plain-summary"><strong>En palabras claras:</strong> Este sitio web no rastrea visitas ni muestra anuncios. En EventWhisperer, tu calendario permanece en tu tel&eacute;fono o tableta y nunca se env&iacute;a a nuestros servidores ni a servicios de IA. Si eliges iniciar sesi&oacute;n con Google, las claves quedan cifradas en tu dispositivo. Las versiones de prueba y publicaci&oacute;n solo env&iacute;an informes de fallos depurados (sin correos, claves ni eventos) que se borran autom&aacute;ticamente en 90 d&iacute;as.</p>
+                <ul>
+                    <li><strong>Inicio de sesi&oacute;n con Google (OIDC / PKCE) en EventWhisperer:</strong> Procesa tu nombre, correo electr&oacute;nico y tokens de sesi&oacute;n solo para autenticar tu cuenta. Los tokens se cifran localmente mediante Android Keystore (AES-256-GCM) y se excluyen de copias de seguridad y transferencias.</li>
+                    <li><strong>Datos de calendario (<code>READ_CALENDAR</code>):</strong> Se leen &uacute;nicamente de forma local en tu dispositivo y nunca se env&iacute;an a servidores de Broccoli Buttons ni a servicios de IA.</li>
+                    <li><strong>Diagn&oacute;stico de fallos (Firebase Crashlytics en compilaciones de prueba y publicaci&oacute;n):</strong> Env&iacute;a por TLS registros de fallos depurados (sin correos ni tokens OAuth) e identificadores de instalaci&oacute;n/dispositivo, eliminados autom&aacute;ticamente en <strong>90 d&iacute;as</strong>.</li>
+                    <li><strong>Derechos de soporte y eliminaci&oacute;n:</strong> Escribe a <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> o cierra sesi&oacute;n / borra los datos de la app en Android.</li>
+                </ul>
+            </div>
+            <div class="intro-content privacy-card" data-lang="zh" lang="zh" style="display: none;">
+                <h2>&#38544;&#31169;&#22768;&#26126;&#65306;Broccoli Buttons &#19982; EventWhisperer</h2>
+                <p><strong>&#29983;&#25928;&#26085;&#26399;&#65306;</strong>2026-11-18 &middot; <strong>&#32852;&#31995;&#26041;&#24335;&#65306;</strong><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+                <p class="plain-summary"><strong>&#31616;&#26126;&#35828;&#26126;&#65306;</strong>&#26412;&#32593;&#31449;&#19981;&#36394;&#36394;&#35775;&#23458;&#65292;&#20063;&#27809;&#26377;&#24191;&#21578;&#12290;&#22312; EventWhisperer &#20013;&#65292;&#24744;&#30340;&#26085;&#21382;&#20165;&#20445;&#30041;&#22312;&#24744;&#30340;&#25163;&#26426;&#25110;&#24179;&#26495;&#19978;&#65292;&#32477;&#19981;&#19978;&#20256;&#21040;&#25105;&#20204;&#30340;&#26381;&#21153;&#22120;&#25110; AI &#26381;&#21153;&#12290;&#22914;&#26524;&#36873;&#25321; Google &#30331;&#24405;&#65292;&#20973;&#35777;&#20250;&#22312;&#26412;&#22320;&#21152;&#23494;&#20445;&#23384;&#12290;&#27979;&#35797;&#21644;&#21457;&#24067;&#29256;&#20165;&#21457;&#36865;&#24050;&#21435;&#38500;&#37038;&#31665;&#12289;&#20196;&#29260;&#21644;&#26085;&#31243;&#20869;&#23481;&#30340;&#23849;&#28291;&#25253;&#21578;&#65292;&#24182;&#22312; 90 &#22825;&#20869;&#33258;&#21160;&#21024;&#38500;&#12290;</p>
+                <ul>
+                    <li><strong>Google &#30331;&#24405; (OIDC / PKCE)&#65306;</strong>&#20165;&#29992;&#20110;&#36523;&#20221;&#39564;&#35777;&#22788;&#29702;&#22995;&#21517;&#12289;&#37038;&#31665;&#21644;&#20250;&#35805;&#20196;&#29260;&#65292;&#20196;&#29260;&#36890;&#36807; Android Keystore (AES-256-GCM) &#22312;&#26412;&#22320;&#21152;&#23494;&#23384;&#20648;&#24182;&#25490;&#38500;&#20113;&#22791;&#20221;&#12290;</li>
+                    <li><strong>&#26085;&#21382;&#25968;&#25454; (<code>READ_CALENDAR</code>)&#65306;</strong>&#20165;&#22312;&#24744;&#30340;&#35774;&#22791;&#26412;&#22320;&#35835;&#21462;&#65292;&#32477;&#19981;&#19978;&#20256;&#33267; Broccoli Buttons &#26381;&#21153;&#22120;&#25110; AI &#26381;&#21153;&#12290;</li>
+                    <li><strong>&#31283;&#23450;&#24615;&#35786;&#26029; (Firebase Crashlytics)&#65306;</strong>&#22312;&#27979;&#35797;/&#21457;&#24067;&#29256;&#26412;&#20013;&#36890;&#36807; TLS &#21457;&#36865;&#24050;&#33073;&#25935;&#30340;&#23849;&#28291;&#26085;&#24535;&#19982;&#35774;&#22791;&#26631;&#35782;&#65292;<strong>90 &#22825;</strong>&#20869;&#33258;&#21160;&#21024;&#38500;&#12290;</li>
+                    <li><strong>&#25903;&#25345;&#19982;&#21024;&#38500;&#26435;&#21033;&#65306;</strong>&#21487;&#38543;&#26102;&#22312; Android &#20013;&#36864;&#20986;&#30331;&#24405;&#25110;&#28165;&#38500;&#24212;&#29992;&#25968;&#25454;&#65292;&#25110;&#21457;&#37038;&#20214;&#33267; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>&#12290;</li>
+                </ul>
+            </div>
+            <div class="intro-content privacy-card" data-lang="no" lang="no" style="display: none;">
+                <h2>Personvernerkl&aelig;ring: Broccoli Buttons og EventWhisperer</h2>
+                <p><strong>Ikrafttredelsesdato:</strong> 18.11.2026 &middot; <strong>Kontakt:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+                <p class="plain-summary"><strong>Kort forklart:</strong> Dette nettstedet sporer ikke bes&oslash;kende og viser ingen reklame. I EventWhisperer blir kalenderen din p&aring; din egen telefon eller nettbrett og sendes aldri til v&aring;re servere eller AI-tjenester. Hvis du logger inn med Google, lagres n&oslash;kkelen kryptert p&aring; enheten. Test- og utgivelsesversjoner sender kun rensede krasjrapporter (uten e-post, n&oslash;kler eller kalenderavtaler), som slettes automatisk innen 90 dager.</p>
+                <ul>
+                    <li><strong>Google-innlogging (OIDC / PKCE) i EventWhisperer:</strong> Behandler navn, e-postadresse og &oslash;kttokener kun for autentisering. Tokener krypteres lokalt med Android Keystore (AES-256-GCM) og ekskluderes fra skysikkerhetskopier og enhetsoverf&oslash;ring.</li>
+                    <li><strong>Kalenderdata (<code>READ_CALENDAR</code>):</strong> Leses utelukkende lokalt p&aring; din Android-enhet og lastes aldri opp til v&aring;re servere eller AI-tjenester.</li>
+                    <li><strong>Krasj- og stabilitetsdiagnostikk (Firebase Crashlytics i test-/utgivelsesbygg):</strong> Sender TLS-krypterte, rensede krasjlogger og enhets-/installasjons-ID-er som slettes automatisk innen <strong>90 dager</strong>.</li>
+                    <li><strong>Brukerst&oslash;tte og sletting:</strong> Logg ut eller t&oslash;m applagring i Android n&aring;r som helst, eller kontakt <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
+                </ul>
+            </div>
+            <div class="intro-content privacy-card" data-lang="nl" lang="nl" style="display: none;">
+                <h2>Privacyverklaring: Broccoli Buttons &amp; EventWhisperer</h2>
+                <p><strong>Ingangsdatum:</strong> 18-11-2026 &middot; <strong>Contact:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+                <p class="plain-summary"><strong>In gewone taal:</strong> Deze website plaatst geen advertentie- of trackingcookies. In EventWhisperer blijft jouw agenda op je eigen toestel en gaat die nooit naar onze servers of AI-diensten. Als je inlogt met Google, blijft dat inlogbewijs versleuteld op je toestel bewaard. Alleen in test- en winkelversies worden opgeschoonde crashmeldingen (zonder e-mail, inlogsleutel of afspraken) verstuurd om fouten te herstellen; deze verdwijnen automatisch binnen 90 dagen.</p>
+                <ul>
+                    <li><strong>Google-aanmelding (OIDC / PKCE) in EventWhisperer:</strong> Verwerkt jouw naam, e-mailadres en sessietokens uitsluitend voor authenticatie. Tokens worden lokaal versleuteld opgeslagen via Android Keystore (AES-256-GCM) en uitgesloten van cloudback-up en apparaatoverdracht.</li>
+                    <li><strong>Agendagegevens (<code>READ_CALENDAR</code>):</strong> Worden uitsluitend <strong>lokaal op je Android-toestel</strong> gelezen om afspraken en timers te tonen en gaan nooit naar servers van Broccoli Buttons of externe AI-diensten.</li>
+                    <li><strong>Crash- &amp; stabiliteitsdiagnostiek (Firebase Crashlytics in test-/releasebuilds):</strong> Verzendt via TLS vooraf gescrubde crashlogs en apparaat-/installatie-ID's (e-mails en OAuth-tokens worden v&oacute;&oacute;raf verwijderd), automatisch gewist binnen <strong>90 dagen</strong>.</li>
+                    <li><strong>Support &amp; verwijderingsrechten (AVG):</strong> Supportmails naar <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> worden alleen gebruikt voor hulp en anonieme bugfixes. Log uit of wis de app-opslag op Android om lokale gegevens te verwijderen, of mail ons voor inzage/verwijdering.</li>
+                </ul>
+            </div>
+            <div class="intro-content privacy-card" data-lang="de" lang="de" style="display: none;">
+                <h2>Datenschutzerkl&auml;rung: Broccoli Buttons &amp; EventWhisperer</h2>
+                <p><strong>Stand:</strong> 18.11.2026 &middot; <strong>Kontakt:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+                <p class="plain-summary"><strong>Kurz und verst&auml;ndlich:</strong> Diese Website verfolgt Besucher nicht und zeigt keine Werbung. In EventWhisperer bleibt dein Kalender auf deinem Smartphone oder Tablet und gelangt nie auf unsere Server oder an KI-Dienste. Wenn du dich mit Google anmeldest, bleibt das Token verschl&uuml;sselt auf deinem Ger&auml;t. Test- und Store-Versionen senden nur bereinigte Absturzberichte (ohne E-Mail, Schl&uuml;ssel oder Termine), die innerhalb von 90 Tagen automatisch gel&ouml;scht werden.</p>
+                <ul>
+                    <li><strong>Google-Anmeldung (OIDC / PKCE) in EventWhisperer:</strong> Verarbeitet Name, E-Mail-Adresse und Sitzungstokens ausschlie&szlig;lich zur Authentifizierung. Tokens werden lokal per Android Keystore (AES-256-GCM) verschl&uuml;sselt und von Cloud-Backups sowie Ger&auml;te&uuml;bertragungen ausgeschlossen.</li>
+                    <li><strong>Kalenderdaten (<code>READ_CALENDAR</code>):</strong> Werden ausschlie&szlig;lich lokal auf deinem Android-Ger&auml;t gelesen und niemals auf Server von Broccoli Buttons oder an KI-Dienste hochgeladen.</li>
+                    <li><strong>Absturzdiagnose (Firebase Crashlytics in Test-/Release-Builds):</strong> &Uuml;bertr&auml;gt per TLS bereinigte Absturzberichte (ohne E-Mails/OAuth-Tokens) und Installations-IDs, die sp&auml;testens nach <strong>90 Tagen</strong> automatisch gel&ouml;scht werden.</li>
+                    <li><strong>Support &amp; L&ouml;schrechte (DSGVO):</strong> Melde dich ab bzw. l&ouml;sche die App-Daten unter Android oder schreibe an <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
+                </ul>
+            </div>
+            <div class="intro-content privacy-card" data-lang="fr" lang="fr" style="display: none;">
+                <h2>Politique de Confidentialit&eacute; : Broccoli Buttons &amp; EventWhisperer</h2>
+                <p><strong>Date d'effet :</strong> 18/11/2026 &middot; <strong>Contact :</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
+                <p class="plain-summary"><strong>En clair :</strong> Ce site ne suit pas les visiteurs et n'affiche aucune publicit&eacute;. Dans EventWhisperer, votre agenda reste sur votre t&eacute;l&eacute;phone ou tablette et n'est jamais envoy&eacute; vers nos serveurs ni vers des services d'IA. Si vous vous connectez avec Google, le jeton reste chiffr&eacute; sur votre appareil. Les versions test et Store envoient uniquement des rapports de plantage nettoy&eacute;s (sans e-mail, cl&eacute; ni rendez-vous), supprim&eacute;s sous 90 jours.</p>
+                <ul>
+                    <li><strong>Connexion Google (OIDC / PKCE) dans EventWhisperer :</strong> Traite votre nom, e-mail et jetons de session uniquement pour l'authentification. Les jetons sont chiffr&eacute;s localement via Android Keystore (AES-256-GCM) et exclus des sauvegardes cloud et transferts d'appareils.</li>
+                    <li><strong>Donn&eacute;es d'agenda (<code>READ_CALENDAR</code>) :</strong> Lues exclusivement en local sur votre appareil Android et jamais envoy&eacute;es vers nos serveurs ou des services d'IA.</li>
+                    <li><strong>Diagnostics de plantage (Firebase Crashlytics sur les versions test/production) :</strong> Envoie via TLS des journaux nettoy&eacute;s (sans e-mails ni jetons OAuth) et identifiants d'installation, supprim&eacute;s automatiquement sous <strong>90 jours</strong>.</li>
+                    <li><strong>Support et suppression (RGPD) :</strong> D&eacute;connectez-vous ou effacez le stockage de l'application sur Android, ou &eacute;crivez &agrave; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
+                </ul>
+            </div>
+        </main>
     </div>
-    <div class="intro-content privacy-card" data-lang="es" style="display: none;">
-        <h2>Declaraci&oacute;n de Privacidad: Broccoli Buttons y EventWhisperer</h2>
-        <p><strong>Fecha de entrada en vigor:</strong> 17-11-2026 &middot; <strong>Contacto:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        <p>Broccoli Buttons no utiliza rastreadores publicitarios, cookies de perfilado, plugins de redes sociales ni vende datos a terceros.</p>
-        <ul>
-            <li><strong>Inicio de sesi&oacute;n con Google (OIDC / PKCE) en EventWhisperer:</strong> Procesa tu nombre, correo electr&oacute;nico y tokens de sesi&oacute;n solo para autenticar tu cuenta. Los tokens se cifran localmente mediante Android Keystore (AES-256-GCM) y se excluyen de copias de seguridad y transferencias.</li>
-            <li><strong>Datos de calendario (<code>READ_CALENDAR</code>):</strong> Se leen &uacute;nicamente de forma local en tu dispositivo y nunca se env&iacute;an a servidores de Broccoli Buttons ni a servicios de IA.</li>
-            <li><strong>Diagn&oacute;stico de fallos (Firebase Crashlytics en compilaciones de prueba y publicaci&oacute;n):</strong> Env&iacute;a por TLS registros de fallos depurados (sin correos ni tokens OAuth) e identificadores de instalaci&oacute;n/dispositivo, eliminados autom&aacute;ticamente en <strong>90 d&iacute;as</strong>.</li>
-            <li><strong>Derechos de soporte y eliminaci&oacute;n:</strong> Escribe a <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> o cierra sesi&oacute;n / borra los datos de la app en Android.</li>
-        </ul>
-    </div>
-    <div class="intro-content privacy-card" data-lang="zh" style="display: none;">
-        <h2>&#38544;&#31169;&#22768;&#26126;&#65306;Broccoli Buttons &#19982; EventWhisperer</h2>
-        <p><strong>&#29983;&#25928;&#26085;&#26399;&#65306;</strong>2026-11-17 &middot; <strong>&#32852;&#31995;&#26041;&#24335;&#65306;</strong><a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        <p>&#26412;&#32593;&#31449;&#19981;&#20351;&#29992;&#24191;&#21578;&#36861;&#36394;&#22120;&#12289;&#31038;&#20132;&#23186;&#20307;&#25554;&#20214;&#25110;&#20986;&#21806;&#20010;&#20154;&#25968;&#25454;&#12290;</p>
-        <ul>
-            <li><strong>Google &#30331;&#24405; (OIDC / PKCE)&#65306;</strong>&#20165;&#29992;&#20110;&#36523;&#20221;&#39564;&#35777;&#22788;&#29702;&#22995;&#21517;&#12289;&#37038;&#31665;&#21644;&#20250;&#35805;&#20196;&#29260;&#65292;&#20196;&#29260;&#36890;&#36807; Android Keystore (AES-256-GCM) &#22312;&#26412;&#22320;&#21152;&#23494;&#23384;&#20648;&#24182;&#25490;&#38500;&#20113;&#22791;&#20221;&#12290;</li>
-            <li><strong>&#26085;&#21382;&#25968;&#25454; (<code>READ_CALENDAR</code>)&#65306;</strong>&#20165;&#22312;&#24744;&#30340;&#35774;&#22791;&#26412;&#22320;&#35835;&#21462;&#65292;&#32477;&#19981;&#19978;&#20256;&#33267; Broccoli Buttons &#26381;&#21153;&#22120;&#25110; AI &#26381;&#21153;&#12290;</li>
-            <li><strong>&#31283;&#23450;&#24615;&#35786;&#26029; (Firebase Crashlytics)&#65306;</strong>&#22312;&#27979;&#35797;/&#21457;&#24067;&#29256;&#26412;&#20013;&#36890;&#36807; TLS &#21457;&#36865;&#24050;&#33073;&#25935;&#30340;&#23849;&#28291;&#26085;&#24535;&#19982;&#35774;&#22791;&#26631;&#35782;&#65292;<strong>90 &#22825;</strong>&#20869;&#33258;&#21160;&#21024;&#38500;&#12290;</li>
-            <li><strong>&#25903;&#25345;&#19982;&#21024;&#38500;&#26435;&#21033;&#65306;</strong>&#21487;&#38543;&#26102;&#22312; Android &#20013;&#36864;&#20986;&#30331;&#24405;&#25110;&#28165;&#38500;&#24212;&#29992;&#25968;&#25454;&#65292;&#25110;&#21457;&#37038;&#20214;&#33267; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>&#12290;</li>
-        </ul>
-    </div>
-    <div class="intro-content privacy-card" data-lang="no" style="display: none;">
-        <h2>Personvernerkl&aelig;ring: Broccoli Buttons og EventWhisperer</h2>
-        <p><strong>Ikrafttredelsesdato:</strong> 17.11.2026 &middot; <strong>Kontakt:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        <p>Broccoli Buttons bruker ikke annonsesporing, profileringskapsler, sosiale medier-plugins eller salg av opplysninger til tredjeparter.</p>
-        <ul>
-            <li><strong>Google-innlogging (OIDC / PKCE) i EventWhisperer:</strong> Behandler navn, e-postadresse og &oslash;kttokener kun for autentisering. Tokener krypteres lokalt med Android Keystore (AES-256-GCM) og ekskluderes fra skysikkerhetskopier og enhetsoverf&oslash;ring.</li>
-            <li><strong>Kalenderdata (<code>READ_CALENDAR</code>):</strong> Leses utelukkende lokalt p&aring; din Android-enhet og lastes aldri opp til v&aring;re servere eller AI-tjenester.</li>
-            <li><strong>Krasj- og stabilitetsdiagnostikk (Firebase Crashlytics i test-/utgivelsesbygg):</strong> Sender TLS-krypterte, rensede krasjlogger og enhets-/installasjons-ID-er som slettes automatisk innen <strong>90 dager</strong>.</li>
-            <li><strong>Brukerst&oslash;tte og sletting:</strong> Logg ut eller t&oslash;m applagring i Android n&aring;r som helst, eller kontakt <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
-        </ul>
-    </div>
-    <div class="intro-content privacy-card" data-lang="nl" style="display: none;">
-        <h2>Privacyverklaring: Broccoli Buttons &amp; EventWhisperer</h2>
-        <p><strong>Ingangsdatum:</strong> 17-11-2026 &middot; <strong>Contact:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        <p>Broccoli Buttons respecteert jouw privacy. Deze website gebruikt geen advertentietrackers, cookies voor gedragsprofilering, social-media-plugins of verkoop/deling van gegevens met derden.</p>
-        <ul>
-            <li><strong>Google-aanmelding (OIDC / PKCE) in EventWhisperer:</strong> Verwerkt jouw naam, e-mailadres en sessietokens uitsluitend voor authenticatie. Tokens worden lokaal versleuteld opgeslagen via Android Keystore (AES-256-GCM) en uitgesloten van cloudback-up en apparaatoverdracht.</li>
-            <li><strong>Agendagegevens (<code>READ_CALENDAR</code>):</strong> Worden uitsluitend <strong>lokaal op je Android-toestel</strong> gelezen om afspraken en timers te tonen en gaan nooit naar servers van Broccoli Buttons of externe AI-diensten.</li>
-            <li><strong>Crash- &amp; stabiliteitsdiagnostiek (Firebase Crashlytics in test-/releasebuilds):</strong> Verzendt via TLS vooraf gescrubde crashlogs en apparaat-/installatie-ID's (e-mails en OAuth-tokens worden vóóraf verwijderd), automatisch gewist binnen <strong>90 dagen</strong>.</li>
-            <li><strong>Support &amp; verwijderingsrechten (AVG):</strong> Supportmails naar <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a> worden alleen gebruikt voor hulp en anonieme bugfixes. Log uit of wis de app-opslag op Android om lokale gegevens te verwijderen, of mail ons voor inzage/verwijdering.</li>
-        </ul>
-    </div>
-    <div class="intro-content privacy-card" data-lang="de" style="display: none;">
-        <h2>Datenschutzerkl&auml;rung: Broccoli Buttons &amp; EventWhisperer</h2>
-        <p><strong>Stand:</strong> 17.11.2026 &middot; <strong>Kontakt:</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        <p>Broccoli Buttons verwendet auf dieser Website keine Werbe-Tracker, Tracking-Cookies oder Social-Media-Plugins und verkauft keine Daten an Dritte.</p>
-        <ul>
-            <li><strong>Google-Anmeldung (OIDC / PKCE) in EventWhisperer:</strong> Verarbeitet Name, E-Mail-Adresse und Sitzungstokens ausschlie&szlig;lich zur Authentifizierung. Tokens werden lokal per Android Keystore (AES-256-GCM) verschl&uuml;sselt und von Cloud-Backups sowie Ger&auml;te&uuml;bertragungen ausgeschlossen.</li>
-            <li><strong>Kalenderdaten (<code>READ_CALENDAR</code>):</strong> Werden ausschlie&szlig;lich lokal auf deinem Android-Ger&auml;t gelesen und niemals auf Server von Broccoli Buttons oder an KI-Dienste hochgeladen.</li>
-            <li><strong>Absturzdiagnose (Firebase Crashlytics in Test-/Release-Builds):</strong> &Uuml;bertr&auml;gt per TLS bereinigte Absturzberichte (ohne E-Mails/OAuth-Tokens) und Installations-IDs, die sp&auml;testens nach <strong>90 Tagen</strong> automatisch gel&ouml;scht werden.</li>
-            <li><strong>Support &amp; L&ouml;schrechte (DSGVO):</strong> Melde dich ab bzw. l&ouml;sche die App-Daten unter Android oder schreibe an <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
-        </ul>
-    </div>
-    <div class="intro-content privacy-card" data-lang="fr" style="display: none;">
-        <h2>Politique de Confidentialit&eacute; : Broccoli Buttons &amp; EventWhisperer</h2>
-        <p><strong>Date d'effet :</strong> 17/11/2026 &middot; <strong>Contact :</strong> <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a></p>
-        <p>Broccoli Buttons n'utilise aucun traceur publicitaire, cookie de profilage ni plugin de r&eacute;seaux sociaux, et ne vend ni ne partage de donn&eacute;es avec des tiers.</p>
-        <ul>
-            <li><strong>Connexion Google (OIDC / PKCE) dans EventWhisperer :</strong> Traite votre nom, e-mail et jetons de session uniquement pour l'authentification. Les jetons sont chiffr&eacute;s localement via Android Keystore (AES-256-GCM) et exclus des sauvegardes cloud et transferts d'appareils.</li>
-            <li><strong>Donn&eacute;es d'agenda (<code>READ_CALENDAR</code>) :</strong> Lues exclusivement en local sur votre appareil Android et jamais envoy&eacute;es vers nos serveurs ou des services d'IA.</li>
-            <li><strong>Diagnostics de plantage (Firebase Crashlytics sur les versions test/production) :</strong> Envoie via TLS des journaux nettoy&eacute;s (sans e-mails ni jetons OAuth) et identifiants d'installation, supprim&eacute;s automatiquement sous <strong>90 jours</strong>.</li>
-            <li><strong>Support et suppression (RGPD) :</strong> D&eacute;connectez-vous ou effacez le stockage de l'application sur Android, ou &eacute;crivez &agrave; <a href="mailto:broccolibuttons@gmail.com">broccolibuttons@gmail.com</a>.</li>
-        </ul>
-    </div>
-</main>
 
-    <!-- Footer Sectie -->
     <footer>
-        <p>&copy; 2024&ndash;2026 Broccoli Buttons. All rights reserved.</p>
-        <a href="#privacy" onclick="showSection('privacy')" class="privacy-link">Privacy Statement</a>
+        <p>&copy; 2024&ndash;2026 Broccoli Buttons.</p>
+        <div class="footer-links">
+            <a href="#privacy" class="privacy-link" data-i18n="privacy">Privacy Statement</a>
+            <a href="/privacy.html" class="privacy-link" data-i18n="privacy_page">Full Privacy Page</a>
+        </div>
         <noscript><p><a href="/privacy.html" class="privacy-link">Read full Privacy Policy &amp; EventWhisperer Data Safety disclosures (/privacy.html)</a></p></noscript>
     </footer>
 </body>
