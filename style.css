@@ -1437,6 +1437,14 @@ body[data-sky="day"] .ambient-mote {
     margin-top: 0.75rem;
 }
 
+.whisper-sheet .app-lang-note {
+    font-size: 0.9rem;
+    color: var(--fg-soft);
+    opacity: 0.9;
+    margin-top: 0.4rem;
+    margin-bottom: 14px;
+}
+
 .whisper-sheet a:not(.card-back-link):not(.play-cta) {
     color: var(--fg-primary);
     text-decoration: underline;
